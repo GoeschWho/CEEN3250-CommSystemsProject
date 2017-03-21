@@ -44,7 +44,8 @@ main.d main.o: .././main.c \
  C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/pixy324v221.h \
  C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/bbtk324v221.h \
  C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/cbot324v221.h \
- C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/capi324v221.h
+ C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/capi324v221.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdbool.h
 
 C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/capi324v221.h:
 
@@ -137,3 +138,5 @@ C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Li
 C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/cbot324v221.h:
 
 C:\Users\megan\Google\ Drive\College\S6\ -\ Spring\ 2017\Mobile\ Robotics\Lab\Library\lib-includes/capi324v221.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdbool.h:

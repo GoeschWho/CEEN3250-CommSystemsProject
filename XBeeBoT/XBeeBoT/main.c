@@ -7,62 +7,67 @@
  */
 
 #include "capi324v221.h"
+#include "stdbool.h"
 
 // ======================= prototypes =========================== //
 
+typedef unsigned char byte;
+
 BOOL CRUISE( void );
 BOOL IR_AVOID( void );
-float getTemp( void );
-float receiveTemp( float currentTemp );
-float transmitTemp( void );
-void updateDisplay( float myTemp, float rxTemp );
-
-typedef enum { false, true } bool;
+byte getTemp( void );
+byte receiveTemp( byte currentTemp );
+byte transmitTemp( void );
+void updateDisplay( byte myTemp, byte rxTemp );
 
 // ======================== main ================================ //
 
 void CBOT_main( void )
 {
-	BOOL CRUISING = false;
+	bool CRUISING = false;
 	
-	float myTemp = 0.0;
-	float rxTemp = 0.0;
+	byte myTemp = 0;
+	byte rxTemp = 0;
 	
-	// Open the LCD and Motors
+	// Open the LCD, motors, & LEDs
 	LCD_open();
+	LCD_printf("Starting...");
 	STEPPER_open();
+	LED_open();
 	
 	// ADC open and setup
 	ADC_open();
-	ADC_set_VREF( ADC_VREF_AVCC );		// Set the voltage reference (we want 5V reference).
+	ADC_set_VREF( ADC_VREF_AVCC );		// Setmk the voltage reference (we want 5V reference).
+	ADC_set_channel( ADC_CHAN3 );		// Set the channel we will sample from.
 	
 	// Open and initialize the UART
 	UART_open( UART_UART1 );
 	UART_configure( UART_UART1, UART_8DBITS, UART_1SBIT, UART_NO_PARITY, 9600 );
+	UART_set_timeout(UART_UART1, 1);
 	UART_set_TX_state( UART_UART1, UART_ENABLE );
 	UART_set_RX_state( UART_UART1, UART_ENABLE );
 	
 	while (1)
 	{
-		// cruise if not already cruising
-		//if ( !CRUISING )
+		 // Cruise if not already cruising
+		 if ( !CRUISING )
 		{
-			//CRUISING = CRUISE();
+			CRUISING = CRUISE();
 		}
 		
-		// check for obstacles
-		//CRUISING = IR_AVOID();
+		// Check for Obstacles
+		CRUISING = IR_AVOID();
 		
-		// transmit
+		// Transmit Temperature
 		myTemp = transmitTemp();
-		DELAY_ms( 1000 );
-		updateDisplay( myTemp, rxTemp );
 		
-		// receive
+		// Receive Temperature
 		rxTemp = receiveTemp( rxTemp );
+		
+		// Update Display
 		updateDisplay( myTemp, rxTemp );
 		
-		DELAY_ms( 500 );
+		DELAY_ms( 100 );
 		
 	}; // Loop forever.
 	
@@ -139,14 +144,25 @@ BOOL IR_AVOID( void )
 
 // -------------------------------------------------------------- //
 
-float getTemp( void ) {
+byte getTemp( void ) {
 	
-	ADC_SAMPLE sample; // Storage for ADC code.
-	float temp; // Storage for 'voltage' representation of ADC code.
+	ADC_SAMPLE sample;	// Storage for ADC code
+	float volts;		// Volts on temperature sensor pin
+	float tempC;
+	float tempF;
+	byte temp;
 	
-	ADC_set_channel( ADC_CHAN3 );				// Set the channel we will sample from.
-	sample = ADC_sample();						// Read sensor value 1
-	temp = ( ( sample * 5.0f ) / 1024 );		// Convert it to meaningful value.
+	sample = ADC_sample();					// Read sensor value
+	volts = sample * ( 5.0 / 1024 );			// Convert to a voltage
+	tempC = ( volts - 0.5 ) * 100.0;		// Calculate Celsius temperature
+	tempF = tempC * ( 9.0 / 5.0 ) + 32.0;	// Calculate Fahrenheit temperature
+	temp = ( byte ) ( tempF + 0.5 );		// Convert it to a byte
+	
+	// --- test --- //
+	//LCD_clear();
+	//LCD_printf("ADC:    %d\n", sample);
+	//LCD_printf("Volts:  %f\n", volts);
+	//LCD_printf("Deg F:  %f", tempF);
 	
 	return temp;
 	
@@ -154,62 +170,56 @@ float getTemp( void ) {
 
 // -------------------------------------------------------------- //
 
-float receiveTemp( float currentTemp ) {
+byte receiveTemp( byte currentTemp ) {
 	
-	float temperature = currentTemp;
-	unsigned int bytes_received = 0; // Bytes in.
-	unsigned char temp; // Store a single byte.
-	unsigned char buffer[ 10 ]; // Store multiple bytes.
+	byte temperature = currentTemp;
 	
 	// First check IF there is data to read...
-	if ( UART_has_data( UART_UART1 ) == TRUE ) {
-		
-		// Keep waiting until all 4 bytes have been received.
-		do {
-			if ( UART_has_data( UART_UART1 ) == TRUE ) {
-				UART_receive( UART_UART1, &temp ); // Read it...
-				buffer[ bytes_received ] = temp; // Store it...
-				bytes_received++; // Increment byte count.
-			} // end if()
-		} while( bytes_received < 4 );
-		
-		temperature = *(float *)&buffer;		
+	LED_clr( LED_Green );
+	while ( UART1_has_data() ) {
+		// Visual for success
+		LED_set( LED_Green );
+		UART1_receive( &temperature );		
 	}
 	
+	// Returns previously received temperature if none received.
 	return temperature;
 	
 } // end receiveTemp()
 
 // -------------------------------------------------------------- //
 
-float transmitTemp( void ) {
+byte transmitTemp( void ) {
+	
+	UART_COMM_RESULT error;
 	
 	// Get temperature on device
-	float temperature = getTemp();
-	
-	// convert to bytes
-	unsigned char *chptr;
-	chptr = (unsigned char *)&temperature;
+	byte temperature = getTemp();
 	
 	// Send data
-	for ( int i = 0; i < 4; i++) {
-		//LCD_printf( "%d ", *chptr );
-		UART_transmit( UART_UART1, *chptr++);
+	error = UART1_transmit( temperature );
+	
+	// Visual for errors
+	if ( error == UART_COMM_OK ) {
+		LED_set( LED_Red );
+	}
+	else {
+		LED_clr( LED_Red );
 	}
 	
 	return temperature;
-}
+} // end transmitTemp()
 
 // -------------------------------------------------------------- //
 
-void updateDisplay( float myTemp, float rxTemp ) {
+void updateDisplay( byte myTemp, byte rxTemp ) {
 	
 	LCD_clear();
 	
 	// Display myTemp
-	LCD_printf( "My Temp: %.2f\n", myTemp );
+	LCD_printf( "My Temp: %d\n", myTemp );
 	
 	// Display rxTemp
-	LCD_printf( "Rx Temp: %.2f\n", rxTemp );
+	LCD_printf( "Rx Temp: %d\n", rxTemp );
 	
 } // end updateDisplay()
