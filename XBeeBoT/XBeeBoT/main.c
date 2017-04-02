@@ -18,7 +18,7 @@ BOOL IR_AVOID( void );
 byte getTemp( void );
 byte receiveTemp( byte currentTemp );
 byte transmitTemp( void );
-void updateDisplay( byte myTemp, byte rxTemp );
+void updateDisplay( byte myTemp, byte rxTemp, TIMER16 interval_ms );
 
 // ======================== main ================================ //
 
@@ -49,8 +49,8 @@ void CBOT_main( void )
 	
 	while (1)
 	{
-		 // Cruise if not already cruising
-		 if ( !CRUISING )
+		// Cruise if not already cruising
+		if ( !CRUISING )
 		{
 			CRUISING = CRUISE();
 		}
@@ -65,9 +65,7 @@ void CBOT_main( void )
 		rxTemp = receiveTemp( rxTemp );
 		
 		// Update Display
-		updateDisplay( myTemp, rxTemp );
-		
-		DELAY_ms( 100 );
+		updateDisplay( myTemp, rxTemp, 500 );
 		
 	}; // Loop forever.
 	
@@ -78,8 +76,8 @@ void CBOT_main( void )
 BOOL CRUISE( void )
 {	
 	STEPPER_move_rn( STEPPER_BOTH,
-	STEPPER_FWD, 150, 450, // Left
-	STEPPER_FWD, 150, 450 ); // Right
+	STEPPER_FWD, 100, 400, // Left
+	STEPPER_FWD, 100, 400 ); // Right
 	
 	return true;
 } // end CRUISE()
@@ -148,21 +146,33 @@ byte getTemp( void ) {
 	
 	ADC_SAMPLE sample;	// Storage for ADC code
 	float volts;		// Volts on temperature sensor pin
-	float tempC;
-	float tempF;
-	byte temp;
+	float tempC;		// Temperature in Celsius
+	float tempF;		// Temperature in Fahrenheit
+	byte temp;			// Byte value to be stored
+	
+	#define history 10
+	static byte temps[history];		// Array to store last 10 readings
+	static int i = 0;	// Start index of array at 0;
+	int j;				// Index for summing temperatures
+	int sum = 0;		// Int for summing temperatures
+	int count = 0;		// Count number of samples in array
 	
 	sample = ADC_sample();					// Read sensor value
-	volts = sample * ( 5.0 / 1024 );			// Convert to a voltage
+	volts = sample * ( 5.0 / 1024 );		// Convert to a voltage
 	tempC = ( volts - 0.5 ) * 100.0;		// Calculate Celsius temperature
 	tempF = tempC * ( 9.0 / 5.0 ) + 32.0;	// Calculate Fahrenheit temperature
 	temp = ( byte ) ( tempF + 0.5 );		// Convert it to a byte
 	
-	// --- test --- //
-	//LCD_clear();
-	//LCD_printf("ADC:    %d\n", sample);
-	//LCD_printf("Volts:  %f\n", volts);
-	//LCD_printf("Deg F:  %f", tempF);
+	temps[i] = temp;
+	i == history-1 ? i = 0 : i++;
+	
+	for( j = 0; j < history; j++ ) {
+		if ( temps[j] != 0 ) {
+			sum += temps[j];
+			count++;
+		}
+	}
+	temp = sum / count;
 	
 	return temp;
 	
@@ -212,14 +222,38 @@ byte transmitTemp( void ) {
 
 // -------------------------------------------------------------- //
 
-void updateDisplay( byte myTemp, byte rxTemp ) {
+void updateDisplay( byte myTemp, byte rxTemp, TIMER16 interval_ms ) {
 	
-	LCD_clear();
+	static BOOL timer_started = FALSE;
+
+	static TIMEROBJ sense_timer;
+
+	if(timer_started == FALSE)
+	{
+		TMRSRVC_new( &sense_timer, TMRFLG_NOTIFY_FLAG, TMRTCM_RESTART, interval_ms);
+		timer_started = TRUE;
+	}
+	else
+	{
+		if( TIMER_ALARM( sense_timer ) )
+		{	
+			LCD_clear();
 	
-	// Display myTemp
-	LCD_printf( "My Temp: %d\n", myTemp );
+			// Header
+			LCD_printf( "CEEN 3250 - XBeeBoT\n\n" );
+			// Display myTemp
+			LCD_printf( "My Temp: %d\n", myTemp );
 	
-	// Display rxTemp
-	LCD_printf( "Rx Temp: %d\n", rxTemp );
+			// Display rxTemp
+			LCD_printf( "Rx Temp: %d\n", rxTemp );
+				
+			// Snooze the alarm so it can trigger again.
+			TIMER_SNOOZE(sense_timer);
+		}
+	}
+	
+	
+	
+
 	
 } // end updateDisplay()
