@@ -3,23 +3,23 @@ XBeeBoT.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000005c  00800100  000049d8  00004a6c  2**0
+  0 .data         0000005e  00800100  000049d8  00004a6c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         000049d8  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000127  0080015c  0080015c  00004ac8  2**0
+  2 .bss          0000014f  0080015e  0080015e  00004aca  2**0
                   ALLOC
-  3 .comment      0000005c  00000000  00000000  00004ac8  2**0
+  3 .comment      0000005c  00000000  00000000  00004aca  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00004b24  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00004b28  2**2
                   CONTENTS, READONLY
-  5 .debug_info   000006cc  00000000  00000000  00004b64  2**0
+  5 .debug_info   000006cc  00000000  00000000  00004b68  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000066e  00000000  00000000  00005230  2**0
+  6 .debug_abbrev 0000066e  00000000  00000000  00005234  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000151  00000000  00000000  0000589e  2**0
+  7 .debug_line   00000151  00000000  00000000  000058a2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000255  00000000  00000000  000059ef  2**0
+  8 .debug_str    00000255  00000000  00000000  000059f3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -249,13 +249,13 @@ Disassembly of section .text:
      62c:	02 c0       	rjmp	.+4      	; 0x632 <__do_copy_data+0x10>
      62e:	05 90       	lpm	r0, Z+
      630:	0d 92       	st	X+, r0
-     632:	ac 35       	cpi	r26, 0x5C	; 92
+     632:	ae 35       	cpi	r26, 0x5E	; 94
      634:	b1 07       	cpc	r27, r17
      636:	d9 f7       	brne	.-10     	; 0x62e <__do_copy_data+0xc>
 
 00000638 <__do_clear_bss>:
      638:	22 e0       	ldi	r18, 0x02	; 2
-     63a:	ac e5       	ldi	r26, 0x5C	; 92
+     63a:	ae e5       	ldi	r26, 0x5E	; 94
      63c:	b1 e0       	ldi	r27, 0x01	; 1
      63e:	01 c0       	rjmp	.+2      	; 0x642 <.do_clear_bss_start>
 
@@ -263,7 +263,7 @@ Disassembly of section .text:
      640:	1d 92       	st	X+, r1
 
 00000642 <.do_clear_bss_start>:
-     642:	a3 38       	cpi	r26, 0x83	; 131
+     642:	ad 3a       	cpi	r26, 0xAD	; 173
      644:	b2 07       	cpc	r27, r18
      646:	e1 f7       	brne	.-8      	; 0x640 <.do_clear_bss_loop>
      648:	75 d0       	rcall	.+234    	; 0x734 <main>
@@ -505,13 +505,13 @@ Disassembly of section .text:
      824:	83 e0       	ldi	r24, 0x03	; 3
      826:	60 e0       	ldi	r22, 0x00	; 0
      828:	53 d0       	rcall	.+166    	; 0x8d0 <LCD_set_next_PGC>
-     82a:	10 92 1b 02 	sts	0x021B, r1	; 0x80021b <LCD_params+0x2>
-     82e:	10 92 1d 02 	sts	0x021D, r1	; 0x80021d <LCD_params+0x4>
-     832:	10 92 1c 02 	sts	0x021C, r1	; 0x80021c <LCD_params+0x3>
+     82a:	10 92 45 02 	sts	0x0245, r1	; 0x800245 <LCD_params+0x2>
+     82e:	10 92 47 02 	sts	0x0247, r1	; 0x800247 <LCD_params+0x4>
+     832:	10 92 46 02 	sts	0x0246, r1	; 0x800246 <LCD_params+0x3>
      836:	85 e0       	ldi	r24, 0x05	; 5
      838:	91 e0       	ldi	r25, 0x01	; 1
-     83a:	90 93 80 02 	sts	0x0280, r25	; 0x800280 <__iob+0x3>
-     83e:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <__iob+0x2>
+     83a:	90 93 aa 02 	sts	0x02AA, r25	; 0x8002aa <__iob+0x3>
+     83e:	80 93 a9 02 	sts	0x02A9, r24	; 0x8002a9 <__iob+0x2>
      842:	88 e1       	ldi	r24, 0x18	; 24
      844:	2a d0       	rcall	.+84     	; 0x89a <LCD_set_backlight>
      846:	7f df       	rcall	.-258    	; 0x746 <LCD_clear>
@@ -599,8 +599,8 @@ Disassembly of section .text:
      8de:	31 f0       	breq	.+12     	; 0x8ec <LCD_set_next_PGC+0x1c>
      8e0:	03 70       	andi	r16, 0x03	; 3
      8e2:	1f 77       	andi	r17, 0x7F	; 127
-     8e4:	10 93 19 02 	sts	0x0219, r17	; 0x800219 <LCD_params>
-     8e8:	00 93 1a 02 	sts	0x021A, r16	; 0x80021a <LCD_params+0x1>
+     8e4:	10 93 43 02 	sts	0x0243, r17	; 0x800243 <LCD_params>
+     8e8:	00 93 44 02 	sts	0x0244, r16	; 0x800244 <LCD_params+0x1>
      8ec:	1f 91       	pop	r17
      8ee:	0f 91       	pop	r16
      8f0:	08 95       	ret
@@ -734,7 +734,7 @@ Disassembly of section .text:
      9cc:	70 e1       	ldi	r23, 0x10	; 16
      9ce:	07 d0       	rcall	.+14     	; 0x9de <SPI_set_config_func>
      9d0:	8f ef       	ldi	r24, 0xFF	; 255
-     9d2:	80 93 1e 02 	sts	0x021E, r24	; 0x80021e <curr_spi_addr>
+     9d2:	80 93 48 02 	sts	0x0248, r24	; 0x800248 <curr_spi_addr>
      9d6:	87 e0       	ldi	r24, 0x07	; 7
      9d8:	0b d0       	rcall	.+22     	; 0x9f0 <SPI_set_slave_addr>
      9da:	81 e0       	ldi	r24, 0x01	; 1
@@ -745,7 +745,7 @@ Disassembly of section .text:
      9e0:	f0 e0       	ldi	r31, 0x00	; 0
      9e2:	ee 0f       	add	r30, r30
      9e4:	ff 1f       	adc	r31, r31
-     9e6:	e5 55       	subi	r30, 0x55	; 85
+     9e6:	e3 55       	subi	r30, 0x53	; 83
      9e8:	fe 4f       	sbci	r31, 0xFE	; 254
      9ea:	71 83       	std	Z+1, r23	; 0x01
      9ec:	60 83       	st	Z, r22
@@ -761,11 +761,11 @@ Disassembly of section .text:
      9fc:	47 c0       	rjmp	.+142    	; 0xa8c <SPI_set_slave_addr+0x9c>
      9fe:	91 2f       	mov	r25, r17
      a00:	97 70       	andi	r25, 0x07	; 7
-     a02:	80 91 1e 02 	lds	r24, 0x021E	; 0x80021e <curr_spi_addr>
+     a02:	80 91 48 02 	lds	r24, 0x0248	; 0x800248 <curr_spi_addr>
      a06:	98 17       	cp	r25, r24
      a08:	09 f4       	brne	.+2      	; 0xa0c <SPI_set_slave_addr+0x1c>
      a0a:	40 c0       	rjmp	.+128    	; 0xa8c <SPI_set_slave_addr+0x9c>
-     a0c:	90 93 1e 02 	sts	0x021E, r25	; 0x80021e <curr_spi_addr>
+     a0c:	90 93 48 02 	sts	0x0248, r25	; 0x800248 <curr_spi_addr>
      a10:	85 b1       	in	r24, 0x05	; 5
      a12:	88 7f       	andi	r24, 0xF8	; 248
      a14:	89 2b       	or	r24, r25
@@ -786,29 +786,29 @@ Disassembly of section .text:
      a32:	96 30       	cpi	r25, 0x06	; 6
      a34:	21 f5       	brne	.+72     	; 0xa7e <SPI_set_slave_addr+0x8e>
      a36:	0f c0       	rjmp	.+30     	; 0xa56 <SPI_set_slave_addr+0x66>
-     a38:	e0 91 ad 01 	lds	r30, 0x01AD	; 0x8001ad <spi_config_func_LUT+0x2>
-     a3c:	f0 91 ae 01 	lds	r31, 0x01AE	; 0x8001ae <spi_config_func_LUT+0x3>
+     a38:	e0 91 af 01 	lds	r30, 0x01AF	; 0x8001af <spi_config_func_LUT+0x2>
+     a3c:	f0 91 b0 01 	lds	r31, 0x01B0	; 0x8001b0 <spi_config_func_LUT+0x3>
      a40:	22 c0       	rjmp	.+68     	; 0xa86 <SPI_set_slave_addr+0x96>
-     a42:	e0 91 ab 01 	lds	r30, 0x01AB	; 0x8001ab <spi_config_func_LUT>
-     a46:	f0 91 ac 01 	lds	r31, 0x01AC	; 0x8001ac <spi_config_func_LUT+0x1>
+     a42:	e0 91 ad 01 	lds	r30, 0x01AD	; 0x8001ad <spi_config_func_LUT>
+     a46:	f0 91 ae 01 	lds	r31, 0x01AE	; 0x8001ae <spi_config_func_LUT+0x1>
      a4a:	1d c0       	rjmp	.+58     	; 0xa86 <SPI_set_slave_addr+0x96>
-     a4c:	e0 91 af 01 	lds	r30, 0x01AF	; 0x8001af <spi_config_func_LUT+0x4>
-     a50:	f0 91 b0 01 	lds	r31, 0x01B0	; 0x8001b0 <spi_config_func_LUT+0x5>
+     a4c:	e0 91 b1 01 	lds	r30, 0x01B1	; 0x8001b1 <spi_config_func_LUT+0x4>
+     a50:	f0 91 b2 01 	lds	r31, 0x01B2	; 0x8001b2 <spi_config_func_LUT+0x5>
      a54:	18 c0       	rjmp	.+48     	; 0xa86 <SPI_set_slave_addr+0x96>
-     a56:	e0 91 b7 01 	lds	r30, 0x01B7	; 0x8001b7 <spi_config_func_LUT+0xc>
-     a5a:	f0 91 b8 01 	lds	r31, 0x01B8	; 0x8001b8 <spi_config_func_LUT+0xd>
+     a56:	e0 91 b9 01 	lds	r30, 0x01B9	; 0x8001b9 <spi_config_func_LUT+0xc>
+     a5a:	f0 91 ba 01 	lds	r31, 0x01BA	; 0x8001ba <spi_config_func_LUT+0xd>
      a5e:	13 c0       	rjmp	.+38     	; 0xa86 <SPI_set_slave_addr+0x96>
-     a60:	e0 91 b1 01 	lds	r30, 0x01B1	; 0x8001b1 <spi_config_func_LUT+0x6>
-     a64:	f0 91 b2 01 	lds	r31, 0x01B2	; 0x8001b2 <spi_config_func_LUT+0x7>
+     a60:	e0 91 b3 01 	lds	r30, 0x01B3	; 0x8001b3 <spi_config_func_LUT+0x6>
+     a64:	f0 91 b4 01 	lds	r31, 0x01B4	; 0x8001b4 <spi_config_func_LUT+0x7>
      a68:	0e c0       	rjmp	.+28     	; 0xa86 <SPI_set_slave_addr+0x96>
-     a6a:	e0 91 b3 01 	lds	r30, 0x01B3	; 0x8001b3 <spi_config_func_LUT+0x8>
-     a6e:	f0 91 b4 01 	lds	r31, 0x01B4	; 0x8001b4 <spi_config_func_LUT+0x9>
+     a6a:	e0 91 b5 01 	lds	r30, 0x01B5	; 0x8001b5 <spi_config_func_LUT+0x8>
+     a6e:	f0 91 b6 01 	lds	r31, 0x01B6	; 0x8001b6 <spi_config_func_LUT+0x9>
      a72:	09 c0       	rjmp	.+18     	; 0xa86 <SPI_set_slave_addr+0x96>
-     a74:	e0 91 b5 01 	lds	r30, 0x01B5	; 0x8001b5 <spi_config_func_LUT+0xa>
-     a78:	f0 91 b6 01 	lds	r31, 0x01B6	; 0x8001b6 <spi_config_func_LUT+0xb>
+     a74:	e0 91 b7 01 	lds	r30, 0x01B7	; 0x8001b7 <spi_config_func_LUT+0xa>
+     a78:	f0 91 b8 01 	lds	r31, 0x01B8	; 0x8001b8 <spi_config_func_LUT+0xb>
      a7c:	04 c0       	rjmp	.+8      	; 0xa86 <SPI_set_slave_addr+0x96>
-     a7e:	e0 91 b9 01 	lds	r30, 0x01B9	; 0x8001b9 <spi_config_func_LUT+0xe>
-     a82:	f0 91 ba 01 	lds	r31, 0x01BA	; 0x8001ba <spi_config_func_LUT+0xf>
+     a7e:	e0 91 bb 01 	lds	r30, 0x01BB	; 0x8001bb <spi_config_func_LUT+0xe>
+     a82:	f0 91 bc 01 	lds	r31, 0x01BC	; 0x8001bc <spi_config_func_LUT+0xf>
      a86:	30 97       	sbiw	r30, 0x00	; 0
      a88:	09 f0       	breq	.+2      	; 0xa8c <SPI_set_slave_addr+0x9c>
      a8a:	09 95       	icall
@@ -893,7 +893,7 @@ Disassembly of section .text:
      b1c:	09 81       	ldd	r16, Y+1	; 0x01
      b1e:	ee 24       	eor	r14, r14
      b20:	e3 94       	inc	r14
-     b22:	76 e5       	ldi	r23, 0x56	; 86
+     b22:	70 e8       	ldi	r23, 0x80	; 128
      b24:	c7 2e       	mov	r12, r23
      b26:	72 e0       	ldi	r23, 0x02	; 2
      b28:	d7 2e       	mov	r13, r23
@@ -918,7 +918,7 @@ Disassembly of section .text:
      b4e:	0c 8d       	ldd	r16, Y+28	; 0x1c
      b50:	ee 24       	eor	r14, r14
      b52:	e3 94       	inc	r14
-     b54:	96 e5       	ldi	r25, 0x56	; 86
+     b54:	90 e8       	ldi	r25, 0x80	; 128
      b56:	c9 2e       	mov	r12, r25
      b58:	92 e0       	ldi	r25, 0x02	; 2
      b5a:	d9 2e       	mov	r13, r25
@@ -943,7 +943,7 @@ Disassembly of section .text:
      b80:	c7 01       	movw	r24, r14
      b82:	96 d1       	rcall	.+812    	; 0xeb0 <STEPPER_set_accel2>
      b84:	00 d0       	rcall	.+0      	; 0xb86 <STEPPER_stepmode+0xce>
-     b86:	86 e5       	ldi	r24, 0x56	; 86
+     b86:	80 e8       	ldi	r24, 0x80	; 128
      b88:	92 e0       	ldi	r25, 0x02	; 2
      b8a:	ed b7       	in	r30, 0x3d	; 61
      b8c:	fe b7       	in	r31, 0x3e	; 62
@@ -1165,59 +1165,59 @@ Disassembly of section .text:
      d34:	08 95       	ret
      d36:	ba d2       	rcall	.+1396   	; 0x12ac <__STEPPER_init>
      d38:	81 e0       	ldi	r24, 0x01	; 1
-     d3a:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
-     d3e:	10 92 1f 02 	sts	0x021F, r1	; 0x80021f <STEPPER_params>
-     d42:	10 92 20 02 	sts	0x0220, r1	; 0x800220 <STEPPER_params+0x1>
-     d46:	10 92 22 02 	sts	0x0222, r1	; 0x800222 <STEPPER_params+0x3>
-     d4a:	10 92 21 02 	sts	0x0221, r1	; 0x800221 <STEPPER_params+0x2>
-     d4e:	10 92 24 02 	sts	0x0224, r1	; 0x800224 <STEPPER_params+0x5>
-     d52:	10 92 23 02 	sts	0x0223, r1	; 0x800223 <STEPPER_params+0x4>
-     d56:	10 92 26 02 	sts	0x0226, r1	; 0x800226 <STEPPER_params+0x7>
-     d5a:	10 92 25 02 	sts	0x0225, r1	; 0x800225 <STEPPER_params+0x6>
-     d5e:	10 92 28 02 	sts	0x0228, r1	; 0x800228 <STEPPER_params+0x9>
-     d62:	10 92 27 02 	sts	0x0227, r1	; 0x800227 <STEPPER_params+0x8>
-     d66:	10 92 2a 02 	sts	0x022A, r1	; 0x80022a <STEPPER_params+0xb>
-     d6a:	10 92 29 02 	sts	0x0229, r1	; 0x800229 <STEPPER_params+0xa>
-     d6e:	10 92 2c 02 	sts	0x022C, r1	; 0x80022c <STEPPER_params+0xd>
-     d72:	10 92 2b 02 	sts	0x022B, r1	; 0x80022b <STEPPER_params+0xc>
-     d76:	10 92 2e 02 	sts	0x022E, r1	; 0x80022e <STEPPER_params+0xf>
-     d7a:	10 92 2d 02 	sts	0x022D, r1	; 0x80022d <STEPPER_params+0xe>
-     d7e:	10 92 30 02 	sts	0x0230, r1	; 0x800230 <STEPPER_params+0x11>
-     d82:	10 92 2f 02 	sts	0x022F, r1	; 0x80022f <STEPPER_params+0x10>
-     d86:	10 92 32 02 	sts	0x0232, r1	; 0x800232 <STEPPER_params+0x13>
-     d8a:	10 92 31 02 	sts	0x0231, r1	; 0x800231 <STEPPER_params+0x12>
-     d8e:	10 92 34 02 	sts	0x0234, r1	; 0x800234 <STEPPER_params+0x15>
-     d92:	10 92 33 02 	sts	0x0233, r1	; 0x800233 <STEPPER_params+0x14>
-     d96:	10 92 36 02 	sts	0x0236, r1	; 0x800236 <STEPPER_params+0x17>
-     d9a:	10 92 35 02 	sts	0x0235, r1	; 0x800235 <STEPPER_params+0x16>
-     d9e:	10 92 38 02 	sts	0x0238, r1	; 0x800238 <STEPPER_params+0x19>
-     da2:	10 92 37 02 	sts	0x0237, r1	; 0x800237 <STEPPER_params+0x18>
-     da6:	10 92 3d 02 	sts	0x023D, r1	; 0x80023d <STEPPER_params+0x1e>
-     daa:	10 92 3e 02 	sts	0x023E, r1	; 0x80023e <STEPPER_params+0x1f>
-     dae:	10 92 3f 02 	sts	0x023F, r1	; 0x80023f <STEPPER_params+0x20>
-     db2:	10 92 40 02 	sts	0x0240, r1	; 0x800240 <STEPPER_params+0x21>
-     db6:	10 92 42 02 	sts	0x0242, r1	; 0x800242 <STEPPER_params+0x23>
-     dba:	10 92 43 02 	sts	0x0243, r1	; 0x800243 <STEPPER_params+0x24>
-     dbe:	10 92 44 02 	sts	0x0244, r1	; 0x800244 <STEPPER_params+0x25>
-     dc2:	10 92 45 02 	sts	0x0245, r1	; 0x800245 <STEPPER_params+0x26>
-     dc6:	10 92 46 02 	sts	0x0246, r1	; 0x800246 <STEPPER_params+0x27>
-     dca:	10 92 47 02 	sts	0x0247, r1	; 0x800247 <STEPPER_params+0x28>
-     dce:	10 92 48 02 	sts	0x0248, r1	; 0x800248 <STEPPER_params+0x29>
-     dd2:	10 92 4a 02 	sts	0x024A, r1	; 0x80024a <STEPPER_params+0x2b>
-     dd6:	10 92 49 02 	sts	0x0249, r1	; 0x800249 <STEPPER_params+0x2a>
-     dda:	10 92 4c 02 	sts	0x024C, r1	; 0x80024c <STEPPER_params+0x2d>
-     dde:	10 92 4b 02 	sts	0x024B, r1	; 0x80024b <STEPPER_params+0x2c>
-     de2:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <STEPPER_params+0x2f>
-     de6:	10 92 4d 02 	sts	0x024D, r1	; 0x80024d <STEPPER_params+0x2e>
-     dea:	10 92 50 02 	sts	0x0250, r1	; 0x800250 <STEPPER_params+0x31>
-     dee:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <STEPPER_params+0x30>
-     df2:	10 92 3a 02 	sts	0x023A, r1	; 0x80023a <STEPPER_params+0x1b>
-     df6:	10 92 39 02 	sts	0x0239, r1	; 0x800239 <STEPPER_params+0x1a>
-     dfa:	10 92 3c 02 	sts	0x023C, r1	; 0x80023c <STEPPER_params+0x1d>
-     dfe:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <STEPPER_params+0x1c>
-     e02:	10 92 54 02 	sts	0x0254, r1	; 0x800254 <STEPPER_params+0x35>
-     e06:	10 92 53 02 	sts	0x0253, r1	; 0x800253 <STEPPER_params+0x34>
-     e0a:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     d3a:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
+     d3e:	10 92 49 02 	sts	0x0249, r1	; 0x800249 <STEPPER_params>
+     d42:	10 92 4a 02 	sts	0x024A, r1	; 0x80024a <STEPPER_params+0x1>
+     d46:	10 92 4c 02 	sts	0x024C, r1	; 0x80024c <STEPPER_params+0x3>
+     d4a:	10 92 4b 02 	sts	0x024B, r1	; 0x80024b <STEPPER_params+0x2>
+     d4e:	10 92 4e 02 	sts	0x024E, r1	; 0x80024e <STEPPER_params+0x5>
+     d52:	10 92 4d 02 	sts	0x024D, r1	; 0x80024d <STEPPER_params+0x4>
+     d56:	10 92 50 02 	sts	0x0250, r1	; 0x800250 <STEPPER_params+0x7>
+     d5a:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <STEPPER_params+0x6>
+     d5e:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x9>
+     d62:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x8>
+     d66:	10 92 54 02 	sts	0x0254, r1	; 0x800254 <STEPPER_params+0xb>
+     d6a:	10 92 53 02 	sts	0x0253, r1	; 0x800253 <STEPPER_params+0xa>
+     d6e:	10 92 56 02 	sts	0x0256, r1	; 0x800256 <STEPPER_params+0xd>
+     d72:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0xc>
+     d76:	10 92 58 02 	sts	0x0258, r1	; 0x800258 <STEPPER_params+0xf>
+     d7a:	10 92 57 02 	sts	0x0257, r1	; 0x800257 <STEPPER_params+0xe>
+     d7e:	10 92 5a 02 	sts	0x025A, r1	; 0x80025a <STEPPER_params+0x11>
+     d82:	10 92 59 02 	sts	0x0259, r1	; 0x800259 <STEPPER_params+0x10>
+     d86:	10 92 5c 02 	sts	0x025C, r1	; 0x80025c <STEPPER_params+0x13>
+     d8a:	10 92 5b 02 	sts	0x025B, r1	; 0x80025b <STEPPER_params+0x12>
+     d8e:	10 92 5e 02 	sts	0x025E, r1	; 0x80025e <STEPPER_params+0x15>
+     d92:	10 92 5d 02 	sts	0x025D, r1	; 0x80025d <STEPPER_params+0x14>
+     d96:	10 92 60 02 	sts	0x0260, r1	; 0x800260 <STEPPER_params+0x17>
+     d9a:	10 92 5f 02 	sts	0x025F, r1	; 0x80025f <STEPPER_params+0x16>
+     d9e:	10 92 62 02 	sts	0x0262, r1	; 0x800262 <STEPPER_params+0x19>
+     da2:	10 92 61 02 	sts	0x0261, r1	; 0x800261 <STEPPER_params+0x18>
+     da6:	10 92 67 02 	sts	0x0267, r1	; 0x800267 <STEPPER_params+0x1e>
+     daa:	10 92 68 02 	sts	0x0268, r1	; 0x800268 <STEPPER_params+0x1f>
+     dae:	10 92 69 02 	sts	0x0269, r1	; 0x800269 <STEPPER_params+0x20>
+     db2:	10 92 6a 02 	sts	0x026A, r1	; 0x80026a <STEPPER_params+0x21>
+     db6:	10 92 6c 02 	sts	0x026C, r1	; 0x80026c <STEPPER_params+0x23>
+     dba:	10 92 6d 02 	sts	0x026D, r1	; 0x80026d <STEPPER_params+0x24>
+     dbe:	10 92 6e 02 	sts	0x026E, r1	; 0x80026e <STEPPER_params+0x25>
+     dc2:	10 92 6f 02 	sts	0x026F, r1	; 0x80026f <STEPPER_params+0x26>
+     dc6:	10 92 70 02 	sts	0x0270, r1	; 0x800270 <STEPPER_params+0x27>
+     dca:	10 92 71 02 	sts	0x0271, r1	; 0x800271 <STEPPER_params+0x28>
+     dce:	10 92 72 02 	sts	0x0272, r1	; 0x800272 <STEPPER_params+0x29>
+     dd2:	10 92 74 02 	sts	0x0274, r1	; 0x800274 <STEPPER_params+0x2b>
+     dd6:	10 92 73 02 	sts	0x0273, r1	; 0x800273 <STEPPER_params+0x2a>
+     dda:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <STEPPER_params+0x2d>
+     dde:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <STEPPER_params+0x2c>
+     de2:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <STEPPER_params+0x2f>
+     de6:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <STEPPER_params+0x2e>
+     dea:	10 92 7a 02 	sts	0x027A, r1	; 0x80027a <STEPPER_params+0x31>
+     dee:	10 92 79 02 	sts	0x0279, r1	; 0x800279 <STEPPER_params+0x30>
+     df2:	10 92 64 02 	sts	0x0264, r1	; 0x800264 <STEPPER_params+0x1b>
+     df6:	10 92 63 02 	sts	0x0263, r1	; 0x800263 <STEPPER_params+0x1a>
+     dfa:	10 92 66 02 	sts	0x0266, r1	; 0x800266 <STEPPER_params+0x1d>
+     dfe:	10 92 65 02 	sts	0x0265, r1	; 0x800265 <STEPPER_params+0x1c>
+     e02:	10 92 7e 02 	sts	0x027E, r1	; 0x80027e <STEPPER_params+0x35>
+     e06:	10 92 7d 02 	sts	0x027D, r1	; 0x80027d <STEPPER_params+0x34>
+     e0a:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      e0e:	08 95       	ret
 
 00000e10 <STEPPER_run>:
@@ -1273,7 +1273,7 @@ Disassembly of section .text:
 00000e6c <STEPPER_set_accel>:
      e6c:	48 2f       	mov	r20, r24
      e6e:	81 e0       	ldi	r24, 0x01	; 1
-     e70:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+     e70:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
      e74:	cb 01       	movw	r24, r22
      e76:	23 e0       	ldi	r18, 0x03	; 3
      e78:	69 3e       	cpi	r22, 0xE9	; 233
@@ -1288,19 +1288,19 @@ Disassembly of section .text:
      e8a:	42 30       	cpi	r20, 0x02	; 2
      e8c:	71 f4       	brne	.+28     	; 0xeaa <STEPPER_set_accel+0x3e>
      e8e:	05 c0       	rjmp	.+10     	; 0xe9a <STEPPER_set_accel+0x2e>
-     e90:	90 93 2a 02 	sts	0x022A, r25	; 0x80022a <STEPPER_params+0xb>
-     e94:	80 93 29 02 	sts	0x0229, r24	; 0x800229 <STEPPER_params+0xa>
+     e90:	90 93 54 02 	sts	0x0254, r25	; 0x800254 <STEPPER_params+0xb>
+     e94:	80 93 53 02 	sts	0x0253, r24	; 0x800253 <STEPPER_params+0xa>
      e98:	08 c0       	rjmp	.+16     	; 0xeaa <STEPPER_set_accel+0x3e>
-     e9a:	90 93 2a 02 	sts	0x022A, r25	; 0x80022a <STEPPER_params+0xb>
-     e9e:	80 93 29 02 	sts	0x0229, r24	; 0x800229 <STEPPER_params+0xa>
-     ea2:	90 93 2c 02 	sts	0x022C, r25	; 0x80022c <STEPPER_params+0xd>
-     ea6:	80 93 2b 02 	sts	0x022B, r24	; 0x80022b <STEPPER_params+0xc>
-     eaa:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     e9a:	90 93 54 02 	sts	0x0254, r25	; 0x800254 <STEPPER_params+0xb>
+     e9e:	80 93 53 02 	sts	0x0253, r24	; 0x800253 <STEPPER_params+0xa>
+     ea2:	90 93 56 02 	sts	0x0256, r25	; 0x800256 <STEPPER_params+0xd>
+     ea6:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0xc>
+     eaa:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      eae:	08 95       	ret
 
 00000eb0 <STEPPER_set_accel2>:
      eb0:	21 e0       	ldi	r18, 0x01	; 1
-     eb2:	20 93 55 02 	sts	0x0255, r18	; 0x800255 <STEPPER_params+0x36>
+     eb2:	20 93 7f 02 	sts	0x027F, r18	; 0x80027f <STEPPER_params+0x36>
      eb6:	ac 01       	movw	r20, r24
      eb8:	83 e0       	ldi	r24, 0x03	; 3
      eba:	49 3e       	cpi	r20, 0xE9	; 233
@@ -1316,18 +1316,18 @@ Disassembly of section .text:
      ece:	28 ee       	ldi	r18, 0xE8	; 232
      ed0:	33 e0       	ldi	r19, 0x03	; 3
      ed2:	f8 94       	cli
-     ed4:	50 93 2a 02 	sts	0x022A, r21	; 0x80022a <STEPPER_params+0xb>
-     ed8:	40 93 29 02 	sts	0x0229, r20	; 0x800229 <STEPPER_params+0xa>
-     edc:	30 93 2c 02 	sts	0x022C, r19	; 0x80022c <STEPPER_params+0xd>
-     ee0:	20 93 2b 02 	sts	0x022B, r18	; 0x80022b <STEPPER_params+0xc>
+     ed4:	50 93 54 02 	sts	0x0254, r21	; 0x800254 <STEPPER_params+0xb>
+     ed8:	40 93 53 02 	sts	0x0253, r20	; 0x800253 <STEPPER_params+0xa>
+     edc:	30 93 56 02 	sts	0x0256, r19	; 0x800256 <STEPPER_params+0xd>
+     ee0:	20 93 55 02 	sts	0x0255, r18	; 0x800255 <STEPPER_params+0xc>
      ee4:	78 94       	sei
-     ee6:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     ee6:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      eea:	08 95       	ret
 
 00000eec <STEPPER_set_dir>:
      eec:	98 2f       	mov	r25, r24
      eee:	81 e0       	ldi	r24, 0x01	; 1
-     ef0:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+     ef0:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
      ef4:	91 30       	cpi	r25, 0x01	; 1
      ef6:	51 f0       	breq	.+20     	; 0xf0c <STEPPER_set_dir+0x20>
      ef8:	91 30       	cpi	r25, 0x01	; 1
@@ -1335,27 +1335,27 @@ Disassembly of section .text:
      efc:	92 30       	cpi	r25, 0x02	; 2
      efe:	41 f4       	brne	.+16     	; 0xf10 <STEPPER_set_dir+0x24>
      f00:	03 c0       	rjmp	.+6      	; 0xf08 <STEPPER_set_dir+0x1c>
-     f02:	60 93 42 02 	sts	0x0242, r22	; 0x800242 <STEPPER_params+0x23>
+     f02:	60 93 6c 02 	sts	0x026C, r22	; 0x80026c <STEPPER_params+0x23>
      f06:	04 c0       	rjmp	.+8      	; 0xf10 <STEPPER_set_dir+0x24>
-     f08:	60 93 42 02 	sts	0x0242, r22	; 0x800242 <STEPPER_params+0x23>
-     f0c:	60 93 43 02 	sts	0x0243, r22	; 0x800243 <STEPPER_params+0x24>
-     f10:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     f08:	60 93 6c 02 	sts	0x026C, r22	; 0x80026c <STEPPER_params+0x23>
+     f0c:	60 93 6d 02 	sts	0x026D, r22	; 0x80026d <STEPPER_params+0x24>
+     f10:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      f14:	08 95       	ret
 
 00000f16 <STEPPER_set_dir2>:
      f16:	91 e0       	ldi	r25, 0x01	; 1
-     f18:	90 93 55 02 	sts	0x0255, r25	; 0x800255 <STEPPER_params+0x36>
-     f1c:	e2 e4       	ldi	r30, 0x42	; 66
+     f18:	90 93 7f 02 	sts	0x027F, r25	; 0x80027f <STEPPER_params+0x36>
+     f1c:	ec e6       	ldi	r30, 0x6C	; 108
      f1e:	f2 e0       	ldi	r31, 0x02	; 2
      f20:	81 93       	st	Z+, r24
      f22:	60 83       	st	Z, r22
-     f24:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     f24:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      f28:	08 95       	ret
 
 00000f2a <STEPPER_set_mode>:
      f2a:	98 2f       	mov	r25, r24
      f2c:	81 e0       	ldi	r24, 0x01	; 1
-     f2e:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+     f2e:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
      f32:	91 30       	cpi	r25, 0x01	; 1
      f34:	51 f0       	breq	.+20     	; 0xf4a <STEPPER_set_mode+0x20>
      f36:	91 30       	cpi	r25, 0x01	; 1
@@ -1363,17 +1363,17 @@ Disassembly of section .text:
      f3a:	92 30       	cpi	r25, 0x02	; 2
      f3c:	41 f4       	brne	.+16     	; 0xf4e <STEPPER_set_mode+0x24>
      f3e:	03 c0       	rjmp	.+6      	; 0xf46 <STEPPER_set_mode+0x1c>
-     f40:	60 93 1f 02 	sts	0x021F, r22	; 0x80021f <STEPPER_params>
+     f40:	60 93 49 02 	sts	0x0249, r22	; 0x800249 <STEPPER_params>
      f44:	04 c0       	rjmp	.+8      	; 0xf4e <STEPPER_set_mode+0x24>
-     f46:	60 93 1f 02 	sts	0x021F, r22	; 0x80021f <STEPPER_params>
-     f4a:	60 93 20 02 	sts	0x0220, r22	; 0x800220 <STEPPER_params+0x1>
-     f4e:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     f46:	60 93 49 02 	sts	0x0249, r22	; 0x800249 <STEPPER_params>
+     f4a:	60 93 4a 02 	sts	0x024A, r22	; 0x80024a <STEPPER_params+0x1>
+     f4e:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      f52:	08 95       	ret
 
 00000f54 <STEPPER_set_speed>:
      f54:	48 2f       	mov	r20, r24
      f56:	81 e0       	ldi	r24, 0x01	; 1
-     f58:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+     f58:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
      f5c:	cb 01       	movw	r24, r22
      f5e:	21 e0       	ldi	r18, 0x01	; 1
      f60:	61 39       	cpi	r22, 0x91	; 145
@@ -1389,28 +1389,28 @@ Disassembly of section .text:
      f74:	c9 f4       	brne	.+50     	; 0xfa8 <STEPPER_set_speed+0x54>
      f76:	0e c0       	rjmp	.+28     	; 0xf94 <STEPPER_set_speed+0x40>
      f78:	f8 94       	cli
-     f7a:	90 93 22 02 	sts	0x0222, r25	; 0x800222 <STEPPER_params+0x3>
-     f7e:	80 93 21 02 	sts	0x0221, r24	; 0x800221 <STEPPER_params+0x2>
+     f7a:	90 93 4c 02 	sts	0x024C, r25	; 0x80024c <STEPPER_params+0x3>
+     f7e:	80 93 4b 02 	sts	0x024B, r24	; 0x80024b <STEPPER_params+0x2>
      f82:	78 94       	sei
      f84:	11 c0       	rjmp	.+34     	; 0xfa8 <STEPPER_set_speed+0x54>
      f86:	f8 94       	cli
-     f88:	90 93 24 02 	sts	0x0224, r25	; 0x800224 <STEPPER_params+0x5>
-     f8c:	80 93 23 02 	sts	0x0223, r24	; 0x800223 <STEPPER_params+0x4>
+     f88:	90 93 4e 02 	sts	0x024E, r25	; 0x80024e <STEPPER_params+0x5>
+     f8c:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <STEPPER_params+0x4>
      f90:	78 94       	sei
      f92:	0a c0       	rjmp	.+20     	; 0xfa8 <STEPPER_set_speed+0x54>
      f94:	f8 94       	cli
-     f96:	90 93 22 02 	sts	0x0222, r25	; 0x800222 <STEPPER_params+0x3>
-     f9a:	80 93 21 02 	sts	0x0221, r24	; 0x800221 <STEPPER_params+0x2>
-     f9e:	90 93 24 02 	sts	0x0224, r25	; 0x800224 <STEPPER_params+0x5>
-     fa2:	80 93 23 02 	sts	0x0223, r24	; 0x800223 <STEPPER_params+0x4>
+     f96:	90 93 4c 02 	sts	0x024C, r25	; 0x80024c <STEPPER_params+0x3>
+     f9a:	80 93 4b 02 	sts	0x024B, r24	; 0x80024b <STEPPER_params+0x2>
+     f9e:	90 93 4e 02 	sts	0x024E, r25	; 0x80024e <STEPPER_params+0x5>
+     fa2:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <STEPPER_params+0x4>
      fa6:	78 94       	sei
-     fa8:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     fa8:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      fac:	08 95       	ret
 
 00000fae <STEPPER_set_speed2>:
      fae:	ac 01       	movw	r20, r24
      fb0:	81 e0       	ldi	r24, 0x01	; 1
-     fb2:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+     fb2:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
      fb6:	f8 94       	cli
      fb8:	cb 01       	movw	r24, r22
      fba:	21 e0       	ldi	r18, 0x01	; 1
@@ -1419,8 +1419,8 @@ Disassembly of section .text:
      fc0:	10 f0       	brcs	.+4      	; 0xfc6 <STEPPER_set_speed2+0x18>
      fc2:	80 e9       	ldi	r24, 0x90	; 144
      fc4:	91 e0       	ldi	r25, 0x01	; 1
-     fc6:	90 93 24 02 	sts	0x0224, r25	; 0x800224 <STEPPER_params+0x5>
-     fca:	80 93 23 02 	sts	0x0223, r24	; 0x800223 <STEPPER_params+0x4>
+     fc6:	90 93 4e 02 	sts	0x024E, r25	; 0x80024e <STEPPER_params+0x5>
+     fca:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <STEPPER_params+0x4>
      fce:	9a 01       	movw	r18, r20
      fd0:	81 e0       	ldi	r24, 0x01	; 1
      fd2:	41 39       	cpi	r20, 0x91	; 145
@@ -1428,10 +1428,10 @@ Disassembly of section .text:
      fd6:	10 f0       	brcs	.+4      	; 0xfdc <STEPPER_set_speed2+0x2e>
      fd8:	20 e9       	ldi	r18, 0x90	; 144
      fda:	31 e0       	ldi	r19, 0x01	; 1
-     fdc:	30 93 22 02 	sts	0x0222, r19	; 0x800222 <STEPPER_params+0x3>
-     fe0:	20 93 21 02 	sts	0x0221, r18	; 0x800221 <STEPPER_params+0x2>
+     fdc:	30 93 4c 02 	sts	0x024C, r19	; 0x80024c <STEPPER_params+0x3>
+     fe0:	20 93 4b 02 	sts	0x024B, r18	; 0x80024b <STEPPER_params+0x2>
      fe4:	78 94       	sei
-     fe6:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+     fe6:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
      fea:	08 95       	ret
 
 00000fec <STEPPER_step>:
@@ -1484,22 +1484,22 @@ Disassembly of section .text:
     104e:	69 f4       	brne	.+26     	; 0x106a <STEPPER_step+0x7e>
     1050:	06 c0       	rjmp	.+12     	; 0x105e <STEPPER_step+0x72>
     1052:	18 82       	st	Y, r1
-    1054:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
+    1054:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
     1058:	08 c0       	rjmp	.+16     	; 0x106a <STEPPER_step+0x7e>
     105a:	19 82       	std	Y+1, r1	; 0x01
     105c:	04 c0       	rjmp	.+8      	; 0x1066 <STEPPER_step+0x7a>
     105e:	18 82       	st	Y, r1
     1060:	19 82       	std	Y+1, r1	; 0x01
-    1062:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
-    1066:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x33>
-    106a:	d0 93 54 02 	sts	0x0254, r29	; 0x800254 <STEPPER_params+0x35>
-    106e:	c0 93 53 02 	sts	0x0253, r28	; 0x800253 <STEPPER_params+0x34>
+    1062:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
+    1066:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <STEPPER_params+0x33>
+    106a:	d0 93 7e 02 	sts	0x027E, r29	; 0x80027e <STEPPER_params+0x35>
+    106e:	c0 93 7d 02 	sts	0x027D, r28	; 0x80027d <STEPPER_params+0x34>
     1072:	ee 20       	and	r14, r14
     1074:	b1 f5       	brne	.+108    	; 0x10e2 <STEPPER_step+0xf6>
-    1076:	8c e5       	ldi	r24, 0x5C	; 92
+    1076:	8e e5       	ldi	r24, 0x5E	; 94
     1078:	91 e0       	ldi	r25, 0x01	; 1
-    107a:	90 93 54 02 	sts	0x0254, r25	; 0x800254 <STEPPER_params+0x35>
-    107e:	80 93 53 02 	sts	0x0253, r24	; 0x800253 <STEPPER_params+0x34>
+    107a:	90 93 7e 02 	sts	0x027E, r25	; 0x80027e <STEPPER_params+0x35>
+    107e:	80 93 7d 02 	sts	0x027D, r24	; 0x80027d <STEPPER_params+0x34>
     1082:	81 2f       	mov	r24, r17
     1084:	b5 01       	movw	r22, r10
     1086:	66 df       	rcall	.-308    	; 0xf54 <STEPPER_set_speed>
@@ -1512,26 +1512,26 @@ Disassembly of section .text:
     1096:	12 30       	cpi	r17, 0x02	; 2
     1098:	51 f5       	brne	.+84     	; 0x10ee <STEPPER_step+0x102>
     109a:	12 c0       	rjmp	.+36     	; 0x10c0 <STEPPER_step+0xd4>
-    109c:	10 92 5c 01 	sts	0x015C, r1	; 0x80015c <__data_end>
-    10a0:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
-    10a4:	80 91 5c 01 	lds	r24, 0x015C	; 0x80015c <__data_end>
+    109c:	10 92 5e 01 	sts	0x015E, r1	; 0x80015e <__data_end>
+    10a0:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
+    10a4:	80 91 5e 01 	lds	r24, 0x015E	; 0x80015e <__data_end>
     10a8:	88 23       	and	r24, r24
     10aa:	e1 f3       	breq	.-8      	; 0x10a4 <STEPPER_step+0xb8>
     10ac:	20 c0       	rjmp	.+64     	; 0x10ee <STEPPER_step+0x102>
-    10ae:	10 92 5d 01 	sts	0x015D, r1	; 0x80015d <__data_end+0x1>
-    10b2:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x33>
-    10b6:	80 91 5d 01 	lds	r24, 0x015D	; 0x80015d <__data_end+0x1>
+    10ae:	10 92 5f 01 	sts	0x015F, r1	; 0x80015f <__data_end+0x1>
+    10b2:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <STEPPER_params+0x33>
+    10b6:	80 91 5f 01 	lds	r24, 0x015F	; 0x80015f <__data_end+0x1>
     10ba:	88 23       	and	r24, r24
     10bc:	e1 f3       	breq	.-8      	; 0x10b6 <STEPPER_step+0xca>
     10be:	17 c0       	rjmp	.+46     	; 0x10ee <STEPPER_step+0x102>
-    10c0:	10 92 5c 01 	sts	0x015C, r1	; 0x80015c <__data_end>
-    10c4:	10 92 5d 01 	sts	0x015D, r1	; 0x80015d <__data_end+0x1>
-    10c8:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
-    10cc:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x33>
-    10d0:	80 91 5c 01 	lds	r24, 0x015C	; 0x80015c <__data_end>
+    10c0:	10 92 5e 01 	sts	0x015E, r1	; 0x80015e <__data_end>
+    10c4:	10 92 5f 01 	sts	0x015F, r1	; 0x80015f <__data_end+0x1>
+    10c8:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
+    10cc:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <STEPPER_params+0x33>
+    10d0:	80 91 5e 01 	lds	r24, 0x015E	; 0x80015e <__data_end>
     10d4:	88 23       	and	r24, r24
     10d6:	e1 f3       	breq	.-8      	; 0x10d0 <STEPPER_step+0xe4>
-    10d8:	80 91 5d 01 	lds	r24, 0x015D	; 0x80015d <__data_end+0x1>
+    10d8:	80 91 5f 01 	lds	r24, 0x015F	; 0x80015f <__data_end+0x1>
     10dc:	88 23       	and	r24, r24
     10de:	c1 f3       	breq	.-16     	; 0x10d0 <STEPPER_step+0xe4>
     10e0:	06 c0       	rjmp	.+12     	; 0x10ee <STEPPER_step+0x102>
@@ -1615,29 +1615,29 @@ Disassembly of section .text:
     1184:	f8 01       	movw	r30, r16
     1186:	10 82       	st	Z, r1
     1188:	11 82       	std	Z+1, r1	; 0x01
-    118a:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
-    118e:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x33>
-    1192:	10 93 54 02 	sts	0x0254, r17	; 0x800254 <STEPPER_params+0x35>
-    1196:	00 93 53 02 	sts	0x0253, r16	; 0x800253 <STEPPER_params+0x34>
+    118a:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
+    118e:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <STEPPER_params+0x33>
+    1192:	10 93 7e 02 	sts	0x027E, r17	; 0x80027e <STEPPER_params+0x35>
+    1196:	00 93 7d 02 	sts	0x027D, r16	; 0x80027d <STEPPER_params+0x34>
     119a:	88 20       	and	r8, r8
     119c:	e9 f4       	brne	.+58     	; 0x11d8 <STEPPER_step2+0xd0>
-    119e:	8e e5       	ldi	r24, 0x5E	; 94
+    119e:	80 e6       	ldi	r24, 0x60	; 96
     11a0:	91 e0       	ldi	r25, 0x01	; 1
-    11a2:	90 93 54 02 	sts	0x0254, r25	; 0x800254 <STEPPER_params+0x35>
-    11a6:	80 93 53 02 	sts	0x0253, r24	; 0x800253 <STEPPER_params+0x34>
+    11a2:	90 93 7e 02 	sts	0x027E, r25	; 0x80027e <STEPPER_params+0x35>
+    11a6:	80 93 7d 02 	sts	0x027D, r24	; 0x80027d <STEPPER_params+0x34>
     11aa:	c3 01       	movw	r24, r6
     11ac:	b6 01       	movw	r22, r12
     11ae:	ff de       	rcall	.-514    	; 0xfae <STEPPER_set_speed2>
     11b0:	82 e0       	ldi	r24, 0x02	; 2
     11b2:	0e 94 60 12 	call	0x24c0	; 0x24c0 <STEPPER_go>
-    11b6:	10 92 5e 01 	sts	0x015E, r1	; 0x80015e <notify.1644>
-    11ba:	10 92 5f 01 	sts	0x015F, r1	; 0x80015f <notify.1644+0x1>
-    11be:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
-    11c2:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x33>
-    11c6:	80 91 5e 01 	lds	r24, 0x015E	; 0x80015e <notify.1644>
+    11b6:	10 92 60 01 	sts	0x0160, r1	; 0x800160 <notify.1644>
+    11ba:	10 92 61 01 	sts	0x0161, r1	; 0x800161 <notify.1644+0x1>
+    11be:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
+    11c2:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <STEPPER_params+0x33>
+    11c6:	80 91 60 01 	lds	r24, 0x0160	; 0x800160 <notify.1644>
     11ca:	88 23       	and	r24, r24
     11cc:	e1 f3       	breq	.-8      	; 0x11c6 <STEPPER_step2+0xbe>
-    11ce:	80 91 5f 01 	lds	r24, 0x015F	; 0x80015f <notify.1644+0x1>
+    11ce:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <notify.1644+0x1>
     11d2:	88 23       	and	r24, r24
     11d4:	c1 f3       	breq	.-16     	; 0x11c6 <STEPPER_step2+0xbe>
     11d6:	06 c0       	rjmp	.+12     	; 0x11e4 <STEPPER_step2+0xdc>
@@ -1690,13 +1690,13 @@ Disassembly of section .text:
     1232:	11 c0       	rjmp	.+34     	; 0x1256 <STEPPER_wait_and_then+0x4e>
     1234:	ec 85       	ldd	r30, Y+12	; 0x0c
     1236:	fd 85       	ldd	r31, Y+13	; 0x0d
-    1238:	80 91 56 02 	lds	r24, 0x0256	; 0x800256 <step_done>
+    1238:	80 91 80 02 	lds	r24, 0x0280	; 0x800280 <step_done>
     123c:	88 23       	and	r24, r24
     123e:	e1 f3       	breq	.-8      	; 0x1238 <STEPPER_wait_and_then+0x30>
     1240:	06 c0       	rjmp	.+12     	; 0x124e <STEPPER_wait_and_then+0x46>
     1242:	ec 85       	ldd	r30, Y+12	; 0x0c
     1244:	fd 85       	ldd	r31, Y+13	; 0x0d
-    1246:	80 91 57 02 	lds	r24, 0x0257	; 0x800257 <step_done+0x1>
+    1246:	80 91 81 02 	lds	r24, 0x0281	; 0x800281 <step_done+0x1>
     124a:	88 23       	and	r24, r24
     124c:	e1 f3       	breq	.-8      	; 0x1246 <STEPPER_wait_and_then+0x3e>
     124e:	30 97       	sbiw	r30, 0x00	; 0
@@ -1711,7 +1711,7 @@ Disassembly of section .text:
     1260:	10 e0       	ldi	r17, 0x00	; 0
     1262:	00 23       	and	r16, r16
     1264:	51 f4       	brne	.+20     	; 0x127a <STEPPER_wait_and_then+0x72>
-    1266:	80 91 56 02 	lds	r24, 0x0256	; 0x800256 <step_done>
+    1266:	80 91 80 02 	lds	r24, 0x0280	; 0x800280 <step_done>
     126a:	88 23       	and	r24, r24
     126c:	31 f0       	breq	.+12     	; 0x127a <STEPPER_wait_and_then+0x72>
     126e:	c1 14       	cp	r12, r1
@@ -1722,7 +1722,7 @@ Disassembly of section .text:
     1278:	01 e0       	ldi	r16, 0x01	; 1
     127a:	11 23       	and	r17, r17
     127c:	51 f4       	brne	.+20     	; 0x1292 <STEPPER_wait_and_then+0x8a>
-    127e:	80 91 57 02 	lds	r24, 0x0257	; 0x800257 <step_done+0x1>
+    127e:	80 91 81 02 	lds	r24, 0x0281	; 0x800281 <step_done+0x1>
     1282:	88 23       	and	r24, r24
     1284:	31 f0       	breq	.+12     	; 0x1292 <STEPPER_wait_and_then+0x8a>
     1286:	e1 14       	cp	r14, r1
@@ -1762,8 +1762,8 @@ Disassembly of section .text:
     12c2:	60 f4       	brcc	.+24     	; 0x12dc <SYS_decrement_refcount+0x1c>
     12c4:	e8 2f       	mov	r30, r24
     12c6:	f0 e0       	ldi	r31, 0x00	; 0
-    12c8:	e8 51       	subi	r30, 0x18	; 24
-    12ca:	fe 4f       	sbci	r31, 0xFE	; 254
+    12c8:	ee 5e       	subi	r30, 0xEE	; 238
+    12ca:	fd 4f       	sbci	r31, 0xFD	; 253
     12cc:	80 81       	ld	r24, Z
     12ce:	88 23       	and	r24, r24
     12d0:	29 f0       	breq	.+10     	; 0x12dc <SYS_decrement_refcount+0x1c>
@@ -1782,8 +1782,8 @@ Disassembly of section .text:
     12e6:	08 95       	ret
     12e8:	e8 2f       	mov	r30, r24
     12ea:	f0 e0       	ldi	r31, 0x00	; 0
-    12ec:	e8 51       	subi	r30, 0x18	; 24
-    12ee:	fe 4f       	sbci	r31, 0xFE	; 254
+    12ec:	ee 5e       	subi	r30, 0xEE	; 238
+    12ee:	fd 4f       	sbci	r31, 0xFD	; 253
     12f0:	80 81       	ld	r24, Z
     12f2:	8f 5f       	subi	r24, 0xFF	; 255
     12f4:	80 83       	st	Z, r24
@@ -1797,8 +1797,8 @@ Disassembly of section .text:
     1300:	08 95       	ret
     1302:	e8 2f       	mov	r30, r24
     1304:	f0 e0       	ldi	r31, 0x00	; 0
-    1306:	e8 51       	subi	r30, 0x18	; 24
-    1308:	fe 4f       	sbci	r31, 0xFE	; 254
+    1306:	ee 5e       	subi	r30, 0xEE	; 238
+    1308:	fd 4f       	sbci	r31, 0xFD	; 253
     130a:	80 81       	ld	r24, Z
     130c:	81 11       	cpse	r24, r1
     130e:	81 e0       	ldi	r24, 0x01	; 1
@@ -1807,17 +1807,17 @@ Disassembly of section .text:
 00001312 <ATTINY_get_IR_state>:
     1312:	1f 93       	push	r17
     1314:	18 2f       	mov	r17, r24
-    1316:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <waiting.1628>
+    1316:	80 91 63 01 	lds	r24, 0x0163	; 0x800163 <waiting.1628>
     131a:	88 23       	and	r24, r24
     131c:	41 f0       	breq	.+16     	; 0x132e <ATTINY_get_IR_state+0x1c>
-    131e:	80 91 68 01 	lds	r24, 0x0168	; 0x800168 <ir_wait_timer+0x6>
+    131e:	80 91 6a 01 	lds	r24, 0x016A	; 0x80016a <ir_wait_timer+0x6>
     1322:	88 23       	and	r24, r24
     1324:	89 f0       	breq	.+34     	; 0x1348 <ATTINY_get_IR_state+0x36>
-    1326:	10 92 61 01 	sts	0x0161, r1	; 0x800161 <waiting.1628>
-    132a:	10 92 68 01 	sts	0x0168, r1	; 0x800168 <ir_wait_timer+0x6>
+    1326:	10 92 63 01 	sts	0x0163, r1	; 0x800163 <waiting.1628>
+    132a:	10 92 6a 01 	sts	0x016A, r1	; 0x80016a <ir_wait_timer+0x6>
     132e:	24 d0       	rcall	.+72     	; 0x1378 <ATTINY_get_sensors>
-    1330:	80 93 60 01 	sts	0x0160, r24	; 0x800160 <sensors.1629>
-    1334:	82 e6       	ldi	r24, 0x62	; 98
+    1330:	80 93 62 01 	sts	0x0162, r24	; 0x800162 <sensors.1629>
+    1334:	84 e6       	ldi	r24, 0x64	; 100
     1336:	91 e0       	ldi	r25, 0x01	; 1
     1338:	61 e0       	ldi	r22, 0x01	; 1
     133a:	40 e0       	ldi	r20, 0x00	; 0
@@ -1825,8 +1825,8 @@ Disassembly of section .text:
     133e:	30 e0       	ldi	r19, 0x00	; 0
     1340:	a6 d0       	rcall	.+332    	; 0x148e <TMRSRVC_new>
     1342:	81 e0       	ldi	r24, 0x01	; 1
-    1344:	80 93 61 01 	sts	0x0161, r24	; 0x800161 <waiting.1628>
-    1348:	90 91 60 01 	lds	r25, 0x0160	; 0x800160 <sensors.1629>
+    1344:	80 93 63 01 	sts	0x0163, r24	; 0x800163 <waiting.1628>
+    1348:	90 91 62 01 	lds	r25, 0x0162	; 0x800162 <sensors.1629>
     134c:	13 30       	cpi	r17, 0x03	; 3
     134e:	18 f0       	brcs	.+6      	; 0x1356 <ATTINY_get_IR_state+0x44>
     1350:	13 30       	cpi	r17, 0x03	; 3
@@ -1928,40 +1928,40 @@ Disassembly of section .text:
     140a:	08 95       	ret
 
 0000140c <__ATTINY_initialize_params>:
-    140c:	10 92 6d 02 	sts	0x026D, r1	; 0x80026d <ATTINY_params+0x15>
-    1410:	10 92 6c 02 	sts	0x026C, r1	; 0x80026c <ATTINY_params+0x14>
-    1414:	10 92 6f 02 	sts	0x026F, r1	; 0x80026f <ATTINY_params+0x17>
-    1418:	10 92 6e 02 	sts	0x026E, r1	; 0x80026e <ATTINY_params+0x16>
-    141c:	10 92 71 02 	sts	0x0271, r1	; 0x800271 <ATTINY_params+0x19>
-    1420:	10 92 70 02 	sts	0x0270, r1	; 0x800270 <ATTINY_params+0x18>
-    1424:	10 92 73 02 	sts	0x0273, r1	; 0x800273 <ATTINY_params+0x1b>
-    1428:	10 92 72 02 	sts	0x0272, r1	; 0x800272 <ATTINY_params+0x1a>
-    142c:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <ATTINY_params+0x1d>
-    1430:	10 92 74 02 	sts	0x0274, r1	; 0x800274 <ATTINY_params+0x1c>
+    140c:	10 92 97 02 	sts	0x0297, r1	; 0x800297 <ATTINY_params+0x15>
+    1410:	10 92 96 02 	sts	0x0296, r1	; 0x800296 <ATTINY_params+0x14>
+    1414:	10 92 99 02 	sts	0x0299, r1	; 0x800299 <ATTINY_params+0x17>
+    1418:	10 92 98 02 	sts	0x0298, r1	; 0x800298 <ATTINY_params+0x16>
+    141c:	10 92 9b 02 	sts	0x029B, r1	; 0x80029b <ATTINY_params+0x19>
+    1420:	10 92 9a 02 	sts	0x029A, r1	; 0x80029a <ATTINY_params+0x18>
+    1424:	10 92 9d 02 	sts	0x029D, r1	; 0x80029d <ATTINY_params+0x1b>
+    1428:	10 92 9c 02 	sts	0x029C, r1	; 0x80029c <ATTINY_params+0x1a>
+    142c:	10 92 9f 02 	sts	0x029F, r1	; 0x80029f <ATTINY_params+0x1d>
+    1430:	10 92 9e 02 	sts	0x029E, r1	; 0x80029e <ATTINY_params+0x1c>
     1434:	80 e9       	ldi	r24, 0x90	; 144
     1436:	91 e0       	ldi	r25, 0x01	; 1
-    1438:	90 93 59 02 	sts	0x0259, r25	; 0x800259 <ATTINY_params+0x1>
-    143c:	80 93 58 02 	sts	0x0258, r24	; 0x800258 <ATTINY_params>
-    1440:	90 93 5b 02 	sts	0x025B, r25	; 0x80025b <ATTINY_params+0x3>
-    1444:	80 93 5a 02 	sts	0x025A, r24	; 0x80025a <ATTINY_params+0x2>
-    1448:	90 93 5d 02 	sts	0x025D, r25	; 0x80025d <ATTINY_params+0x5>
-    144c:	80 93 5c 02 	sts	0x025C, r24	; 0x80025c <ATTINY_params+0x4>
-    1450:	90 93 5f 02 	sts	0x025F, r25	; 0x80025f <ATTINY_params+0x7>
-    1454:	80 93 5e 02 	sts	0x025E, r24	; 0x80025e <ATTINY_params+0x6>
-    1458:	90 93 61 02 	sts	0x0261, r25	; 0x800261 <ATTINY_params+0x9>
-    145c:	80 93 60 02 	sts	0x0260, r24	; 0x800260 <ATTINY_params+0x8>
+    1438:	90 93 83 02 	sts	0x0283, r25	; 0x800283 <ATTINY_params+0x1>
+    143c:	80 93 82 02 	sts	0x0282, r24	; 0x800282 <ATTINY_params>
+    1440:	90 93 85 02 	sts	0x0285, r25	; 0x800285 <ATTINY_params+0x3>
+    1444:	80 93 84 02 	sts	0x0284, r24	; 0x800284 <ATTINY_params+0x2>
+    1448:	90 93 87 02 	sts	0x0287, r25	; 0x800287 <ATTINY_params+0x5>
+    144c:	80 93 86 02 	sts	0x0286, r24	; 0x800286 <ATTINY_params+0x4>
+    1450:	90 93 89 02 	sts	0x0289, r25	; 0x800289 <ATTINY_params+0x7>
+    1454:	80 93 88 02 	sts	0x0288, r24	; 0x800288 <ATTINY_params+0x6>
+    1458:	90 93 8b 02 	sts	0x028B, r25	; 0x80028b <ATTINY_params+0x9>
+    145c:	80 93 8a 02 	sts	0x028A, r24	; 0x80028a <ATTINY_params+0x8>
     1460:	84 e3       	ldi	r24, 0x34	; 52
     1462:	98 e0       	ldi	r25, 0x08	; 8
-    1464:	90 93 63 02 	sts	0x0263, r25	; 0x800263 <ATTINY_params+0xb>
-    1468:	80 93 62 02 	sts	0x0262, r24	; 0x800262 <ATTINY_params+0xa>
-    146c:	90 93 65 02 	sts	0x0265, r25	; 0x800265 <ATTINY_params+0xd>
-    1470:	80 93 64 02 	sts	0x0264, r24	; 0x800264 <ATTINY_params+0xc>
-    1474:	90 93 67 02 	sts	0x0267, r25	; 0x800267 <ATTINY_params+0xf>
-    1478:	80 93 66 02 	sts	0x0266, r24	; 0x800266 <ATTINY_params+0xe>
-    147c:	90 93 69 02 	sts	0x0269, r25	; 0x800269 <ATTINY_params+0x11>
-    1480:	80 93 68 02 	sts	0x0268, r24	; 0x800268 <ATTINY_params+0x10>
-    1484:	90 93 6b 02 	sts	0x026B, r25	; 0x80026b <ATTINY_params+0x13>
-    1488:	80 93 6a 02 	sts	0x026A, r24	; 0x80026a <ATTINY_params+0x12>
+    1464:	90 93 8d 02 	sts	0x028D, r25	; 0x80028d <ATTINY_params+0xb>
+    1468:	80 93 8c 02 	sts	0x028C, r24	; 0x80028c <ATTINY_params+0xa>
+    146c:	90 93 8f 02 	sts	0x028F, r25	; 0x80028f <ATTINY_params+0xd>
+    1470:	80 93 8e 02 	sts	0x028E, r24	; 0x80028e <ATTINY_params+0xc>
+    1474:	90 93 91 02 	sts	0x0291, r25	; 0x800291 <ATTINY_params+0xf>
+    1478:	80 93 90 02 	sts	0x0290, r24	; 0x800290 <ATTINY_params+0xe>
+    147c:	90 93 93 02 	sts	0x0293, r25	; 0x800293 <ATTINY_params+0x11>
+    1480:	80 93 92 02 	sts	0x0292, r24	; 0x800292 <ATTINY_params+0x10>
+    1484:	90 93 95 02 	sts	0x0295, r25	; 0x800295 <ATTINY_params+0x13>
+    1488:	80 93 94 02 	sts	0x0294, r24	; 0x800294 <ATTINY_params+0x12>
     148c:	08 95       	ret
 
 0000148e <TMRSRVC_new>:
@@ -2010,10 +2010,10 @@ Disassembly of section .text:
     14e4:	13 82       	std	Z+3, r1	; 0x03
     14e6:	12 82       	std	Z+2, r1	; 0x02
     14e8:	81 e0       	ldi	r24, 0x01	; 1
-    14ea:	80 93 cb 01 	sts	0x01CB, r24	; 0x8001cb <timer_busy_status>
+    14ea:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <timer_busy_status>
     14ee:	cf 01       	movw	r24, r30
     14f0:	0a d0       	rcall	.+20     	; 0x1506 <TMRSRVC_insert>
-    14f2:	10 92 cb 01 	sts	0x01CB, r1	; 0x8001cb <timer_busy_status>
+    14f2:	10 92 cd 01 	sts	0x01CD, r1	; 0x8001cd <timer_busy_status>
     14f6:	80 e0       	ldi	r24, 0x00	; 0
     14f8:	df 91       	pop	r29
     14fa:	cf 91       	pop	r28
@@ -2033,15 +2033,15 @@ Disassembly of section .text:
     1512:	cf 93       	push	r28
     1514:	df 93       	push	r29
     1516:	ec 01       	movw	r28, r24
-    1518:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    1518:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     151c:	88 23       	and	r24, r24
     151e:	39 f4       	brne	.+14     	; 0x152e <TMRSRVC_insert+0x28>
-    1520:	d0 93 78 02 	sts	0x0278, r29	; 0x800278 <tmrNodes+0x2>
-    1524:	c0 93 77 02 	sts	0x0277, r28	; 0x800277 <tmrNodes+0x1>
+    1520:	d0 93 a2 02 	sts	0x02A2, r29	; 0x8002a2 <tmrNodes+0x2>
+    1524:	c0 93 a1 02 	sts	0x02A1, r28	; 0x8002a1 <tmrNodes+0x1>
     1528:	0e 94 83 13 	call	0x2706	; 0x2706 <TMRSRVC_start>
     152c:	47 c0       	rjmp	.+142    	; 0x15bc <TMRSRVC_insert+0xb6>
-    152e:	c0 90 77 02 	lds	r12, 0x0277	; 0x800277 <tmrNodes+0x1>
-    1532:	d0 90 78 02 	lds	r13, 0x0278	; 0x800278 <tmrNodes+0x2>
+    152e:	c0 90 a1 02 	lds	r12, 0x02A1	; 0x8002a1 <tmrNodes+0x1>
+    1532:	d0 90 a2 02 	lds	r13, 0x02A2	; 0x8002a2 <tmrNodes+0x2>
     1536:	00 e0       	ldi	r16, 0x00	; 0
     1538:	10 e0       	ldi	r17, 0x00	; 0
     153a:	ee 24       	eor	r14, r14
@@ -2071,8 +2071,8 @@ Disassembly of section .text:
     156a:	ca 82       	std	Y+2, r12	; 0x02
     156c:	01 2b       	or	r16, r17
     156e:	29 f4       	brne	.+10     	; 0x157a <TMRSRVC_insert+0x74>
-    1570:	d0 93 78 02 	sts	0x0278, r29	; 0x800278 <tmrNodes+0x2>
-    1574:	c0 93 77 02 	sts	0x0277, r28	; 0x800277 <tmrNodes+0x1>
+    1570:	d0 93 a2 02 	sts	0x02A2, r29	; 0x8002a2 <tmrNodes+0x2>
+    1574:	c0 93 a1 02 	sts	0x02A1, r28	; 0x8002a1 <tmrNodes+0x1>
     1578:	21 c0       	rjmp	.+66     	; 0x15bc <TMRSRVC_insert+0xb6>
     157a:	f7 01       	movw	r30, r14
     157c:	0c c0       	rjmp	.+24     	; 0x1596 <TMRSRVC_insert+0x90>
@@ -2100,15 +2100,15 @@ Disassembly of section .text:
     15a8:	1f 4f       	sbci	r17, 0xFF	; 255
     15aa:	76 01       	movw	r14, r12
     15ac:	6c 01       	movw	r12, r24
-    15ae:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    15ae:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     15b2:	90 e0       	ldi	r25, 0x00	; 0
     15b4:	08 17       	cp	r16, r24
     15b6:	19 07       	cpc	r17, r25
     15b8:	18 f2       	brcs	.-122    	; 0x1540 <TMRSRVC_insert+0x3a>
     15ba:	ec cf       	rjmp	.-40     	; 0x1594 <TMRSRVC_insert+0x8e>
-    15bc:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    15bc:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     15c0:	8f 5f       	subi	r24, 0xFF	; 255
-    15c2:	80 93 76 02 	sts	0x0276, r24	; 0x800276 <tmrNodes>
+    15c2:	80 93 a0 02 	sts	0x02A0, r24	; 0x8002a0 <tmrNodes>
     15c6:	df 91       	pop	r29
     15c8:	cf 91       	pop	r28
     15ca:	1f 91       	pop	r17
@@ -2288,7 +2288,7 @@ Disassembly of section .text:
     1732:	82 60       	ori	r24, 0x02	; 2
     1734:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
     1738:	81 e0       	ldi	r24, 0x01	; 1
-    173a:	80 93 11 02 	sts	0x0211, r24	; 0x800211 <UART_params+0x2>
+    173a:	80 93 3b 02 	sts	0x023B, r24	; 0x80023b <UART_params+0x2>
     173e:	38 c0       	rjmp	.+112    	; 0x17b0 <UART_configure+0x10e>
     1740:	8e e0       	ldi	r24, 0x0E	; 14
     1742:	db dd       	rcall	.-1098   	; 0x12fa <SYS_isOpen>
@@ -2336,7 +2336,7 @@ Disassembly of section .text:
     17a4:	82 60       	ori	r24, 0x02	; 2
     17a6:	80 93 c8 00 	sts	0x00C8, r24	; 0x8000c8 <__TEXT_REGION_LENGTH__+0x7e00c8>
     17aa:	81 e0       	ldi	r24, 0x01	; 1
-    17ac:	80 93 16 02 	sts	0x0216, r24	; 0x800216 <UART_params+0x7>
+    17ac:	80 93 40 02 	sts	0x0240, r24	; 0x800240 <UART_params+0x7>
     17b0:	0f 90       	pop	r0
     17b2:	0f 90       	pop	r0
     17b4:	cf 91       	pop	r28
@@ -2385,32 +2385,32 @@ Disassembly of section .text:
     1806:	6c dd       	rcall	.-1320   	; 0x12e0 <SYS_increment_refcount>
     1808:	88 23       	and	r24, r24
     180a:	39 f5       	brne	.+78     	; 0x185a <UART_open+0x62>
-    180c:	10 92 11 02 	sts	0x0211, r1	; 0x800211 <UART_params+0x2>
-    1810:	10 92 0f 02 	sts	0x020F, r1	; 0x80020f <UART_params>
-    1814:	10 92 10 02 	sts	0x0210, r1	; 0x800210 <UART_params+0x1>
+    180c:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <UART_params+0x2>
+    1810:	10 92 39 02 	sts	0x0239, r1	; 0x800239 <UART_params>
+    1814:	10 92 3a 02 	sts	0x023A, r1	; 0x80023a <UART_params+0x1>
     1818:	54 d1       	rcall	.+680    	; 0x1ac2 <__UART_init>
     181a:	80 e0       	ldi	r24, 0x00	; 0
     181c:	65 e0       	ldi	r22, 0x05	; 5
     181e:	70 e0       	ldi	r23, 0x00	; 0
     1820:	fc d0       	rcall	.+504    	; 0x1a1a <UART_set_timeout>
-    1822:	86 e0       	ldi	r24, 0x06	; 6
+    1822:	80 e3       	ldi	r24, 0x30	; 48
     1824:	92 e0       	ldi	r25, 0x02	; 2
     1826:	12 c0       	rjmp	.+36     	; 0x184c <UART_open+0x54>
     1828:	8e e0       	ldi	r24, 0x0E	; 14
     182a:	5a dd       	rcall	.-1356   	; 0x12e0 <SYS_increment_refcount>
     182c:	88 23       	and	r24, r24
     182e:	a9 f4       	brne	.+42     	; 0x185a <UART_open+0x62>
-    1830:	10 92 16 02 	sts	0x0216, r1	; 0x800216 <UART_params+0x7>
-    1834:	10 92 14 02 	sts	0x0214, r1	; 0x800214 <UART_params+0x5>
-    1838:	10 92 15 02 	sts	0x0215, r1	; 0x800215 <UART_params+0x6>
+    1830:	10 92 40 02 	sts	0x0240, r1	; 0x800240 <UART_params+0x7>
+    1834:	10 92 3e 02 	sts	0x023E, r1	; 0x80023e <UART_params+0x5>
+    1838:	10 92 3f 02 	sts	0x023F, r1	; 0x80023f <UART_params+0x6>
     183c:	81 e0       	ldi	r24, 0x01	; 1
     183e:	41 d1       	rcall	.+642    	; 0x1ac2 <__UART_init>
     1840:	81 e0       	ldi	r24, 0x01	; 1
     1842:	65 e0       	ldi	r22, 0x05	; 5
     1844:	70 e0       	ldi	r23, 0x00	; 0
     1846:	e9 d0       	rcall	.+466    	; 0x1a1a <UART_set_timeout>
-    1848:	8d ef       	ldi	r24, 0xFD	; 253
-    184a:	91 e0       	ldi	r25, 0x01	; 1
+    1848:	87 e2       	ldi	r24, 0x27	; 39
+    184a:	92 e0       	ldi	r25, 0x02	; 2
     184c:	61 e0       	ldi	r22, 0x01	; 1
     184e:	41 e0       	ldi	r20, 0x01	; 1
     1850:	28 ee       	ldi	r18, 0xE8	; 232
@@ -2436,18 +2436,18 @@ Disassembly of section .text:
     1874:	88 23       	and	r24, r24
     1876:	09 f4       	brne	.+2      	; 0x187a <UART_receive+0x1c>
     1878:	3e c0       	rjmp	.+124    	; 0x18f6 <UART_receive+0x98>
-    187a:	20 91 12 02 	lds	r18, 0x0212	; 0x800212 <UART_params+0x3>
-    187e:	30 91 13 02 	lds	r19, 0x0213	; 0x800213 <UART_params+0x4>
-    1882:	80 91 10 02 	lds	r24, 0x0210	; 0x800210 <UART_params+0x1>
+    187a:	20 91 3c 02 	lds	r18, 0x023C	; 0x80023c <UART_params+0x3>
+    187e:	30 91 3d 02 	lds	r19, 0x023D	; 0x80023d <UART_params+0x4>
+    1882:	80 91 3a 02 	lds	r24, 0x023A	; 0x80023a <UART_params+0x1>
     1886:	81 30       	cpi	r24, 0x01	; 1
     1888:	b1 f5       	brne	.+108    	; 0x18f6 <UART_receive+0x98>
     188a:	0f c0       	rjmp	.+30     	; 0x18aa <UART_receive+0x4c>
-    188c:	80 91 0c 02 	lds	r24, 0x020C	; 0x80020c <UART0_timeout_timer+0x6>
+    188c:	80 91 36 02 	lds	r24, 0x0236	; 0x800236 <UART0_timeout_timer+0x6>
     1890:	88 23       	and	r24, r24
     1892:	21 f0       	breq	.+8      	; 0x189c <UART_receive+0x3e>
     1894:	21 50       	subi	r18, 0x01	; 1
     1896:	30 40       	sbci	r19, 0x00	; 0
-    1898:	10 92 0c 02 	sts	0x020C, r1	; 0x80020c <UART0_timeout_timer+0x6>
+    1898:	10 92 36 02 	sts	0x0236, r1	; 0x800236 <UART0_timeout_timer+0x6>
     189c:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
     18a0:	87 ff       	sbrs	r24, 7
     18a2:	03 c0       	rjmp	.+6      	; 0x18aa <UART_receive+0x4c>
@@ -2461,18 +2461,18 @@ Disassembly of section .text:
     18b4:	22 dd       	rcall	.-1468   	; 0x12fa <SYS_isOpen>
     18b6:	88 23       	and	r24, r24
     18b8:	f1 f0       	breq	.+60     	; 0x18f6 <UART_receive+0x98>
-    18ba:	20 91 17 02 	lds	r18, 0x0217	; 0x800217 <UART_params+0x8>
-    18be:	30 91 18 02 	lds	r19, 0x0218	; 0x800218 <UART_params+0x9>
-    18c2:	80 91 15 02 	lds	r24, 0x0215	; 0x800215 <UART_params+0x6>
+    18ba:	20 91 41 02 	lds	r18, 0x0241	; 0x800241 <UART_params+0x8>
+    18be:	30 91 42 02 	lds	r19, 0x0242	; 0x800242 <UART_params+0x9>
+    18c2:	80 91 3f 02 	lds	r24, 0x023F	; 0x80023f <UART_params+0x6>
     18c6:	81 30       	cpi	r24, 0x01	; 1
     18c8:	b1 f4       	brne	.+44     	; 0x18f6 <UART_receive+0x98>
     18ca:	11 c0       	rjmp	.+34     	; 0x18ee <UART_receive+0x90>
-    18cc:	80 91 03 02 	lds	r24, 0x0203	; 0x800203 <UART1_timeout_timer+0x6>
+    18cc:	80 91 2d 02 	lds	r24, 0x022D	; 0x80022d <UART1_timeout_timer+0x6>
     18d0:	88 23       	and	r24, r24
     18d2:	21 f0       	breq	.+8      	; 0x18dc <UART_receive+0x7e>
     18d4:	21 50       	subi	r18, 0x01	; 1
     18d6:	30 40       	sbci	r19, 0x00	; 0
-    18d8:	10 92 03 02 	sts	0x0203, r1	; 0x800203 <UART1_timeout_timer+0x6>
+    18d8:	10 92 2d 02 	sts	0x022D, r1	; 0x80022d <UART1_timeout_timer+0x6>
     18dc:	80 91 c8 00 	lds	r24, 0x00C8	; 0x8000c8 <__TEXT_REGION_LENGTH__+0x7e00c8>
     18e0:	87 ff       	sbrs	r24, 7
     18e2:	05 c0       	rjmp	.+10     	; 0x18ee <UART_receive+0x90>
@@ -2515,21 +2515,21 @@ Disassembly of section .text:
     192a:	11 30       	cpi	r17, 0x01	; 1
     192c:	69 f5       	brne	.+90     	; 0x1988 <UART_set_RX_state+0x86>
     192e:	0c c0       	rjmp	.+24     	; 0x1948 <UART_set_RX_state+0x46>
-    1930:	80 91 11 02 	lds	r24, 0x0211	; 0x800211 <UART_params+0x2>
+    1930:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <UART_params+0x2>
     1934:	81 30       	cpi	r24, 0x01	; 1
     1936:	41 f5       	brne	.+80     	; 0x1988 <UART_set_RX_state+0x86>
     1938:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
     193c:	80 61       	ori	r24, 0x10	; 16
     193e:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-    1942:	00 93 10 02 	sts	0x0210, r16	; 0x800210 <UART_params+0x1>
+    1942:	00 93 3a 02 	sts	0x023A, r16	; 0x80023a <UART_params+0x1>
     1946:	20 c0       	rjmp	.+64     	; 0x1988 <UART_set_RX_state+0x86>
-    1948:	80 91 16 02 	lds	r24, 0x0216	; 0x800216 <UART_params+0x7>
+    1948:	80 91 40 02 	lds	r24, 0x0240	; 0x800240 <UART_params+0x7>
     194c:	81 30       	cpi	r24, 0x01	; 1
     194e:	e1 f4       	brne	.+56     	; 0x1988 <UART_set_RX_state+0x86>
     1950:	80 91 c9 00 	lds	r24, 0x00C9	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
     1954:	80 61       	ori	r24, 0x10	; 16
     1956:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
-    195a:	00 93 15 02 	sts	0x0215, r16	; 0x800215 <UART_params+0x6>
+    195a:	00 93 3f 02 	sts	0x023F, r16	; 0x80023f <UART_params+0x6>
     195e:	14 c0       	rjmp	.+40     	; 0x1988 <UART_set_RX_state+0x86>
     1960:	11 23       	and	r17, r17
     1962:	19 f0       	breq	.+6      	; 0x196a <UART_set_RX_state+0x68>
@@ -2539,12 +2539,12 @@ Disassembly of section .text:
     196a:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
     196e:	8f 7e       	andi	r24, 0xEF	; 239
     1970:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-    1974:	10 92 10 02 	sts	0x0210, r1	; 0x800210 <UART_params+0x1>
+    1974:	10 92 3a 02 	sts	0x023A, r1	; 0x80023a <UART_params+0x1>
     1978:	07 c0       	rjmp	.+14     	; 0x1988 <UART_set_RX_state+0x86>
     197a:	80 91 c9 00 	lds	r24, 0x00C9	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
     197e:	8f 7e       	andi	r24, 0xEF	; 239
     1980:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
-    1984:	10 92 15 02 	sts	0x0215, r1	; 0x800215 <UART_params+0x6>
+    1984:	10 92 3f 02 	sts	0x023F, r1	; 0x80023f <UART_params+0x6>
     1988:	1f 91       	pop	r17
     198a:	0f 91       	pop	r16
     198c:	08 95       	ret
@@ -2573,21 +2573,21 @@ Disassembly of section .text:
     19b6:	11 30       	cpi	r17, 0x01	; 1
     19b8:	69 f5       	brne	.+90     	; 0x1a14 <UART_set_TX_state+0x86>
     19ba:	0c c0       	rjmp	.+24     	; 0x19d4 <UART_set_TX_state+0x46>
-    19bc:	80 91 11 02 	lds	r24, 0x0211	; 0x800211 <UART_params+0x2>
+    19bc:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <UART_params+0x2>
     19c0:	81 30       	cpi	r24, 0x01	; 1
     19c2:	41 f5       	brne	.+80     	; 0x1a14 <UART_set_TX_state+0x86>
     19c4:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
     19c8:	88 60       	ori	r24, 0x08	; 8
     19ca:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-    19ce:	00 93 0f 02 	sts	0x020F, r16	; 0x80020f <UART_params>
+    19ce:	00 93 39 02 	sts	0x0239, r16	; 0x800239 <UART_params>
     19d2:	20 c0       	rjmp	.+64     	; 0x1a14 <UART_set_TX_state+0x86>
-    19d4:	80 91 16 02 	lds	r24, 0x0216	; 0x800216 <UART_params+0x7>
+    19d4:	80 91 40 02 	lds	r24, 0x0240	; 0x800240 <UART_params+0x7>
     19d8:	81 30       	cpi	r24, 0x01	; 1
     19da:	e1 f4       	brne	.+56     	; 0x1a14 <UART_set_TX_state+0x86>
     19dc:	80 91 c9 00 	lds	r24, 0x00C9	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
     19e0:	88 60       	ori	r24, 0x08	; 8
     19e2:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
-    19e6:	00 93 14 02 	sts	0x0214, r16	; 0x800214 <UART_params+0x5>
+    19e6:	00 93 3e 02 	sts	0x023E, r16	; 0x80023e <UART_params+0x5>
     19ea:	14 c0       	rjmp	.+40     	; 0x1a14 <UART_set_TX_state+0x86>
     19ec:	11 23       	and	r17, r17
     19ee:	19 f0       	breq	.+6      	; 0x19f6 <UART_set_TX_state+0x68>
@@ -2597,12 +2597,12 @@ Disassembly of section .text:
     19f6:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
     19fa:	87 7f       	andi	r24, 0xF7	; 247
     19fc:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-    1a00:	10 92 0f 02 	sts	0x020F, r1	; 0x80020f <UART_params>
+    1a00:	10 92 39 02 	sts	0x0239, r1	; 0x800239 <UART_params>
     1a04:	07 c0       	rjmp	.+14     	; 0x1a14 <UART_set_TX_state+0x86>
     1a06:	80 91 c9 00 	lds	r24, 0x00C9	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
     1a0a:	87 7f       	andi	r24, 0xF7	; 247
     1a0c:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
-    1a10:	10 92 14 02 	sts	0x0214, r1	; 0x800214 <UART_params+0x5>
+    1a10:	10 92 3e 02 	sts	0x023E, r1	; 0x80023e <UART_params+0x5>
     1a14:	1f 91       	pop	r17
     1a16:	0f 91       	pop	r16
     1a18:	08 95       	ret
@@ -2623,11 +2623,11 @@ Disassembly of section .text:
     1a32:	81 30       	cpi	r24, 0x01	; 1
     1a34:	51 f4       	brne	.+20     	; 0x1a4a <UART_set_timeout+0x30>
     1a36:	05 c0       	rjmp	.+10     	; 0x1a42 <UART_set_timeout+0x28>
-    1a38:	70 93 13 02 	sts	0x0213, r23	; 0x800213 <UART_params+0x4>
-    1a3c:	60 93 12 02 	sts	0x0212, r22	; 0x800212 <UART_params+0x3>
+    1a38:	70 93 3d 02 	sts	0x023D, r23	; 0x80023d <UART_params+0x4>
+    1a3c:	60 93 3c 02 	sts	0x023C, r22	; 0x80023c <UART_params+0x3>
     1a40:	08 95       	ret
-    1a42:	70 93 18 02 	sts	0x0218, r23	; 0x800218 <UART_params+0x9>
-    1a46:	60 93 17 02 	sts	0x0217, r22	; 0x800217 <UART_params+0x8>
+    1a42:	70 93 42 02 	sts	0x0242, r23	; 0x800242 <UART_params+0x9>
+    1a46:	60 93 41 02 	sts	0x0241, r22	; 0x800241 <UART_params+0x8>
     1a4a:	08 95       	ret
 
 00001a4c <UART_transmit>:
@@ -2642,7 +2642,7 @@ Disassembly of section .text:
     1a5c:	4e dc       	rcall	.-1892   	; 0x12fa <SYS_isOpen>
     1a5e:	88 23       	and	r24, r24
     1a60:	69 f1       	breq	.+90     	; 0x1abc <UART_transmit+0x70>
-    1a62:	80 91 0f 02 	lds	r24, 0x020F	; 0x80020f <UART_params>
+    1a62:	80 91 39 02 	lds	r24, 0x0239	; 0x800239 <UART_params>
     1a66:	81 30       	cpi	r24, 0x01	; 1
     1a68:	49 f5       	brne	.+82     	; 0x1abc <UART_transmit+0x70>
     1a6a:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
@@ -2660,7 +2660,7 @@ Disassembly of section .text:
     1a8c:	36 dc       	rcall	.-1940   	; 0x12fa <SYS_isOpen>
     1a8e:	88 23       	and	r24, r24
     1a90:	a9 f0       	breq	.+42     	; 0x1abc <UART_transmit+0x70>
-    1a92:	80 91 14 02 	lds	r24, 0x0214	; 0x800214 <UART_params+0x5>
+    1a92:	80 91 3e 02 	lds	r24, 0x023E	; 0x80023e <UART_params+0x5>
     1a96:	81 30       	cpi	r24, 0x01	; 1
     1a98:	89 f4       	brne	.+34     	; 0x1abc <UART_transmit+0x70>
     1a9a:	80 91 c8 00 	lds	r24, 0x00C8	; 0x8000c8 <__TEXT_REGION_LENGTH__+0x7e00c8>
@@ -2726,8 +2726,8 @@ Disassembly of section .text:
     1b0e:	bf 93       	push	r27
     1b10:	ef 93       	push	r30
     1b12:	ff 93       	push	r31
-    1b14:	e0 91 8b 01 	lds	r30, 0x018B	; 0x80018b <CBOT_ISR_vtable+0x20>
-    1b18:	f0 91 8c 01 	lds	r31, 0x018C	; 0x80018c <CBOT_ISR_vtable+0x21>
+    1b14:	e0 91 8d 01 	lds	r30, 0x018D	; 0x80018d <CBOT_ISR_vtable+0x20>
+    1b18:	f0 91 8e 01 	lds	r31, 0x018E	; 0x80018e <CBOT_ISR_vtable+0x21>
     1b1c:	30 97       	sbiw	r30, 0x00	; 0
     1b1e:	09 f0       	breq	.+2      	; 0x1b22 <__vector_16+0x30>
     1b20:	09 95       	icall
@@ -2767,8 +2767,8 @@ Disassembly of section .text:
     1b60:	bf 93       	push	r27
     1b62:	ef 93       	push	r30
     1b64:	ff 93       	push	r31
-    1b66:	e0 91 8d 01 	lds	r30, 0x018D	; 0x80018d <CBOT_ISR_vtable+0x22>
-    1b6a:	f0 91 8e 01 	lds	r31, 0x018E	; 0x80018e <CBOT_ISR_vtable+0x23>
+    1b66:	e0 91 8f 01 	lds	r30, 0x018F	; 0x80018f <CBOT_ISR_vtable+0x22>
+    1b6a:	f0 91 90 01 	lds	r31, 0x0190	; 0x800190 <CBOT_ISR_vtable+0x23>
     1b6e:	30 97       	sbiw	r30, 0x00	; 0
     1b70:	09 f0       	breq	.+2      	; 0x1b74 <__vector_17+0x30>
     1b72:	09 95       	icall
@@ -2808,8 +2808,8 @@ Disassembly of section .text:
     1bb2:	bf 93       	push	r27
     1bb4:	ef 93       	push	r30
     1bb6:	ff 93       	push	r31
-    1bb8:	e0 91 8f 01 	lds	r30, 0x018F	; 0x80018f <CBOT_ISR_vtable+0x24>
-    1bbc:	f0 91 90 01 	lds	r31, 0x0190	; 0x800190 <CBOT_ISR_vtable+0x25>
+    1bb8:	e0 91 91 01 	lds	r30, 0x0191	; 0x800191 <CBOT_ISR_vtable+0x24>
+    1bbc:	f0 91 92 01 	lds	r31, 0x0192	; 0x800192 <CBOT_ISR_vtable+0x25>
     1bc0:	30 97       	sbiw	r30, 0x00	; 0
     1bc2:	09 f0       	breq	.+2      	; 0x1bc6 <__vector_18+0x30>
     1bc4:	09 95       	icall
@@ -2849,8 +2849,8 @@ Disassembly of section .text:
     1c04:	bf 93       	push	r27
     1c06:	ef 93       	push	r30
     1c08:	ff 93       	push	r31
-    1c0a:	e0 91 7d 01 	lds	r30, 0x017D	; 0x80017d <CBOT_ISR_vtable+0x12>
-    1c0e:	f0 91 7e 01 	lds	r31, 0x017E	; 0x80017e <CBOT_ISR_vtable+0x13>
+    1c0a:	e0 91 7f 01 	lds	r30, 0x017F	; 0x80017f <CBOT_ISR_vtable+0x12>
+    1c0e:	f0 91 80 01 	lds	r31, 0x0180	; 0x800180 <CBOT_ISR_vtable+0x13>
     1c12:	30 97       	sbiw	r30, 0x00	; 0
     1c14:	09 f0       	breq	.+2      	; 0x1c18 <__vector_9+0x30>
     1c16:	09 95       	icall
@@ -2890,8 +2890,8 @@ Disassembly of section .text:
     1c56:	bf 93       	push	r27
     1c58:	ef 93       	push	r30
     1c5a:	ff 93       	push	r31
-    1c5c:	e0 91 7f 01 	lds	r30, 0x017F	; 0x80017f <CBOT_ISR_vtable+0x14>
-    1c60:	f0 91 80 01 	lds	r31, 0x0180	; 0x800180 <CBOT_ISR_vtable+0x15>
+    1c5c:	e0 91 81 01 	lds	r30, 0x0181	; 0x800181 <CBOT_ISR_vtable+0x14>
+    1c60:	f0 91 82 01 	lds	r31, 0x0182	; 0x800182 <CBOT_ISR_vtable+0x15>
     1c64:	30 97       	sbiw	r30, 0x00	; 0
     1c66:	09 f0       	breq	.+2      	; 0x1c6a <__vector_10+0x30>
     1c68:	09 95       	icall
@@ -2931,8 +2931,8 @@ Disassembly of section .text:
     1ca8:	bf 93       	push	r27
     1caa:	ef 93       	push	r30
     1cac:	ff 93       	push	r31
-    1cae:	e0 91 81 01 	lds	r30, 0x0181	; 0x800181 <CBOT_ISR_vtable+0x16>
-    1cb2:	f0 91 82 01 	lds	r31, 0x0182	; 0x800182 <CBOT_ISR_vtable+0x17>
+    1cae:	e0 91 83 01 	lds	r30, 0x0183	; 0x800183 <CBOT_ISR_vtable+0x16>
+    1cb2:	f0 91 84 01 	lds	r31, 0x0184	; 0x800184 <CBOT_ISR_vtable+0x17>
     1cb6:	30 97       	sbiw	r30, 0x00	; 0
     1cb8:	09 f0       	breq	.+2      	; 0x1cbc <__vector_11+0x30>
     1cba:	09 95       	icall
@@ -2972,8 +2972,8 @@ Disassembly of section .text:
     1cfa:	bf 93       	push	r27
     1cfc:	ef 93       	push	r30
     1cfe:	ff 93       	push	r31
-    1d00:	e0 91 85 01 	lds	r30, 0x0185	; 0x800185 <CBOT_ISR_vtable+0x1a>
-    1d04:	f0 91 86 01 	lds	r31, 0x0186	; 0x800186 <CBOT_ISR_vtable+0x1b>
+    1d00:	e0 91 87 01 	lds	r30, 0x0187	; 0x800187 <CBOT_ISR_vtable+0x1a>
+    1d04:	f0 91 88 01 	lds	r31, 0x0188	; 0x800188 <CBOT_ISR_vtable+0x1b>
     1d08:	30 97       	sbiw	r30, 0x00	; 0
     1d0a:	09 f0       	breq	.+2      	; 0x1d0e <__vector_13+0x30>
     1d0c:	09 95       	icall
@@ -3013,8 +3013,8 @@ Disassembly of section .text:
     1d4c:	bf 93       	push	r27
     1d4e:	ef 93       	push	r30
     1d50:	ff 93       	push	r31
-    1d52:	e0 91 87 01 	lds	r30, 0x0187	; 0x800187 <CBOT_ISR_vtable+0x1c>
-    1d56:	f0 91 88 01 	lds	r31, 0x0188	; 0x800188 <CBOT_ISR_vtable+0x1d>
+    1d52:	e0 91 89 01 	lds	r30, 0x0189	; 0x800189 <CBOT_ISR_vtable+0x1c>
+    1d56:	f0 91 8a 01 	lds	r31, 0x018A	; 0x80018a <CBOT_ISR_vtable+0x1d>
     1d5a:	30 97       	sbiw	r30, 0x00	; 0
     1d5c:	09 f0       	breq	.+2      	; 0x1d60 <__vector_14+0x30>
     1d5e:	09 95       	icall
@@ -3054,8 +3054,8 @@ Disassembly of section .text:
     1d9e:	bf 93       	push	r27
     1da0:	ef 93       	push	r30
     1da2:	ff 93       	push	r31
-    1da4:	e0 91 83 01 	lds	r30, 0x0183	; 0x800183 <CBOT_ISR_vtable+0x18>
-    1da8:	f0 91 84 01 	lds	r31, 0x0184	; 0x800184 <CBOT_ISR_vtable+0x19>
+    1da4:	e0 91 85 01 	lds	r30, 0x0185	; 0x800185 <CBOT_ISR_vtable+0x18>
+    1da8:	f0 91 86 01 	lds	r31, 0x0186	; 0x800186 <CBOT_ISR_vtable+0x19>
     1dac:	30 97       	sbiw	r30, 0x00	; 0
     1dae:	09 f0       	breq	.+2      	; 0x1db2 <__vector_12+0x30>
     1db0:	09 95       	icall
@@ -3095,8 +3095,8 @@ Disassembly of section .text:
     1df0:	bf 93       	push	r27
     1df2:	ef 93       	push	r30
     1df4:	ff 93       	push	r31
-    1df6:	e0 91 89 01 	lds	r30, 0x0189	; 0x800189 <CBOT_ISR_vtable+0x1e>
-    1dfa:	f0 91 8a 01 	lds	r31, 0x018A	; 0x80018a <CBOT_ISR_vtable+0x1f>
+    1df6:	e0 91 8b 01 	lds	r30, 0x018B	; 0x80018b <CBOT_ISR_vtable+0x1e>
+    1dfa:	f0 91 8c 01 	lds	r31, 0x018C	; 0x80018c <CBOT_ISR_vtable+0x1f>
     1dfe:	30 97       	sbiw	r30, 0x00	; 0
     1e00:	09 f0       	breq	.+2      	; 0x1e04 <__vector_15+0x30>
     1e02:	09 95       	icall
@@ -3136,8 +3136,8 @@ Disassembly of section .text:
     1e42:	bf 93       	push	r27
     1e44:	ef 93       	push	r30
     1e46:	ff 93       	push	r31
-    1e48:	e0 91 73 01 	lds	r30, 0x0173	; 0x800173 <CBOT_ISR_vtable+0x8>
-    1e4c:	f0 91 74 01 	lds	r31, 0x0174	; 0x800174 <CBOT_ISR_vtable+0x9>
+    1e48:	e0 91 75 01 	lds	r30, 0x0175	; 0x800175 <CBOT_ISR_vtable+0x8>
+    1e4c:	f0 91 76 01 	lds	r31, 0x0176	; 0x800176 <CBOT_ISR_vtable+0x9>
     1e50:	30 97       	sbiw	r30, 0x00	; 0
     1e52:	09 f0       	breq	.+2      	; 0x1e56 <__vector_4+0x30>
     1e54:	09 95       	icall
@@ -3177,8 +3177,8 @@ Disassembly of section .text:
     1e94:	bf 93       	push	r27
     1e96:	ef 93       	push	r30
     1e98:	ff 93       	push	r31
-    1e9a:	e0 91 75 01 	lds	r30, 0x0175	; 0x800175 <CBOT_ISR_vtable+0xa>
-    1e9e:	f0 91 76 01 	lds	r31, 0x0176	; 0x800176 <CBOT_ISR_vtable+0xb>
+    1e9a:	e0 91 77 01 	lds	r30, 0x0177	; 0x800177 <CBOT_ISR_vtable+0xa>
+    1e9e:	f0 91 78 01 	lds	r31, 0x0178	; 0x800178 <CBOT_ISR_vtable+0xb>
     1ea2:	30 97       	sbiw	r30, 0x00	; 0
     1ea4:	09 f0       	breq	.+2      	; 0x1ea8 <__vector_5+0x30>
     1ea6:	09 95       	icall
@@ -3218,8 +3218,8 @@ Disassembly of section .text:
     1ee6:	bf 93       	push	r27
     1ee8:	ef 93       	push	r30
     1eea:	ff 93       	push	r31
-    1eec:	e0 91 77 01 	lds	r30, 0x0177	; 0x800177 <CBOT_ISR_vtable+0xc>
-    1ef0:	f0 91 78 01 	lds	r31, 0x0178	; 0x800178 <CBOT_ISR_vtable+0xd>
+    1eec:	e0 91 79 01 	lds	r30, 0x0179	; 0x800179 <CBOT_ISR_vtable+0xc>
+    1ef0:	f0 91 7a 01 	lds	r31, 0x017A	; 0x80017a <CBOT_ISR_vtable+0xd>
     1ef4:	30 97       	sbiw	r30, 0x00	; 0
     1ef6:	09 f0       	breq	.+2      	; 0x1efa <__vector_6+0x30>
     1ef8:	09 95       	icall
@@ -3259,8 +3259,8 @@ Disassembly of section .text:
     1f38:	bf 93       	push	r27
     1f3a:	ef 93       	push	r30
     1f3c:	ff 93       	push	r31
-    1f3e:	e0 91 79 01 	lds	r30, 0x0179	; 0x800179 <CBOT_ISR_vtable+0xe>
-    1f42:	f0 91 7a 01 	lds	r31, 0x017A	; 0x80017a <CBOT_ISR_vtable+0xf>
+    1f3e:	e0 91 7b 01 	lds	r30, 0x017B	; 0x80017b <CBOT_ISR_vtable+0xe>
+    1f42:	f0 91 7c 01 	lds	r31, 0x017C	; 0x80017c <CBOT_ISR_vtable+0xf>
     1f46:	30 97       	sbiw	r30, 0x00	; 0
     1f48:	09 f0       	breq	.+2      	; 0x1f4c <__vector_7+0x30>
     1f4a:	09 95       	icall
@@ -3289,12 +3289,12 @@ Disassembly of section .text:
     1f74:	11 f0       	breq	.+4      	; 0x1f7a <ISR_open+0xc>
     1f76:	82 e0       	ldi	r24, 0x02	; 2
     1f78:	08 95       	ret
-    1f7a:	eb e6       	ldi	r30, 0x6B	; 107
+    1f7a:	ed e6       	ldi	r30, 0x6D	; 109
     1f7c:	f1 e0       	ldi	r31, 0x01	; 1
     1f7e:	11 92       	st	Z+, r1
     1f80:	11 92       	st	Z+, r1
     1f82:	81 e0       	ldi	r24, 0x01	; 1
-    1f84:	eb 3a       	cpi	r30, 0xAB	; 171
+    1f84:	ed 3a       	cpi	r30, 0xAD	; 173
     1f86:	f8 07       	cpc	r31, r24
     1f88:	d1 f7       	brne	.-12     	; 0x1f7e <ISR_open+0x10>
     1f8a:	81 e0       	ldi	r24, 0x01	; 1
@@ -3332,38 +3332,38 @@ Disassembly of section .text:
     1fc6:	41 f0       	breq	.+16     	; 0x1fd8 <__LCD_putchar+0x4a>
     1fc8:	01 e0       	ldi	r16, 0x01	; 1
     1fca:	3e c0       	rjmp	.+124    	; 0x2048 <__LCD_putchar+0xba>
-    1fcc:	10 92 19 02 	sts	0x0219, r1	; 0x800219 <LCD_params>
+    1fcc:	10 92 43 02 	sts	0x0243, r1	; 0x800243 <LCD_params>
     1fd0:	03 c0       	rjmp	.+6      	; 0x1fd8 <__LCD_putchar+0x4a>
-    1fd2:	10 92 19 02 	sts	0x0219, r1	; 0x800219 <LCD_params>
+    1fd2:	10 92 43 02 	sts	0x0243, r1	; 0x800243 <LCD_params>
     1fd6:	37 c0       	rjmp	.+110    	; 0x2046 <__LCD_putchar+0xb8>
-    1fd8:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <LCD_params+0x1>
+    1fd8:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <LCD_params+0x1>
     1fdc:	81 50       	subi	r24, 0x01	; 1
-    1fde:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <LCD_params+0x1>
+    1fde:	80 93 44 02 	sts	0x0244, r24	; 0x800244 <LCD_params+0x1>
     1fe2:	31 c0       	rjmp	.+98     	; 0x2046 <__LCD_putchar+0xb8>
     1fe4:	0e 94 a3 03 	call	0x746	; 0x746 <LCD_clear>
     1fe8:	14 c0       	rjmp	.+40     	; 0x2012 <__LCD_putchar+0x84>
     1fea:	80 e0       	ldi	r24, 0x00	; 0
     1fec:	61 e0       	ldi	r22, 0x01	; 1
     1fee:	0e 94 79 04 	call	0x8f2	; 0x8f2 <LCD_write>
-    1ff2:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <LCD_params>
+    1ff2:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <LCD_params>
     1ff6:	8f 5f       	subi	r24, 0xFF	; 255
-    1ff8:	80 93 19 02 	sts	0x0219, r24	; 0x800219 <LCD_params>
-    1ffc:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <LCD_params>
+    1ff8:	80 93 43 02 	sts	0x0243, r24	; 0x800243 <LCD_params>
+    1ffc:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <LCD_params>
     2000:	87 ff       	sbrs	r24, 7
     2002:	f3 cf       	rjmp	.-26     	; 0x1fea <__LCD_putchar+0x5c>
-    2004:	10 92 19 02 	sts	0x0219, r1	; 0x800219 <LCD_params>
-    2008:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <LCD_params+0x1>
+    2004:	10 92 43 02 	sts	0x0243, r1	; 0x800243 <LCD_params>
+    2008:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <LCD_params+0x1>
     200c:	81 50       	subi	r24, 0x01	; 1
-    200e:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <LCD_params+0x1>
+    200e:	80 93 44 02 	sts	0x0244, r24	; 0x800244 <LCD_params+0x1>
     2012:	00 e0       	ldi	r16, 0x00	; 0
     2014:	11 e0       	ldi	r17, 0x01	; 1
     2016:	19 c0       	rjmp	.+50     	; 0x204a <__LCD_putchar+0xbc>
-    2018:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <LCD_params>
+    2018:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <LCD_params>
     201c:	88 23       	and	r24, r24
     201e:	99 f0       	breq	.+38     	; 0x2046 <__LCD_putchar+0xb8>
-    2020:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <LCD_params>
+    2020:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <LCD_params>
     2024:	86 50       	subi	r24, 0x06	; 6
-    2026:	80 93 19 02 	sts	0x0219, r24	; 0x800219 <LCD_params>
+    2026:	80 93 43 02 	sts	0x0243, r24	; 0x800243 <LCD_params>
     202a:	0d c0       	rjmp	.+26     	; 0x2046 <__LCD_putchar+0xb8>
     202c:	81 e0       	ldi	r24, 0x01	; 1
     202e:	a2 d1       	rcall	.+836    	; 0x2374 <SPKR_open>
@@ -3380,8 +3380,8 @@ Disassembly of section .text:
     2044:	05 d1       	rcall	.+522    	; 0x2250 <SPKR_close>
     2046:	00 e0       	ldi	r16, 0x00	; 0
     2048:	10 e0       	ldi	r17, 0x00	; 0
-    204a:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <LCD_params+0x1>
-    204e:	60 91 19 02 	lds	r22, 0x0219	; 0x800219 <LCD_params>
+    204a:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <LCD_params+0x1>
+    204e:	60 91 43 02 	lds	r22, 0x0243	; 0x800243 <LCD_params>
     2052:	0e 94 2f 04 	call	0x85e	; 0x85e <LCD_set_PGC_addr>
     2056:	00 23       	and	r16, r16
     2058:	51 f1       	breq	.+84     	; 0x20ae <__LCD_putchar+0x120>
@@ -3406,29 +3406,29 @@ Disassembly of section .text:
     2080:	80 e0       	ldi	r24, 0x00	; 0
     2082:	61 e0       	ldi	r22, 0x01	; 1
     2084:	0e 94 79 04 	call	0x8f2	; 0x8f2 <LCD_write>
-    2088:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <LCD_params>
+    2088:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <LCD_params>
     208c:	8a 5f       	subi	r24, 0xFA	; 250
-    208e:	80 93 19 02 	sts	0x0219, r24	; 0x800219 <LCD_params>
-    2092:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <LCD_params>
+    208e:	80 93 43 02 	sts	0x0243, r24	; 0x800243 <LCD_params>
+    2092:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <LCD_params>
     2096:	90 e0       	ldi	r25, 0x00	; 0
     2098:	8c 37       	cpi	r24, 0x7C	; 124
     209a:	91 05       	cpc	r25, r1
     209c:	3c f0       	brlt	.+14     	; 0x20ac <__LCD_putchar+0x11e>
-    209e:	10 92 19 02 	sts	0x0219, r1	; 0x800219 <LCD_params>
-    20a2:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <LCD_params+0x1>
+    209e:	10 92 43 02 	sts	0x0243, r1	; 0x800243 <LCD_params>
+    20a2:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <LCD_params+0x1>
     20a6:	81 50       	subi	r24, 0x01	; 1
-    20a8:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <LCD_params+0x1>
+    20a8:	80 93 44 02 	sts	0x0244, r24	; 0x800244 <LCD_params+0x1>
     20ac:	11 e0       	ldi	r17, 0x01	; 1
-    20ae:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <LCD_params+0x1>
+    20ae:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <LCD_params+0x1>
     20b2:	83 70       	andi	r24, 0x03	; 3
-    20b4:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <LCD_params+0x1>
+    20b4:	80 93 44 02 	sts	0x0244, r24	; 0x800244 <LCD_params+0x1>
     20b8:	11 30       	cpi	r17, 0x01	; 1
     20ba:	59 f4       	brne	.+22     	; 0x20d2 <__LCD_putchar+0x144>
-    20bc:	80 91 1b 02 	lds	r24, 0x021B	; 0x80021b <LCD_params+0x2>
+    20bc:	80 91 45 02 	lds	r24, 0x0245	; 0x800245 <LCD_params+0x2>
     20c0:	81 30       	cpi	r24, 0x01	; 1
     20c2:	39 f4       	brne	.+14     	; 0x20d2 <__LCD_putchar+0x144>
-    20c4:	e0 91 1c 02 	lds	r30, 0x021C	; 0x80021c <LCD_params+0x3>
-    20c8:	f0 91 1d 02 	lds	r31, 0x021D	; 0x80021d <LCD_params+0x4>
+    20c4:	e0 91 46 02 	lds	r30, 0x0246	; 0x800246 <LCD_params+0x3>
+    20c8:	f0 91 47 02 	lds	r31, 0x0247	; 0x800247 <LCD_params+0x4>
     20cc:	30 97       	sbiw	r30, 0x00	; 0
     20ce:	09 f0       	breq	.+2      	; 0x20d2 <__LCD_putchar+0x144>
     20d0:	09 95       	icall
@@ -3600,7 +3600,7 @@ Disassembly of section .text:
     2210:	21 f4       	brne	.+8      	; 0x221a <__SPKR_close_beep_mode+0x10>
     2212:	81 e0       	ldi	r24, 0x01	; 1
     2214:	09 d1       	rcall	.+530    	; 0x2428 <__SPKR_close>
-    2216:	10 92 bc 01 	sts	0x01BC, r1	; 0x8001bc <beep_mode_active>
+    2216:	10 92 be 01 	sts	0x01BE, r1	; 0x8001be <beep_mode_active>
     221a:	08 95       	ret
 
 0000221c <__SPKR_close_tone_mode>:
@@ -3608,20 +3608,20 @@ Disassembly of section .text:
     221e:	50 d8       	rcall	.-3936   	; 0x12c0 <SYS_decrement_refcount>
     2220:	88 23       	and	r24, r24
     2222:	a9 f4       	brne	.+42     	; 0x224e <__SPKR_close_tone_mode+0x32>
-    2224:	80 91 bb 01 	lds	r24, 0x01BB	; 0x8001bb <tone_mode_active>
+    2224:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <tone_mode_active>
     2228:	88 23       	and	r24, r24
     222a:	09 f0       	breq	.+2      	; 0x222e <__SPKR_close_tone_mode+0x12>
     222c:	43 d1       	rcall	.+646    	; 0x24b4 <__SPKR_stop>
     222e:	82 e0       	ldi	r24, 0x02	; 2
     2230:	fb d0       	rcall	.+502    	; 0x2428 <__SPKR_close>
-    2232:	80 91 c9 01 	lds	r24, 0x01C9	; 0x8001c9 <p_Freq_LUT>
-    2236:	90 91 ca 01 	lds	r25, 0x01CA	; 0x8001ca <p_Freq_LUT+0x1>
+    2232:	80 91 cb 01 	lds	r24, 0x01CB	; 0x8001cb <p_Freq_LUT>
+    2236:	90 91 cc 01 	lds	r25, 0x01CC	; 0x8001cc <p_Freq_LUT+0x1>
     223a:	00 97       	sbiw	r24, 0x00	; 0
     223c:	31 f0       	breq	.+12     	; 0x224a <__SPKR_close_tone_mode+0x2e>
     223e:	0e 94 8a 22 	call	0x4514	; 0x4514 <free>
-    2242:	10 92 ca 01 	sts	0x01CA, r1	; 0x8001ca <p_Freq_LUT+0x1>
-    2246:	10 92 c9 01 	sts	0x01C9, r1	; 0x8001c9 <p_Freq_LUT>
-    224a:	10 92 bb 01 	sts	0x01BB, r1	; 0x8001bb <tone_mode_active>
+    2242:	10 92 cc 01 	sts	0x01CC, r1	; 0x8001cc <p_Freq_LUT+0x1>
+    2246:	10 92 cb 01 	sts	0x01CB, r1	; 0x8001cb <p_Freq_LUT>
+    224a:	10 92 bd 01 	sts	0x01BD, r1	; 0x8001bd <tone_mode_active>
     224e:	08 95       	ret
 
 00002250 <SPKR_close>:
@@ -3642,8 +3642,8 @@ Disassembly of section .text:
     2268:	91 e0       	ldi	r25, 0x01	; 1
     226a:	0e 94 f5 21 	call	0x43ea	; 0x43ea <malloc>
     226e:	9c 01       	movw	r18, r24
-    2270:	90 93 ca 01 	sts	0x01CA, r25	; 0x8001ca <p_Freq_LUT+0x1>
-    2274:	80 93 c9 01 	sts	0x01C9, r24	; 0x8001c9 <p_Freq_LUT>
+    2270:	90 93 cc 01 	sts	0x01CC, r25	; 0x8001cc <p_Freq_LUT+0x1>
+    2274:	80 93 cb 01 	sts	0x01CB, r24	; 0x8001cb <p_Freq_LUT>
     2278:	89 2b       	or	r24, r25
     227a:	11 f4       	brne	.+4      	; 0x2280 <__SPKR_set_up_freq_LUT+0x22>
     227c:	80 e0       	ldi	r24, 0x00	; 0
@@ -3711,12 +3711,12 @@ Disassembly of section .text:
     2304:	11 f0       	breq	.+4      	; 0x230a <__SPKR_open_beep_mode+0xe>
     2306:	82 e0       	ldi	r24, 0x02	; 2
     2308:	08 95       	ret
-    230a:	10 92 c6 01 	sts	0x01C6, r1	; 0x8001c6 <beep_accum16+0x1>
-    230e:	10 92 c5 01 	sts	0x01C5, r1	; 0x8001c5 <beep_accum16>
+    230a:	10 92 c8 01 	sts	0x01C8, r1	; 0x8001c8 <beep_accum16+0x1>
+    230e:	10 92 c7 01 	sts	0x01C7, r1	; 0x8001c7 <beep_accum16>
     2312:	81 e0       	ldi	r24, 0x01	; 1
     2314:	a5 d0       	rcall	.+330    	; 0x2460 <__SPKR_init>
     2316:	81 e0       	ldi	r24, 0x01	; 1
-    2318:	80 93 bc 01 	sts	0x01BC, r24	; 0x8001bc <beep_mode_active>
+    2318:	80 93 be 01 	sts	0x01BE, r24	; 0x8001be <beep_mode_active>
     231c:	08 95       	ret
 
 0000231e <__SPKR_open_tone_mode>:
@@ -3737,17 +3737,17 @@ Disassembly of section .text:
     233e:	11 f0       	breq	.+4      	; 0x2344 <__SPKR_open_tone_mode+0x26>
     2340:	86 e0       	ldi	r24, 0x06	; 6
     2342:	16 c0       	rjmp	.+44     	; 0x2370 <__SPKR_open_tone_mode+0x52>
-    2344:	10 92 bd 01 	sts	0x01BD, r1	; 0x8001bd <spkr_accum32>
-    2348:	10 92 be 01 	sts	0x01BE, r1	; 0x8001be <spkr_accum32+0x1>
-    234c:	10 92 bf 01 	sts	0x01BF, r1	; 0x8001bf <spkr_accum32+0x2>
-    2350:	10 92 c0 01 	sts	0x01C0, r1	; 0x8001c0 <spkr_accum32+0x3>
+    2344:	10 92 bf 01 	sts	0x01BF, r1	; 0x8001bf <spkr_accum32>
+    2348:	10 92 c0 01 	sts	0x01C0, r1	; 0x8001c0 <spkr_accum32+0x1>
+    234c:	10 92 c1 01 	sts	0x01C1, r1	; 0x8001c1 <spkr_accum32+0x2>
+    2350:	10 92 c2 01 	sts	0x01C2, r1	; 0x8001c2 <spkr_accum32+0x3>
     2354:	8d e0       	ldi	r24, 0x0D	; 13
     2356:	6b eb       	ldi	r22, 0xBB	; 187
     2358:	73 e1       	ldi	r23, 0x13	; 19
     235a:	e8 d1       	rcall	.+976    	; 0x272c <ISR_attach>
     235c:	82 e0       	ldi	r24, 0x02	; 2
     235e:	80 d0       	rcall	.+256    	; 0x2460 <__SPKR_init>
-    2360:	10 93 bb 01 	sts	0x01BB, r17	; 0x8001bb <tone_mode_active>
+    2360:	10 93 bd 01 	sts	0x01BD, r17	; 0x8001bd <tone_mode_active>
     2364:	81 e0       	ldi	r24, 0x01	; 1
     2366:	04 c0       	rjmp	.+8      	; 0x2370 <__SPKR_open_tone_mode+0x52>
     2368:	89 e0       	ldi	r24, 0x09	; 9
@@ -3853,18 +3853,18 @@ Disassembly of section .text:
     242c:	80 91 81 00 	lds	r24, 0x0081	; 0x800081 <__TEXT_REGION_LENGTH__+0x7e0081>
     2430:	8e 7f       	andi	r24, 0xFE	; 254
     2432:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7e0081>
-    2436:	80 91 bb 01 	lds	r24, 0x01BB	; 0x8001bb <tone_mode_active>
+    2436:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <tone_mode_active>
     243a:	81 30       	cpi	r24, 0x01	; 1
     243c:	31 f4       	brne	.+12     	; 0x244a <__SPKR_close+0x22>
-    243e:	80 91 bc 01 	lds	r24, 0x01BC	; 0x8001bc <beep_mode_active>
+    243e:	80 91 be 01 	lds	r24, 0x01BE	; 0x8001be <beep_mode_active>
     2442:	81 30       	cpi	r24, 0x01	; 1
     2444:	11 f4       	brne	.+4      	; 0x244a <__SPKR_close+0x22>
     2446:	00 00       	nop
     2448:	08 95       	ret
-    244a:	80 91 bb 01 	lds	r24, 0x01BB	; 0x8001bb <tone_mode_active>
+    244a:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <tone_mode_active>
     244e:	81 30       	cpi	r24, 0x01	; 1
     2450:	21 f0       	breq	.+8      	; 0x245a <__SPKR_close+0x32>
-    2452:	80 91 bc 01 	lds	r24, 0x01BC	; 0x8001bc <beep_mode_active>
+    2452:	80 91 be 01 	lds	r24, 0x01BE	; 0x8001be <beep_mode_active>
     2456:	81 30       	cpi	r24, 0x01	; 1
     2458:	11 f4       	brne	.+4      	; 0x245e <__SPKR_close+0x36>
     245a:	5f 98       	cbi	0x0b, 7	; 11
@@ -3873,15 +3873,15 @@ Disassembly of section .text:
 
 00002460 <__SPKR_init>:
     2460:	98 2f       	mov	r25, r24
-    2462:	80 91 bb 01 	lds	r24, 0x01BB	; 0x8001bb <tone_mode_active>
+    2462:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <tone_mode_active>
     2466:	88 23       	and	r24, r24
     2468:	31 f4       	brne	.+12     	; 0x2476 <__SPKR_init+0x16>
-    246a:	80 91 bc 01 	lds	r24, 0x01BC	; 0x8001bc <beep_mode_active>
+    246a:	80 91 be 01 	lds	r24, 0x01BE	; 0x8001be <beep_mode_active>
     246e:	88 23       	and	r24, r24
     2470:	11 f4       	brne	.+4      	; 0x2476 <__SPKR_init+0x16>
     2472:	57 9a       	sbi	0x0a, 7	; 10
     2474:	5f 98       	cbi	0x0b, 7	; 11
-    2476:	80 91 bb 01 	lds	r24, 0x01BB	; 0x8001bb <tone_mode_active>
+    2476:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <tone_mode_active>
     247a:	88 23       	and	r24, r24
     247c:	d1 f4       	brne	.+52     	; 0x24b2 <__SPKR_init+0x52>
     247e:	92 30       	cpi	r25, 0x02	; 2
@@ -3913,7 +3913,7 @@ Disassembly of section .text:
 000024c0 <STEPPER_go>:
     24c0:	98 2f       	mov	r25, r24
     24c2:	81 e0       	ldi	r24, 0x01	; 1
-    24c4:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+    24c4:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
     24c8:	91 30       	cpi	r25, 0x01	; 1
     24ca:	51 f0       	breq	.+20     	; 0x24e0 <STEPPER_go+0x20>
     24cc:	91 30       	cpi	r25, 0x01	; 1
@@ -3921,17 +3921,17 @@ Disassembly of section .text:
     24d0:	92 30       	cpi	r25, 0x02	; 2
     24d2:	41 f4       	brne	.+16     	; 0x24e4 <STEPPER_go+0x24>
     24d4:	03 c0       	rjmp	.+6      	; 0x24dc <STEPPER_go+0x1c>
-    24d6:	10 92 3d 02 	sts	0x023D, r1	; 0x80023d <STEPPER_params+0x1e>
+    24d6:	10 92 67 02 	sts	0x0267, r1	; 0x800267 <STEPPER_params+0x1e>
     24da:	04 c0       	rjmp	.+8      	; 0x24e4 <STEPPER_go+0x24>
-    24dc:	10 92 3d 02 	sts	0x023D, r1	; 0x80023d <STEPPER_params+0x1e>
-    24e0:	10 92 3e 02 	sts	0x023E, r1	; 0x80023e <STEPPER_params+0x1f>
-    24e4:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+    24dc:	10 92 67 02 	sts	0x0267, r1	; 0x800267 <STEPPER_params+0x1e>
+    24e0:	10 92 68 02 	sts	0x0268, r1	; 0x800268 <STEPPER_params+0x1f>
+    24e4:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
     24e8:	08 95       	ret
 
 000024ea <STEPPER_set_steps>:
     24ea:	98 2f       	mov	r25, r24
     24ec:	81 e0       	ldi	r24, 0x01	; 1
-    24ee:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+    24ee:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
     24f2:	91 30       	cpi	r25, 0x01	; 1
     24f4:	71 f0       	breq	.+28     	; 0x2512 <STEPPER_set_steps+0x28>
     24f6:	91 30       	cpi	r25, 0x01	; 1
@@ -3939,33 +3939,33 @@ Disassembly of section .text:
     24fa:	92 30       	cpi	r25, 0x02	; 2
     24fc:	71 f4       	brne	.+28     	; 0x251a <STEPPER_set_steps+0x30>
     24fe:	05 c0       	rjmp	.+10     	; 0x250a <STEPPER_set_steps+0x20>
-    2500:	70 93 32 02 	sts	0x0232, r23	; 0x800232 <STEPPER_params+0x13>
-    2504:	60 93 31 02 	sts	0x0231, r22	; 0x800231 <STEPPER_params+0x12>
+    2500:	70 93 5c 02 	sts	0x025C, r23	; 0x80025c <STEPPER_params+0x13>
+    2504:	60 93 5b 02 	sts	0x025B, r22	; 0x80025b <STEPPER_params+0x12>
     2508:	08 c0       	rjmp	.+16     	; 0x251a <STEPPER_set_steps+0x30>
-    250a:	70 93 32 02 	sts	0x0232, r23	; 0x800232 <STEPPER_params+0x13>
-    250e:	60 93 31 02 	sts	0x0231, r22	; 0x800231 <STEPPER_params+0x12>
-    2512:	70 93 34 02 	sts	0x0234, r23	; 0x800234 <STEPPER_params+0x15>
-    2516:	60 93 33 02 	sts	0x0233, r22	; 0x800233 <STEPPER_params+0x14>
-    251a:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+    250a:	70 93 5c 02 	sts	0x025C, r23	; 0x80025c <STEPPER_params+0x13>
+    250e:	60 93 5b 02 	sts	0x025B, r22	; 0x80025b <STEPPER_params+0x12>
+    2512:	70 93 5e 02 	sts	0x025E, r23	; 0x80025e <STEPPER_params+0x15>
+    2516:	60 93 5d 02 	sts	0x025D, r22	; 0x80025d <STEPPER_params+0x14>
+    251a:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
     251e:	08 95       	ret
 
 00002520 <STEPPER_set_steps2>:
     2520:	21 e0       	ldi	r18, 0x01	; 1
-    2522:	20 93 55 02 	sts	0x0255, r18	; 0x800255 <STEPPER_params+0x36>
-    2526:	e1 e3       	ldi	r30, 0x31	; 49
+    2522:	20 93 7f 02 	sts	0x027F, r18	; 0x80027f <STEPPER_params+0x36>
+    2526:	eb e5       	ldi	r30, 0x5B	; 91
     2528:	f2 e0       	ldi	r31, 0x02	; 2
     252a:	91 83       	std	Z+1, r25	; 0x01
     252c:	80 83       	st	Z, r24
     252e:	32 96       	adiw	r30, 0x02	; 2
     2530:	71 83       	std	Z+1, r23	; 0x01
     2532:	60 83       	st	Z, r22
-    2534:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+    2534:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
     2538:	08 95       	ret
 
 0000253a <STEPPER_set_stop_mode>:
     253a:	98 2f       	mov	r25, r24
     253c:	81 e0       	ldi	r24, 0x01	; 1
-    253e:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+    253e:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
     2542:	91 30       	cpi	r25, 0x01	; 1
     2544:	51 f0       	breq	.+20     	; 0x255a <STEPPER_set_stop_mode+0x20>
     2546:	91 30       	cpi	r25, 0x01	; 1
@@ -3973,11 +3973,11 @@ Disassembly of section .text:
     254a:	92 30       	cpi	r25, 0x02	; 2
     254c:	41 f4       	brne	.+16     	; 0x255e <STEPPER_set_stop_mode+0x24>
     254e:	03 c0       	rjmp	.+6      	; 0x2556 <STEPPER_set_stop_mode+0x1c>
-    2550:	60 93 3f 02 	sts	0x023F, r22	; 0x80023f <STEPPER_params+0x20>
+    2550:	60 93 69 02 	sts	0x0269, r22	; 0x800269 <STEPPER_params+0x20>
     2554:	04 c0       	rjmp	.+8      	; 0x255e <STEPPER_set_stop_mode+0x24>
-    2556:	60 93 3f 02 	sts	0x023F, r22	; 0x80023f <STEPPER_params+0x20>
-    255a:	60 93 40 02 	sts	0x0240, r22	; 0x800240 <STEPPER_params+0x21>
-    255e:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+    2556:	60 93 69 02 	sts	0x0269, r22	; 0x800269 <STEPPER_params+0x20>
+    255a:	60 93 6a 02 	sts	0x026A, r22	; 0x80026a <STEPPER_params+0x21>
+    255e:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
     2562:	08 95       	ret
 
 00002564 <STEPPER_setup_decels>:
@@ -3994,26 +3994,26 @@ Disassembly of section .text:
     2578:	82 30       	cpi	r24, 0x02	; 2
     257a:	51 f5       	brne	.+84     	; 0x25d0 <STEPPER_setup_decels+0x6c>
     257c:	0d c0       	rjmp	.+26     	; 0x2598 <STEPPER_setup_decels+0x34>
-    257e:	80 91 29 02 	lds	r24, 0x0229	; 0x800229 <STEPPER_params+0xa>
-    2582:	90 91 2a 02 	lds	r25, 0x022A	; 0x80022a <STEPPER_params+0xb>
+    257e:	80 91 53 02 	lds	r24, 0x0253	; 0x800253 <STEPPER_params+0xa>
+    2582:	90 91 54 02 	lds	r25, 0x0254	; 0x800254 <STEPPER_params+0xb>
     2586:	89 2b       	or	r24, r25
     2588:	11 f0       	breq	.+4      	; 0x258e <STEPPER_setup_decels+0x2a>
     258a:	80 e0       	ldi	r24, 0x00	; 0
     258c:	19 c0       	rjmp	.+50     	; 0x25c0 <STEPPER_setup_decels+0x5c>
-    258e:	10 92 36 02 	sts	0x0236, r1	; 0x800236 <STEPPER_params+0x17>
-    2592:	10 92 35 02 	sts	0x0235, r1	; 0x800235 <STEPPER_params+0x16>
+    258e:	10 92 60 02 	sts	0x0260, r1	; 0x800260 <STEPPER_params+0x17>
+    2592:	10 92 5f 02 	sts	0x025F, r1	; 0x80025f <STEPPER_params+0x16>
     2596:	1c c0       	rjmp	.+56     	; 0x25d0 <STEPPER_setup_decels+0x6c>
-    2598:	80 91 29 02 	lds	r24, 0x0229	; 0x800229 <STEPPER_params+0xa>
-    259c:	90 91 2a 02 	lds	r25, 0x022A	; 0x80022a <STEPPER_params+0xb>
+    2598:	80 91 53 02 	lds	r24, 0x0253	; 0x800253 <STEPPER_params+0xa>
+    259c:	90 91 54 02 	lds	r25, 0x0254	; 0x800254 <STEPPER_params+0xb>
     25a0:	89 2b       	or	r24, r25
     25a2:	19 f0       	breq	.+6      	; 0x25aa <STEPPER_setup_decels+0x46>
     25a4:	80 e0       	ldi	r24, 0x00	; 0
     25a6:	4e d1       	rcall	.+668    	; 0x2844 <STEPPER_set_decel_step_values>
     25a8:	04 c0       	rjmp	.+8      	; 0x25b2 <STEPPER_setup_decels+0x4e>
-    25aa:	10 92 36 02 	sts	0x0236, r1	; 0x800236 <STEPPER_params+0x17>
-    25ae:	10 92 35 02 	sts	0x0235, r1	; 0x800235 <STEPPER_params+0x16>
-    25b2:	80 91 2b 02 	lds	r24, 0x022B	; 0x80022b <STEPPER_params+0xc>
-    25b6:	90 91 2c 02 	lds	r25, 0x022C	; 0x80022c <STEPPER_params+0xd>
+    25aa:	10 92 60 02 	sts	0x0260, r1	; 0x800260 <STEPPER_params+0x17>
+    25ae:	10 92 5f 02 	sts	0x025F, r1	; 0x80025f <STEPPER_params+0x16>
+    25b2:	80 91 55 02 	lds	r24, 0x0255	; 0x800255 <STEPPER_params+0xc>
+    25b6:	90 91 56 02 	lds	r25, 0x0256	; 0x800256 <STEPPER_params+0xd>
     25ba:	89 2b       	or	r24, r25
     25bc:	29 f0       	breq	.+10     	; 0x25c8 <STEPPER_setup_decels+0x64>
     25be:	81 e0       	ldi	r24, 0x01	; 1
@@ -4021,8 +4021,8 @@ Disassembly of section .text:
     25c2:	a8 01       	movw	r20, r16
     25c4:	3f d1       	rcall	.+638    	; 0x2844 <STEPPER_set_decel_step_values>
     25c6:	04 c0       	rjmp	.+8      	; 0x25d0 <STEPPER_setup_decels+0x6c>
-    25c8:	10 92 38 02 	sts	0x0238, r1	; 0x800238 <STEPPER_params+0x19>
-    25cc:	10 92 37 02 	sts	0x0237, r1	; 0x800237 <STEPPER_params+0x18>
+    25c8:	10 92 62 02 	sts	0x0262, r1	; 0x800262 <STEPPER_params+0x19>
+    25cc:	10 92 61 02 	sts	0x0261, r1	; 0x800261 <STEPPER_params+0x18>
     25d0:	df 91       	pop	r29
     25d2:	cf 91       	pop	r28
     25d4:	1f 91       	pop	r17
@@ -4050,8 +4050,8 @@ Disassembly of section .text:
     25f8:	28 f4       	brcc	.+10     	; 0x2604 <SYS_set_refcount+0xe>
     25fa:	e8 2f       	mov	r30, r24
     25fc:	f0 e0       	ldi	r31, 0x00	; 0
-    25fe:	e8 51       	subi	r30, 0x18	; 24
-    2600:	fe 4f       	sbci	r31, 0xFE	; 254
+    25fe:	ee 5e       	subi	r30, 0xEE	; 238
+    2600:	fd 4f       	sbci	r31, 0xFD	; 253
     2602:	60 83       	st	Z, r22
     2604:	08 95       	ret
 
@@ -4162,11 +4162,11 @@ Disassembly of section .text:
     26dc:	11 f0       	breq	.+4      	; 0x26e2 <TMRSRVC_open+0xe>
     26de:	82 e0       	ldi	r24, 0x02	; 2
     26e0:	08 95       	ret
-    26e2:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <tmrNodes>
-    26e6:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <tmrNodes+0x2>
-    26ea:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <tmrNodes+0x1>
-    26ee:	10 92 cb 01 	sts	0x01CB, r1	; 0x8001cb <timer_busy_status>
-    26f2:	10 92 cc 01 	sts	0x01CC, r1	; 0x8001cc <timer_run_status>
+    26e2:	10 92 a0 02 	sts	0x02A0, r1	; 0x8002a0 <tmrNodes>
+    26e6:	10 92 a2 02 	sts	0x02A2, r1	; 0x8002a2 <tmrNodes+0x2>
+    26ea:	10 92 a1 02 	sts	0x02A1, r1	; 0x8002a1 <tmrNodes+0x1>
+    26ee:	10 92 cd 01 	sts	0x01CD, r1	; 0x8001cd <timer_busy_status>
+    26f2:	10 92 ce 01 	sts	0x01CE, r1	; 0x8001ce <timer_run_status>
     26f6:	80 e1       	ldi	r24, 0x10	; 16
     26f8:	6f e8       	ldi	r22, 0x8F	; 143
     26fa:	74 e1       	ldi	r23, 0x14	; 20
@@ -4178,7 +4178,7 @@ Disassembly of section .text:
 
 00002706 <TMRSRVC_start>:
     2706:	81 e0       	ldi	r24, 0x01	; 1
-    2708:	80 93 cc 01 	sts	0x01CC, r24	; 0x8001cc <timer_run_status>
+    2708:	80 93 ce 01 	sts	0x01CE, r24	; 0x8001ce <timer_run_status>
     270c:	08 95       	ret
 
 0000270e <__TMRSRVC_init>:
@@ -4210,7 +4210,7 @@ Disassembly of section .text:
     2738:	f0 e0       	ldi	r31, 0x00	; 0
     273a:	ee 0f       	add	r30, r30
     273c:	ff 1f       	adc	r31, r31
-    273e:	e5 59       	subi	r30, 0x95	; 149
+    273e:	e3 59       	subi	r30, 0x93	; 147
     2740:	fe 4f       	sbci	r31, 0xFE	; 254
     2742:	20 81       	ld	r18, Z
     2744:	31 81       	ldd	r19, Z+1	; 0x01
@@ -4232,7 +4232,7 @@ Disassembly of section .text:
     2760:	f0 e0       	ldi	r31, 0x00	; 0
     2762:	ee 0f       	add	r30, r30
     2764:	ff 1f       	adc	r31, r31
-    2766:	e5 59       	subi	r30, 0x95	; 149
+    2766:	e3 59       	subi	r30, 0x93	; 147
     2768:	fe 4f       	sbci	r31, 0xFE	; 254
     276a:	20 81       	ld	r18, Z
     276c:	31 81       	ldd	r19, Z+1	; 0x01
@@ -4256,7 +4256,7 @@ Disassembly of section .text:
     2788:	0e 94 7d 09 	call	0x12fa	; 0x12fa <SYS_isOpen>
     278c:	88 23       	and	r24, r24
     278e:	a1 f0       	breq	.+40     	; 0x27b8 <SPKR_beep+0x3e>
-    2790:	80 91 bc 01 	lds	r24, 0x01BC	; 0x8001bc <beep_mode_active>
+    2790:	80 91 be 01 	lds	r24, 0x01BE	; 0x8001be <beep_mode_active>
     2794:	88 23       	and	r24, r24
     2796:	81 f0       	breq	.+32     	; 0x27b8 <SPKR_beep+0x3e>
     2798:	d8 01       	movw	r26, r16
@@ -4265,8 +4265,8 @@ Disassembly of section .text:
     279e:	99 1f       	adc	r25, r25
     27a0:	aa 1f       	adc	r26, r26
     27a2:	bb 1f       	adc	r27, r27
-    27a4:	90 93 c8 01 	sts	0x01C8, r25	; 0x8001c8 <beep_freq+0x1>
-    27a8:	80 93 c7 01 	sts	0x01C7, r24	; 0x8001c7 <beep_freq>
+    27a4:	90 93 ca 01 	sts	0x01CA, r25	; 0x8001ca <beep_freq+0x1>
+    27a8:	80 93 c9 01 	sts	0x01C9, r24	; 0x8001c9 <beep_freq>
     27ac:	e1 14       	cp	r14, r1
     27ae:	f1 04       	cpc	r15, r1
     27b0:	01 05       	cpc	r16, r1
@@ -4280,26 +4280,26 @@ Disassembly of section .text:
     27c0:	08 95       	ret
 
 000027c2 <SPKR_clk>:
-    27c2:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <spkr_accum32>
-    27c6:	90 91 be 01 	lds	r25, 0x01BE	; 0x8001be <spkr_accum32+0x1>
-    27ca:	a0 91 bf 01 	lds	r26, 0x01BF	; 0x8001bf <spkr_accum32+0x2>
-    27ce:	b0 91 c0 01 	lds	r27, 0x01C0	; 0x8001c0 <spkr_accum32+0x3>
-    27d2:	20 91 c1 01 	lds	r18, 0x01C1	; 0x8001c1 <spkr_freq>
-    27d6:	30 91 c2 01 	lds	r19, 0x01C2	; 0x8001c2 <spkr_freq+0x1>
-    27da:	40 91 c3 01 	lds	r20, 0x01C3	; 0x8001c3 <spkr_freq+0x2>
-    27de:	50 91 c4 01 	lds	r21, 0x01C4	; 0x8001c4 <spkr_freq+0x3>
+    27c2:	80 91 bf 01 	lds	r24, 0x01BF	; 0x8001bf <spkr_accum32>
+    27c6:	90 91 c0 01 	lds	r25, 0x01C0	; 0x8001c0 <spkr_accum32+0x1>
+    27ca:	a0 91 c1 01 	lds	r26, 0x01C1	; 0x8001c1 <spkr_accum32+0x2>
+    27ce:	b0 91 c2 01 	lds	r27, 0x01C2	; 0x8001c2 <spkr_accum32+0x3>
+    27d2:	20 91 c3 01 	lds	r18, 0x01C3	; 0x8001c3 <spkr_freq>
+    27d6:	30 91 c4 01 	lds	r19, 0x01C4	; 0x8001c4 <spkr_freq+0x1>
+    27da:	40 91 c5 01 	lds	r20, 0x01C5	; 0x8001c5 <spkr_freq+0x2>
+    27de:	50 91 c6 01 	lds	r21, 0x01C6	; 0x8001c6 <spkr_freq+0x3>
     27e2:	28 0f       	add	r18, r24
     27e4:	39 1f       	adc	r19, r25
     27e6:	4a 1f       	adc	r20, r26
     27e8:	5b 1f       	adc	r21, r27
-    27ea:	20 93 bd 01 	sts	0x01BD, r18	; 0x8001bd <spkr_accum32>
-    27ee:	30 93 be 01 	sts	0x01BE, r19	; 0x8001be <spkr_accum32+0x1>
-    27f2:	40 93 bf 01 	sts	0x01BF, r20	; 0x8001bf <spkr_accum32+0x2>
-    27f6:	50 93 c0 01 	sts	0x01C0, r21	; 0x8001c0 <spkr_accum32+0x3>
-    27fa:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <spkr_accum32>
-    27fe:	90 91 be 01 	lds	r25, 0x01BE	; 0x8001be <spkr_accum32+0x1>
-    2802:	a0 91 bf 01 	lds	r26, 0x01BF	; 0x8001bf <spkr_accum32+0x2>
-    2806:	b0 91 c0 01 	lds	r27, 0x01C0	; 0x8001c0 <spkr_accum32+0x3>
+    27ea:	20 93 bf 01 	sts	0x01BF, r18	; 0x8001bf <spkr_accum32>
+    27ee:	30 93 c0 01 	sts	0x01C0, r19	; 0x8001c0 <spkr_accum32+0x1>
+    27f2:	40 93 c1 01 	sts	0x01C1, r20	; 0x8001c1 <spkr_accum32+0x2>
+    27f6:	50 93 c2 01 	sts	0x01C2, r21	; 0x8001c2 <spkr_accum32+0x3>
+    27fa:	80 91 bf 01 	lds	r24, 0x01BF	; 0x8001bf <spkr_accum32>
+    27fe:	90 91 c0 01 	lds	r25, 0x01C0	; 0x8001c0 <spkr_accum32+0x1>
+    2802:	a0 91 c1 01 	lds	r26, 0x01C1	; 0x8001c1 <spkr_accum32+0x2>
+    2806:	b0 91 c2 01 	lds	r27, 0x01C2	; 0x8001c2 <spkr_accum32+0x3>
     280a:	88 51       	subi	r24, 0x18	; 24
     280c:	96 4f       	sbci	r25, 0xF6	; 246
     280e:	a0 40       	sbci	r26, 0x00	; 0
@@ -4308,18 +4308,18 @@ Disassembly of section .text:
     2814:	8b b1       	in	r24, 0x0b	; 11
     2816:	80 58       	subi	r24, 0x80	; 128
     2818:	8b b9       	out	0x0b, r24	; 11
-    281a:	80 91 bd 01 	lds	r24, 0x01BD	; 0x8001bd <spkr_accum32>
-    281e:	90 91 be 01 	lds	r25, 0x01BE	; 0x8001be <spkr_accum32+0x1>
-    2822:	a0 91 bf 01 	lds	r26, 0x01BF	; 0x8001bf <spkr_accum32+0x2>
-    2826:	b0 91 c0 01 	lds	r27, 0x01C0	; 0x8001c0 <spkr_accum32+0x3>
+    281a:	80 91 bf 01 	lds	r24, 0x01BF	; 0x8001bf <spkr_accum32>
+    281e:	90 91 c0 01 	lds	r25, 0x01C0	; 0x8001c0 <spkr_accum32+0x1>
+    2822:	a0 91 c1 01 	lds	r26, 0x01C1	; 0x8001c1 <spkr_accum32+0x2>
+    2826:	b0 91 c2 01 	lds	r27, 0x01C2	; 0x8001c2 <spkr_accum32+0x3>
     282a:	88 51       	subi	r24, 0x18	; 24
     282c:	96 4f       	sbci	r25, 0xF6	; 246
     282e:	a0 40       	sbci	r26, 0x00	; 0
     2830:	b0 40       	sbci	r27, 0x00	; 0
-    2832:	80 93 bd 01 	sts	0x01BD, r24	; 0x8001bd <spkr_accum32>
-    2836:	90 93 be 01 	sts	0x01BE, r25	; 0x8001be <spkr_accum32+0x1>
-    283a:	a0 93 bf 01 	sts	0x01BF, r26	; 0x8001bf <spkr_accum32+0x2>
-    283e:	b0 93 c0 01 	sts	0x01C0, r27	; 0x8001c0 <spkr_accum32+0x3>
+    2832:	80 93 bf 01 	sts	0x01BF, r24	; 0x8001bf <spkr_accum32>
+    2836:	90 93 c0 01 	sts	0x01C0, r25	; 0x8001c0 <spkr_accum32+0x1>
+    283a:	a0 93 c1 01 	sts	0x01C1, r26	; 0x8001c1 <spkr_accum32+0x2>
+    283e:	b0 93 c2 01 	sts	0x01C2, r27	; 0x8001c2 <spkr_accum32+0x3>
     2842:	08 95       	ret
 
 00002844 <STEPPER_set_decel_step_values>:
@@ -4342,8 +4342,8 @@ Disassembly of section .text:
     2864:	ca 01       	movw	r24, r20
     2866:	b9 01       	movw	r22, r18
     2868:	0e 94 4d 21 	call	0x429a	; 0x429a <__mulsi3>
-    286c:	20 91 29 02 	lds	r18, 0x0229	; 0x800229 <STEPPER_params+0xa>
-    2870:	30 91 2a 02 	lds	r19, 0x022A	; 0x80022a <STEPPER_params+0xb>
+    286c:	20 91 53 02 	lds	r18, 0x0253	; 0x800253 <STEPPER_params+0xa>
+    2870:	30 91 54 02 	lds	r19, 0x0254	; 0x800254 <STEPPER_params+0xb>
     2874:	22 0f       	add	r18, r18
     2876:	33 1f       	adc	r19, r19
     2878:	40 e0       	ldi	r20, 0x00	; 0
@@ -4365,13 +4365,13 @@ Disassembly of section .text:
     289a:	a4 07       	cpc	r26, r20
     289c:	b5 07       	cpc	r27, r21
     289e:	28 f0       	brcs	.+10     	; 0x28aa <STEPPER_set_decel_step_values+0x66>
-    28a0:	f0 92 36 02 	sts	0x0236, r15	; 0x800236 <STEPPER_params+0x17>
-    28a4:	e0 92 35 02 	sts	0x0235, r14	; 0x800235 <STEPPER_params+0x16>
+    28a0:	f0 92 60 02 	sts	0x0260, r15	; 0x800260 <STEPPER_params+0x17>
+    28a4:	e0 92 5f 02 	sts	0x025F, r14	; 0x80025f <STEPPER_params+0x16>
     28a8:	33 c0       	rjmp	.+102    	; 0x2910 <STEPPER_set_decel_step_values+0xcc>
     28aa:	d6 95       	lsr	r29
     28ac:	c7 95       	ror	r28
-    28ae:	d0 93 36 02 	sts	0x0236, r29	; 0x800236 <STEPPER_params+0x17>
-    28b2:	c0 93 35 02 	sts	0x0235, r28	; 0x800235 <STEPPER_params+0x16>
+    28ae:	d0 93 60 02 	sts	0x0260, r29	; 0x800260 <STEPPER_params+0x17>
+    28b2:	c0 93 5f 02 	sts	0x025F, r28	; 0x80025f <STEPPER_params+0x16>
     28b6:	2c c0       	rjmp	.+88     	; 0x2910 <STEPPER_set_decel_step_values+0xcc>
     28b8:	9a 01       	movw	r18, r20
     28ba:	40 e0       	ldi	r20, 0x00	; 0
@@ -4379,8 +4379,8 @@ Disassembly of section .text:
     28be:	ca 01       	movw	r24, r20
     28c0:	b9 01       	movw	r22, r18
     28c2:	0e 94 4d 21 	call	0x429a	; 0x429a <__mulsi3>
-    28c6:	20 91 2b 02 	lds	r18, 0x022B	; 0x80022b <STEPPER_params+0xc>
-    28ca:	30 91 2c 02 	lds	r19, 0x022C	; 0x80022c <STEPPER_params+0xd>
+    28c6:	20 91 55 02 	lds	r18, 0x0255	; 0x800255 <STEPPER_params+0xc>
+    28ca:	30 91 56 02 	lds	r19, 0x0256	; 0x800256 <STEPPER_params+0xd>
     28ce:	22 0f       	add	r18, r18
     28d0:	33 1f       	adc	r19, r19
     28d2:	40 e0       	ldi	r20, 0x00	; 0
@@ -4402,13 +4402,13 @@ Disassembly of section .text:
     28f4:	a4 07       	cpc	r26, r20
     28f6:	b5 07       	cpc	r27, r21
     28f8:	28 f0       	brcs	.+10     	; 0x2904 <STEPPER_set_decel_step_values+0xc0>
-    28fa:	f0 92 38 02 	sts	0x0238, r15	; 0x800238 <STEPPER_params+0x19>
-    28fe:	e0 92 37 02 	sts	0x0237, r14	; 0x800237 <STEPPER_params+0x18>
+    28fa:	f0 92 62 02 	sts	0x0262, r15	; 0x800262 <STEPPER_params+0x19>
+    28fe:	e0 92 61 02 	sts	0x0261, r14	; 0x800261 <STEPPER_params+0x18>
     2902:	06 c0       	rjmp	.+12     	; 0x2910 <STEPPER_set_decel_step_values+0xcc>
     2904:	d6 95       	lsr	r29
     2906:	c7 95       	ror	r28
-    2908:	d0 93 38 02 	sts	0x0238, r29	; 0x800238 <STEPPER_params+0x19>
-    290c:	c0 93 37 02 	sts	0x0237, r28	; 0x800237 <STEPPER_params+0x18>
+    2908:	d0 93 62 02 	sts	0x0262, r29	; 0x800262 <STEPPER_params+0x19>
+    290c:	c0 93 61 02 	sts	0x0261, r28	; 0x800261 <STEPPER_params+0x18>
     2910:	df 91       	pop	r29
     2912:	cf 91       	pop	r28
     2914:	1f 91       	pop	r17
@@ -4429,12 +4429,12 @@ Disassembly of section .text:
     292c:	11 f4       	brne	.+4      	; 0x2932 <TMRSRVC_tick+0xe>
     292e:	84 e0       	ldi	r24, 0x04	; 4
     2930:	08 95       	ret
-    2932:	80 91 cc 01 	lds	r24, 0x01CC	; 0x8001cc <timer_run_status>
+    2932:	80 91 ce 01 	lds	r24, 0x01CE	; 0x8001ce <timer_run_status>
     2936:	88 23       	and	r24, r24
     2938:	11 f4       	brne	.+4      	; 0x293e <TMRSRVC_tick+0x1a>
     293a:	83 e0       	ldi	r24, 0x03	; 3
     293c:	08 95       	ret
-    293e:	80 91 cb 01 	lds	r24, 0x01CB	; 0x8001cb <timer_busy_status>
+    293e:	80 91 cd 01 	lds	r24, 0x01CD	; 0x8001cd <timer_busy_status>
     2942:	88 23       	and	r24, r24
     2944:	11 f0       	breq	.+4      	; 0x294a <TMRSRVC_tick+0x26>
     2946:	82 e0       	ldi	r24, 0x02	; 2
@@ -4446,31 +4446,31 @@ Disassembly of section .text:
     2952:	08 95       	ret
 
 00002954 <SPKR_beep_clk>:
-    2954:	80 91 bc 01 	lds	r24, 0x01BC	; 0x8001bc <beep_mode_active>
+    2954:	80 91 be 01 	lds	r24, 0x01BE	; 0x8001be <beep_mode_active>
     2958:	81 30       	cpi	r24, 0x01	; 1
     295a:	11 f5       	brne	.+68     	; 0x29a0 <SPKR_beep_clk+0x4c>
-    295c:	80 91 c5 01 	lds	r24, 0x01C5	; 0x8001c5 <beep_accum16>
-    2960:	90 91 c6 01 	lds	r25, 0x01C6	; 0x8001c6 <beep_accum16+0x1>
-    2964:	20 91 c7 01 	lds	r18, 0x01C7	; 0x8001c7 <beep_freq>
-    2968:	30 91 c8 01 	lds	r19, 0x01C8	; 0x8001c8 <beep_freq+0x1>
+    295c:	80 91 c7 01 	lds	r24, 0x01C7	; 0x8001c7 <beep_accum16>
+    2960:	90 91 c8 01 	lds	r25, 0x01C8	; 0x8001c8 <beep_accum16+0x1>
+    2964:	20 91 c9 01 	lds	r18, 0x01C9	; 0x8001c9 <beep_freq>
+    2968:	30 91 ca 01 	lds	r19, 0x01CA	; 0x8001ca <beep_freq+0x1>
     296c:	28 0f       	add	r18, r24
     296e:	39 1f       	adc	r19, r25
-    2970:	30 93 c6 01 	sts	0x01C6, r19	; 0x8001c6 <beep_accum16+0x1>
-    2974:	20 93 c5 01 	sts	0x01C5, r18	; 0x8001c5 <beep_accum16>
-    2978:	80 91 c5 01 	lds	r24, 0x01C5	; 0x8001c5 <beep_accum16>
-    297c:	90 91 c6 01 	lds	r25, 0x01C6	; 0x8001c6 <beep_accum16+0x1>
+    2970:	30 93 c8 01 	sts	0x01C8, r19	; 0x8001c8 <beep_accum16+0x1>
+    2974:	20 93 c7 01 	sts	0x01C7, r18	; 0x8001c7 <beep_accum16>
+    2978:	80 91 c7 01 	lds	r24, 0x01C7	; 0x8001c7 <beep_accum16>
+    297c:	90 91 c8 01 	lds	r25, 0x01C8	; 0x8001c8 <beep_accum16+0x1>
     2980:	88 5e       	subi	r24, 0xE8	; 232
     2982:	93 40       	sbci	r25, 0x03	; 3
     2984:	6c f0       	brlt	.+26     	; 0x29a0 <SPKR_beep_clk+0x4c>
     2986:	8b b1       	in	r24, 0x0b	; 11
     2988:	80 58       	subi	r24, 0x80	; 128
     298a:	8b b9       	out	0x0b, r24	; 11
-    298c:	80 91 c5 01 	lds	r24, 0x01C5	; 0x8001c5 <beep_accum16>
-    2990:	90 91 c6 01 	lds	r25, 0x01C6	; 0x8001c6 <beep_accum16+0x1>
+    298c:	80 91 c7 01 	lds	r24, 0x01C7	; 0x8001c7 <beep_accum16>
+    2990:	90 91 c8 01 	lds	r25, 0x01C8	; 0x8001c8 <beep_accum16+0x1>
     2994:	88 5e       	subi	r24, 0xE8	; 232
     2996:	93 40       	sbci	r25, 0x03	; 3
-    2998:	90 93 c6 01 	sts	0x01C6, r25	; 0x8001c6 <beep_accum16+0x1>
-    299c:	80 93 c5 01 	sts	0x01C5, r24	; 0x8001c5 <beep_accum16>
+    2998:	90 93 c8 01 	sts	0x01C8, r25	; 0x8001c8 <beep_accum16+0x1>
+    299c:	80 93 c7 01 	sts	0x01C7, r24	; 0x8001c7 <beep_accum16>
     29a0:	08 95       	ret
 
 000029a2 <STEPPER_clk>:
@@ -4479,111 +4479,111 @@ Disassembly of section .text:
     29a8:	88 23       	and	r24, r24
     29aa:	09 f4       	brne	.+2      	; 0x29ae <STEPPER_clk+0xc>
     29ac:	a8 c0       	rjmp	.+336    	; 0x2afe <STEPPER_clk+0x15c>
-    29ae:	80 91 29 02 	lds	r24, 0x0229	; 0x800229 <STEPPER_params+0xa>
-    29b2:	90 91 2a 02 	lds	r25, 0x022A	; 0x80022a <STEPPER_params+0xb>
+    29ae:	80 91 53 02 	lds	r24, 0x0253	; 0x800253 <STEPPER_params+0xa>
+    29b2:	90 91 54 02 	lds	r25, 0x0254	; 0x800254 <STEPPER_params+0xb>
     29b6:	89 2b       	or	r24, r25
     29b8:	09 f1       	breq	.+66     	; 0x29fc <STEPPER_clk+0x5a>
-    29ba:	80 91 4d 02 	lds	r24, 0x024D	; 0x80024d <STEPPER_params+0x2e>
-    29be:	90 91 4e 02 	lds	r25, 0x024E	; 0x80024e <STEPPER_params+0x2f>
-    29c2:	20 91 29 02 	lds	r18, 0x0229	; 0x800229 <STEPPER_params+0xa>
-    29c6:	30 91 2a 02 	lds	r19, 0x022A	; 0x80022a <STEPPER_params+0xb>
+    29ba:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <STEPPER_params+0x2e>
+    29be:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <STEPPER_params+0x2f>
+    29c2:	20 91 53 02 	lds	r18, 0x0253	; 0x800253 <STEPPER_params+0xa>
+    29c6:	30 91 54 02 	lds	r19, 0x0254	; 0x800254 <STEPPER_params+0xb>
     29ca:	82 0f       	add	r24, r18
     29cc:	93 1f       	adc	r25, r19
-    29ce:	90 93 4e 02 	sts	0x024E, r25	; 0x80024e <STEPPER_params+0x2f>
-    29d2:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <STEPPER_params+0x2e>
-    29d6:	80 91 4d 02 	lds	r24, 0x024D	; 0x80024d <STEPPER_params+0x2e>
-    29da:	90 91 4e 02 	lds	r25, 0x024E	; 0x80024e <STEPPER_params+0x2f>
+    29ce:	90 93 78 02 	sts	0x0278, r25	; 0x800278 <STEPPER_params+0x2f>
+    29d2:	80 93 77 02 	sts	0x0277, r24	; 0x800277 <STEPPER_params+0x2e>
+    29d6:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <STEPPER_params+0x2e>
+    29da:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <STEPPER_params+0x2f>
     29de:	88 5e       	subi	r24, 0xE8	; 232
     29e0:	93 40       	sbci	r25, 0x03	; 3
     29e2:	a4 f0       	brlt	.+40     	; 0x2a0c <STEPPER_clk+0x6a>
-    29e4:	80 91 4d 02 	lds	r24, 0x024D	; 0x80024d <STEPPER_params+0x2e>
-    29e8:	90 91 4e 02 	lds	r25, 0x024E	; 0x80024e <STEPPER_params+0x2f>
+    29e4:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <STEPPER_params+0x2e>
+    29e8:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <STEPPER_params+0x2f>
     29ec:	88 5e       	subi	r24, 0xE8	; 232
     29ee:	93 40       	sbci	r25, 0x03	; 3
-    29f0:	90 93 4e 02 	sts	0x024E, r25	; 0x80024e <STEPPER_params+0x2f>
-    29f4:	80 93 4d 02 	sts	0x024D, r24	; 0x80024d <STEPPER_params+0x2e>
+    29f0:	90 93 78 02 	sts	0x0278, r25	; 0x800278 <STEPPER_params+0x2f>
+    29f4:	80 93 77 02 	sts	0x0277, r24	; 0x800277 <STEPPER_params+0x2e>
     29f8:	41 e0       	ldi	r20, 0x01	; 1
     29fa:	09 c0       	rjmp	.+18     	; 0x2a0e <STEPPER_clk+0x6c>
-    29fc:	80 91 21 02 	lds	r24, 0x0221	; 0x800221 <STEPPER_params+0x2>
-    2a00:	90 91 22 02 	lds	r25, 0x0222	; 0x800222 <STEPPER_params+0x3>
-    2a04:	90 93 26 02 	sts	0x0226, r25	; 0x800226 <STEPPER_params+0x7>
-    2a08:	80 93 25 02 	sts	0x0225, r24	; 0x800225 <STEPPER_params+0x6>
+    29fc:	80 91 4b 02 	lds	r24, 0x024B	; 0x80024b <STEPPER_params+0x2>
+    2a00:	90 91 4c 02 	lds	r25, 0x024C	; 0x80024c <STEPPER_params+0x3>
+    2a04:	90 93 50 02 	sts	0x0250, r25	; 0x800250 <STEPPER_params+0x7>
+    2a08:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <STEPPER_params+0x6>
     2a0c:	40 e0       	ldi	r20, 0x00	; 0
-    2a0e:	80 91 2b 02 	lds	r24, 0x022B	; 0x80022b <STEPPER_params+0xc>
-    2a12:	90 91 2c 02 	lds	r25, 0x022C	; 0x80022c <STEPPER_params+0xd>
+    2a0e:	80 91 55 02 	lds	r24, 0x0255	; 0x800255 <STEPPER_params+0xc>
+    2a12:	90 91 56 02 	lds	r25, 0x0256	; 0x800256 <STEPPER_params+0xd>
     2a16:	89 2b       	or	r24, r25
     2a18:	09 f1       	breq	.+66     	; 0x2a5c <STEPPER_clk+0xba>
-    2a1a:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x30>
-    2a1e:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x31>
-    2a22:	20 91 2b 02 	lds	r18, 0x022B	; 0x80022b <STEPPER_params+0xc>
-    2a26:	30 91 2c 02 	lds	r19, 0x022C	; 0x80022c <STEPPER_params+0xd>
+    2a1a:	80 91 79 02 	lds	r24, 0x0279	; 0x800279 <STEPPER_params+0x30>
+    2a1e:	90 91 7a 02 	lds	r25, 0x027A	; 0x80027a <STEPPER_params+0x31>
+    2a22:	20 91 55 02 	lds	r18, 0x0255	; 0x800255 <STEPPER_params+0xc>
+    2a26:	30 91 56 02 	lds	r19, 0x0256	; 0x800256 <STEPPER_params+0xd>
     2a2a:	82 0f       	add	r24, r18
     2a2c:	93 1f       	adc	r25, r19
-    2a2e:	90 93 50 02 	sts	0x0250, r25	; 0x800250 <STEPPER_params+0x31>
-    2a32:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <STEPPER_params+0x30>
-    2a36:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x30>
-    2a3a:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x31>
+    2a2e:	90 93 7a 02 	sts	0x027A, r25	; 0x80027a <STEPPER_params+0x31>
+    2a32:	80 93 79 02 	sts	0x0279, r24	; 0x800279 <STEPPER_params+0x30>
+    2a36:	80 91 79 02 	lds	r24, 0x0279	; 0x800279 <STEPPER_params+0x30>
+    2a3a:	90 91 7a 02 	lds	r25, 0x027A	; 0x80027a <STEPPER_params+0x31>
     2a3e:	88 5e       	subi	r24, 0xE8	; 232
     2a40:	93 40       	sbci	r25, 0x03	; 3
     2a42:	a4 f0       	brlt	.+40     	; 0x2a6c <STEPPER_clk+0xca>
-    2a44:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x30>
-    2a48:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x31>
+    2a44:	80 91 79 02 	lds	r24, 0x0279	; 0x800279 <STEPPER_params+0x30>
+    2a48:	90 91 7a 02 	lds	r25, 0x027A	; 0x80027a <STEPPER_params+0x31>
     2a4c:	88 5e       	subi	r24, 0xE8	; 232
     2a4e:	93 40       	sbci	r25, 0x03	; 3
-    2a50:	90 93 50 02 	sts	0x0250, r25	; 0x800250 <STEPPER_params+0x31>
-    2a54:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <STEPPER_params+0x30>
+    2a50:	90 93 7a 02 	sts	0x027A, r25	; 0x80027a <STEPPER_params+0x31>
+    2a54:	80 93 79 02 	sts	0x0279, r24	; 0x800279 <STEPPER_params+0x30>
     2a58:	61 e0       	ldi	r22, 0x01	; 1
     2a5a:	09 c0       	rjmp	.+18     	; 0x2a6e <STEPPER_clk+0xcc>
-    2a5c:	80 91 23 02 	lds	r24, 0x0223	; 0x800223 <STEPPER_params+0x4>
-    2a60:	90 91 24 02 	lds	r25, 0x0224	; 0x800224 <STEPPER_params+0x5>
-    2a64:	90 93 28 02 	sts	0x0228, r25	; 0x800228 <STEPPER_params+0x9>
-    2a68:	80 93 27 02 	sts	0x0227, r24	; 0x800227 <STEPPER_params+0x8>
+    2a5c:	80 91 4d 02 	lds	r24, 0x024D	; 0x80024d <STEPPER_params+0x4>
+    2a60:	90 91 4e 02 	lds	r25, 0x024E	; 0x80024e <STEPPER_params+0x5>
+    2a64:	90 93 52 02 	sts	0x0252, r25	; 0x800252 <STEPPER_params+0x9>
+    2a68:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <STEPPER_params+0x8>
     2a6c:	60 e0       	ldi	r22, 0x00	; 0
     2a6e:	84 2f       	mov	r24, r20
     2a70:	47 d0       	rcall	.+142    	; 0x2b00 <STEPPER_process_accel>
-    2a72:	80 91 49 02 	lds	r24, 0x0249	; 0x800249 <STEPPER_params+0x2a>
-    2a76:	90 91 4a 02 	lds	r25, 0x024A	; 0x80024a <STEPPER_params+0x2b>
-    2a7a:	20 91 25 02 	lds	r18, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2a7e:	30 91 26 02 	lds	r19, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2a72:	80 91 73 02 	lds	r24, 0x0273	; 0x800273 <STEPPER_params+0x2a>
+    2a76:	90 91 74 02 	lds	r25, 0x0274	; 0x800274 <STEPPER_params+0x2b>
+    2a7a:	20 91 4f 02 	lds	r18, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2a7e:	30 91 50 02 	lds	r19, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2a82:	28 0f       	add	r18, r24
     2a84:	39 1f       	adc	r19, r25
-    2a86:	30 93 4a 02 	sts	0x024A, r19	; 0x80024a <STEPPER_params+0x2b>
-    2a8a:	20 93 49 02 	sts	0x0249, r18	; 0x800249 <STEPPER_params+0x2a>
-    2a8e:	80 91 49 02 	lds	r24, 0x0249	; 0x800249 <STEPPER_params+0x2a>
-    2a92:	90 91 4a 02 	lds	r25, 0x024A	; 0x80024a <STEPPER_params+0x2b>
+    2a86:	30 93 74 02 	sts	0x0274, r19	; 0x800274 <STEPPER_params+0x2b>
+    2a8a:	20 93 73 02 	sts	0x0273, r18	; 0x800273 <STEPPER_params+0x2a>
+    2a8e:	80 91 73 02 	lds	r24, 0x0273	; 0x800273 <STEPPER_params+0x2a>
+    2a92:	90 91 74 02 	lds	r25, 0x0274	; 0x800274 <STEPPER_params+0x2b>
     2a96:	88 5e       	subi	r24, 0xE8	; 232
     2a98:	93 40       	sbci	r25, 0x03	; 3
     2a9a:	14 f4       	brge	.+4      	; 0x2aa0 <STEPPER_clk+0xfe>
     2a9c:	40 e0       	ldi	r20, 0x00	; 0
     2a9e:	0b c0       	rjmp	.+22     	; 0x2ab6 <STEPPER_clk+0x114>
-    2aa0:	80 91 49 02 	lds	r24, 0x0249	; 0x800249 <STEPPER_params+0x2a>
-    2aa4:	90 91 4a 02 	lds	r25, 0x024A	; 0x80024a <STEPPER_params+0x2b>
+    2aa0:	80 91 73 02 	lds	r24, 0x0273	; 0x800273 <STEPPER_params+0x2a>
+    2aa4:	90 91 74 02 	lds	r25, 0x0274	; 0x800274 <STEPPER_params+0x2b>
     2aa8:	88 5e       	subi	r24, 0xE8	; 232
     2aaa:	93 40       	sbci	r25, 0x03	; 3
-    2aac:	90 93 4a 02 	sts	0x024A, r25	; 0x80024a <STEPPER_params+0x2b>
-    2ab0:	80 93 49 02 	sts	0x0249, r24	; 0x800249 <STEPPER_params+0x2a>
+    2aac:	90 93 74 02 	sts	0x0274, r25	; 0x800274 <STEPPER_params+0x2b>
+    2ab0:	80 93 73 02 	sts	0x0273, r24	; 0x800273 <STEPPER_params+0x2a>
     2ab4:	41 e0       	ldi	r20, 0x01	; 1
-    2ab6:	80 91 4b 02 	lds	r24, 0x024B	; 0x80024b <STEPPER_params+0x2c>
-    2aba:	90 91 4c 02 	lds	r25, 0x024C	; 0x80024c <STEPPER_params+0x2d>
-    2abe:	20 91 27 02 	lds	r18, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    2ac2:	30 91 28 02 	lds	r19, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    2ab6:	80 91 75 02 	lds	r24, 0x0275	; 0x800275 <STEPPER_params+0x2c>
+    2aba:	90 91 76 02 	lds	r25, 0x0276	; 0x800276 <STEPPER_params+0x2d>
+    2abe:	20 91 51 02 	lds	r18, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    2ac2:	30 91 52 02 	lds	r19, 0x0252	; 0x800252 <STEPPER_params+0x9>
     2ac6:	28 0f       	add	r18, r24
     2ac8:	39 1f       	adc	r19, r25
-    2aca:	30 93 4c 02 	sts	0x024C, r19	; 0x80024c <STEPPER_params+0x2d>
-    2ace:	20 93 4b 02 	sts	0x024B, r18	; 0x80024b <STEPPER_params+0x2c>
-    2ad2:	80 91 4b 02 	lds	r24, 0x024B	; 0x80024b <STEPPER_params+0x2c>
-    2ad6:	90 91 4c 02 	lds	r25, 0x024C	; 0x80024c <STEPPER_params+0x2d>
+    2aca:	30 93 76 02 	sts	0x0276, r19	; 0x800276 <STEPPER_params+0x2d>
+    2ace:	20 93 75 02 	sts	0x0275, r18	; 0x800275 <STEPPER_params+0x2c>
+    2ad2:	80 91 75 02 	lds	r24, 0x0275	; 0x800275 <STEPPER_params+0x2c>
+    2ad6:	90 91 76 02 	lds	r25, 0x0276	; 0x800276 <STEPPER_params+0x2d>
     2ada:	88 5e       	subi	r24, 0xE8	; 232
     2adc:	93 40       	sbci	r25, 0x03	; 3
     2ade:	14 f4       	brge	.+4      	; 0x2ae4 <STEPPER_clk+0x142>
     2ae0:	60 e0       	ldi	r22, 0x00	; 0
     2ae2:	0b c0       	rjmp	.+22     	; 0x2afa <STEPPER_clk+0x158>
-    2ae4:	80 91 4b 02 	lds	r24, 0x024B	; 0x80024b <STEPPER_params+0x2c>
-    2ae8:	90 91 4c 02 	lds	r25, 0x024C	; 0x80024c <STEPPER_params+0x2d>
+    2ae4:	80 91 75 02 	lds	r24, 0x0275	; 0x800275 <STEPPER_params+0x2c>
+    2ae8:	90 91 76 02 	lds	r25, 0x0276	; 0x800276 <STEPPER_params+0x2d>
     2aec:	88 5e       	subi	r24, 0xE8	; 232
     2aee:	93 40       	sbci	r25, 0x03	; 3
-    2af0:	90 93 4c 02 	sts	0x024C, r25	; 0x80024c <STEPPER_params+0x2d>
-    2af4:	80 93 4b 02 	sts	0x024B, r24	; 0x80024b <STEPPER_params+0x2c>
+    2af0:	90 93 76 02 	sts	0x0276, r25	; 0x800276 <STEPPER_params+0x2d>
+    2af4:	80 93 75 02 	sts	0x0275, r24	; 0x800275 <STEPPER_params+0x2c>
     2af8:	61 e0       	ldi	r22, 0x01	; 1
     2afa:	84 2f       	mov	r24, r20
     2afc:	46 c0       	rjmp	.+140    	; 0x2b8a <STEPPER_process_run_mode>
@@ -4592,50 +4592,50 @@ Disassembly of section .text:
 00002b00 <STEPPER_process_accel>:
     2b00:	88 23       	and	r24, r24
     2b02:	f1 f0       	breq	.+60     	; 0x2b40 <STEPPER_process_accel+0x40>
-    2b04:	20 91 21 02 	lds	r18, 0x0221	; 0x800221 <STEPPER_params+0x2>
-    2b08:	30 91 22 02 	lds	r19, 0x0222	; 0x800222 <STEPPER_params+0x3>
-    2b0c:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2b10:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2b04:	20 91 4b 02 	lds	r18, 0x024B	; 0x80024b <STEPPER_params+0x2>
+    2b08:	30 91 4c 02 	lds	r19, 0x024C	; 0x80024c <STEPPER_params+0x3>
+    2b0c:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2b10:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2b14:	28 1b       	sub	r18, r24
     2b16:	39 0b       	sbc	r19, r25
     2b18:	12 16       	cp	r1, r18
     2b1a:	13 06       	cpc	r1, r19
     2b1c:	34 f4       	brge	.+12     	; 0x2b2a <STEPPER_process_accel+0x2a>
-    2b1e:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2b22:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2b1e:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2b22:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2b26:	01 96       	adiw	r24, 0x01	; 1
     2b28:	07 c0       	rjmp	.+14     	; 0x2b38 <STEPPER_process_accel+0x38>
     2b2a:	23 2b       	or	r18, r19
     2b2c:	49 f0       	breq	.+18     	; 0x2b40 <STEPPER_process_accel+0x40>
-    2b2e:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2b32:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2b2e:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2b32:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2b36:	01 97       	sbiw	r24, 0x01	; 1
-    2b38:	90 93 26 02 	sts	0x0226, r25	; 0x800226 <STEPPER_params+0x7>
-    2b3c:	80 93 25 02 	sts	0x0225, r24	; 0x800225 <STEPPER_params+0x6>
+    2b38:	90 93 50 02 	sts	0x0250, r25	; 0x800250 <STEPPER_params+0x7>
+    2b3c:	80 93 4f 02 	sts	0x024F, r24	; 0x80024f <STEPPER_params+0x6>
     2b40:	66 23       	and	r22, r22
     2b42:	11 f1       	breq	.+68     	; 0x2b88 <STEPPER_process_accel+0x88>
-    2b44:	20 91 23 02 	lds	r18, 0x0223	; 0x800223 <STEPPER_params+0x4>
-    2b48:	30 91 24 02 	lds	r19, 0x0224	; 0x800224 <STEPPER_params+0x5>
-    2b4c:	80 91 27 02 	lds	r24, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    2b50:	90 91 28 02 	lds	r25, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    2b44:	20 91 4d 02 	lds	r18, 0x024D	; 0x80024d <STEPPER_params+0x4>
+    2b48:	30 91 4e 02 	lds	r19, 0x024E	; 0x80024e <STEPPER_params+0x5>
+    2b4c:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    2b50:	90 91 52 02 	lds	r25, 0x0252	; 0x800252 <STEPPER_params+0x9>
     2b54:	28 1b       	sub	r18, r24
     2b56:	39 0b       	sbc	r19, r25
     2b58:	12 16       	cp	r1, r18
     2b5a:	13 06       	cpc	r1, r19
     2b5c:	54 f4       	brge	.+20     	; 0x2b72 <STEPPER_process_accel+0x72>
-    2b5e:	80 91 27 02 	lds	r24, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    2b62:	90 91 28 02 	lds	r25, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    2b5e:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    2b62:	90 91 52 02 	lds	r25, 0x0252	; 0x800252 <STEPPER_params+0x9>
     2b66:	01 96       	adiw	r24, 0x01	; 1
-    2b68:	90 93 28 02 	sts	0x0228, r25	; 0x800228 <STEPPER_params+0x9>
-    2b6c:	80 93 27 02 	sts	0x0227, r24	; 0x800227 <STEPPER_params+0x8>
+    2b68:	90 93 52 02 	sts	0x0252, r25	; 0x800252 <STEPPER_params+0x9>
+    2b6c:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <STEPPER_params+0x8>
     2b70:	08 95       	ret
     2b72:	23 2b       	or	r18, r19
     2b74:	49 f0       	breq	.+18     	; 0x2b88 <STEPPER_process_accel+0x88>
-    2b76:	80 91 27 02 	lds	r24, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    2b7a:	90 91 28 02 	lds	r25, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    2b76:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    2b7a:	90 91 52 02 	lds	r25, 0x0252	; 0x800252 <STEPPER_params+0x9>
     2b7e:	01 97       	sbiw	r24, 0x01	; 1
-    2b80:	90 93 28 02 	sts	0x0228, r25	; 0x800228 <STEPPER_params+0x9>
-    2b84:	80 93 27 02 	sts	0x0227, r24	; 0x800227 <STEPPER_params+0x8>
+    2b80:	90 93 52 02 	sts	0x0252, r25	; 0x800252 <STEPPER_params+0x9>
+    2b84:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <STEPPER_params+0x8>
     2b88:	08 95       	ret
 
 00002b8a <STEPPER_process_run_mode>:
@@ -4643,184 +4643,184 @@ Disassembly of section .text:
     2b8c:	1f 93       	push	r17
     2b8e:	18 2f       	mov	r17, r24
     2b90:	06 2f       	mov	r16, r22
-    2b92:	80 91 55 02 	lds	r24, 0x0255	; 0x800255 <STEPPER_params+0x36>
+    2b92:	80 91 7f 02 	lds	r24, 0x027F	; 0x80027f <STEPPER_params+0x36>
     2b96:	88 23       	and	r24, r24
     2b98:	09 f0       	breq	.+2      	; 0x2b9c <STEPPER_process_run_mode+0x12>
     2b9a:	e3 c0       	rjmp	.+454    	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
-    2b9c:	80 91 3d 02 	lds	r24, 0x023D	; 0x80023d <STEPPER_params+0x1e>
+    2b9c:	80 91 67 02 	lds	r24, 0x0267	; 0x800267 <STEPPER_params+0x1e>
     2ba0:	88 23       	and	r24, r24
     2ba2:	09 f0       	breq	.+2      	; 0x2ba6 <STEPPER_process_run_mode+0x1c>
     2ba4:	58 c0       	rjmp	.+176    	; 0x2c56 <STEPPER_process_run_mode+0xcc>
-    2ba6:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2baa:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2ba6:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2baa:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2bae:	89 2b       	or	r24, r25
     2bb0:	e1 f4       	brne	.+56     	; 0x2bea <STEPPER_process_run_mode+0x60>
-    2bb2:	80 91 cd 01 	lds	r24, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2bb2:	80 91 cf 01 	lds	r24, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2bb6:	83 7e       	andi	r24, 0xE3	; 227
-    2bb8:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <stepper_pattern.1636>
-    2bbc:	10 92 46 02 	sts	0x0246, r1	; 0x800246 <STEPPER_params+0x27>
-    2bc0:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x32>
+    2bb8:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <stepper_pattern.1636>
+    2bbc:	10 92 70 02 	sts	0x0270, r1	; 0x800270 <STEPPER_params+0x27>
+    2bc0:	80 91 7b 02 	lds	r24, 0x027B	; 0x80027b <STEPPER_params+0x32>
     2bc4:	88 23       	and	r24, r24
     2bc6:	09 f4       	brne	.+2      	; 0x2bca <STEPPER_process_run_mode+0x40>
     2bc8:	5b c0       	rjmp	.+182    	; 0x2c80 <STEPPER_process_run_mode+0xf6>
-    2bca:	60 91 3f 02 	lds	r22, 0x023F	; 0x80023f <STEPPER_params+0x20>
+    2bca:	60 91 69 02 	lds	r22, 0x0269	; 0x800269 <STEPPER_params+0x20>
     2bce:	80 e0       	ldi	r24, 0x00	; 0
     2bd0:	2e d1       	rcall	.+604    	; 0x2e2e <STEPPER_stop>
-    2bd2:	e0 91 53 02 	lds	r30, 0x0253	; 0x800253 <STEPPER_params+0x34>
-    2bd6:	f0 91 54 02 	lds	r31, 0x0254	; 0x800254 <STEPPER_params+0x35>
+    2bd2:	e0 91 7d 02 	lds	r30, 0x027D	; 0x80027d <STEPPER_params+0x34>
+    2bd6:	f0 91 7e 02 	lds	r31, 0x027E	; 0x80027e <STEPPER_params+0x35>
     2bda:	30 97       	sbiw	r30, 0x00	; 0
     2bdc:	09 f4       	brne	.+2      	; 0x2be0 <STEPPER_process_run_mode+0x56>
     2bde:	50 c0       	rjmp	.+160    	; 0x2c80 <STEPPER_process_run_mode+0xf6>
     2be0:	81 e0       	ldi	r24, 0x01	; 1
     2be2:	80 83       	st	Z, r24
-    2be4:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x32>
+    2be4:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <STEPPER_params+0x32>
     2be8:	4b c0       	rjmp	.+150    	; 0x2c80 <STEPPER_process_run_mode+0xf6>
-    2bea:	80 91 1f 02 	lds	r24, 0x021F	; 0x80021f <STEPPER_params>
+    2bea:	80 91 49 02 	lds	r24, 0x0249	; 0x800249 <STEPPER_params>
     2bee:	81 30       	cpi	r24, 0x01	; 1
     2bf0:	41 f4       	brne	.+16     	; 0x2c02 <STEPPER_process_run_mode+0x78>
-    2bf2:	80 91 31 02 	lds	r24, 0x0231	; 0x800231 <STEPPER_params+0x12>
-    2bf6:	90 91 32 02 	lds	r25, 0x0232	; 0x800232 <STEPPER_params+0x13>
+    2bf2:	80 91 5b 02 	lds	r24, 0x025B	; 0x80025b <STEPPER_params+0x12>
+    2bf6:	90 91 5c 02 	lds	r25, 0x025C	; 0x80025c <STEPPER_params+0x13>
     2bfa:	01 97       	sbiw	r24, 0x01	; 1
     2bfc:	11 f4       	brne	.+4      	; 0x2c02 <STEPPER_process_run_mode+0x78>
     2bfe:	11 e0       	ldi	r17, 0x01	; 1
     2c00:	02 c0       	rjmp	.+4      	; 0x2c06 <STEPPER_process_run_mode+0x7c>
     2c02:	11 23       	and	r17, r17
     2c04:	e9 f1       	breq	.+122    	; 0x2c80 <STEPPER_process_run_mode+0xf6>
-    2c06:	e0 91 44 02 	lds	r30, 0x0244	; 0x800244 <STEPPER_params+0x25>
+    2c06:	e0 91 6e 02 	lds	r30, 0x026E	; 0x80026e <STEPPER_params+0x25>
     2c0a:	f0 e0       	ldi	r31, 0x00	; 0
     2c0c:	ed 5e       	subi	r30, 0xED	; 237
     2c0e:	fe 4f       	sbci	r31, 0xFE	; 254
-    2c10:	90 91 cd 01 	lds	r25, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2c10:	90 91 cf 01 	lds	r25, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2c14:	93 7e       	andi	r25, 0xE3	; 227
     2c16:	80 81       	ld	r24, Z
     2c18:	89 2b       	or	r24, r25
-    2c1a:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <stepper_pattern.1636>
-    2c1e:	80 91 42 02 	lds	r24, 0x0242	; 0x800242 <STEPPER_params+0x23>
+    2c1a:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <stepper_pattern.1636>
+    2c1e:	80 91 6c 02 	lds	r24, 0x026C	; 0x80026c <STEPPER_params+0x23>
     2c22:	88 23       	and	r24, r24
     2c24:	21 f4       	brne	.+8      	; 0x2c2e <STEPPER_process_run_mode+0xa4>
-    2c26:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <STEPPER_params+0x25>
+    2c26:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <STEPPER_params+0x25>
     2c2a:	8f 5f       	subi	r24, 0xFF	; 255
     2c2c:	03 c0       	rjmp	.+6      	; 0x2c34 <STEPPER_process_run_mode+0xaa>
-    2c2e:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <STEPPER_params+0x25>
+    2c2e:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <STEPPER_params+0x25>
     2c32:	81 50       	subi	r24, 0x01	; 1
-    2c34:	80 93 44 02 	sts	0x0244, r24	; 0x800244 <STEPPER_params+0x25>
-    2c38:	80 91 44 02 	lds	r24, 0x0244	; 0x800244 <STEPPER_params+0x25>
+    2c34:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <STEPPER_params+0x25>
+    2c38:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <STEPPER_params+0x25>
     2c3c:	83 70       	andi	r24, 0x03	; 3
-    2c3e:	80 93 44 02 	sts	0x0244, r24	; 0x800244 <STEPPER_params+0x25>
+    2c3e:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <STEPPER_params+0x25>
     2c42:	81 e0       	ldi	r24, 0x01	; 1
-    2c44:	80 93 46 02 	sts	0x0246, r24	; 0x800246 <STEPPER_params+0x27>
-    2c48:	80 91 1f 02 	lds	r24, 0x021F	; 0x80021f <STEPPER_params>
+    2c44:	80 93 70 02 	sts	0x0270, r24	; 0x800270 <STEPPER_params+0x27>
+    2c48:	80 91 49 02 	lds	r24, 0x0249	; 0x800249 <STEPPER_params>
     2c4c:	81 30       	cpi	r24, 0x01	; 1
     2c4e:	c1 f4       	brne	.+48     	; 0x2c80 <STEPPER_process_run_mode+0xf6>
     2c50:	80 e0       	ldi	r24, 0x00	; 0
     2c52:	99 d0       	rcall	.+306    	; 0x2d86 <STEPPER_process_step_mode>
     2c54:	15 c0       	rjmp	.+42     	; 0x2c80 <STEPPER_process_run_mode+0xf6>
-    2c56:	90 91 cd 01 	lds	r25, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2c56:	90 91 cf 01 	lds	r25, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2c5a:	93 7e       	andi	r25, 0xE3	; 227
-    2c5c:	90 93 cd 01 	sts	0x01CD, r25	; 0x8001cd <stepper_pattern.1636>
-    2c60:	e0 91 44 02 	lds	r30, 0x0244	; 0x800244 <STEPPER_params+0x25>
+    2c5c:	90 93 cf 01 	sts	0x01CF, r25	; 0x8001cf <stepper_pattern.1636>
+    2c60:	e0 91 6e 02 	lds	r30, 0x026E	; 0x80026e <STEPPER_params+0x25>
     2c64:	f0 e0       	ldi	r31, 0x00	; 0
     2c66:	ed 5e       	subi	r30, 0xED	; 237
     2c68:	fe 4f       	sbci	r31, 0xFE	; 254
     2c6a:	80 81       	ld	r24, Z
     2c6c:	89 2b       	or	r24, r25
-    2c6e:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <stepper_pattern.1636>
+    2c6e:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <stepper_pattern.1636>
     2c72:	82 e0       	ldi	r24, 0x02	; 2
-    2c74:	80 93 46 02 	sts	0x0246, r24	; 0x800246 <STEPPER_params+0x27>
-    2c78:	10 92 26 02 	sts	0x0226, r1	; 0x800226 <STEPPER_params+0x7>
-    2c7c:	10 92 25 02 	sts	0x0225, r1	; 0x800225 <STEPPER_params+0x6>
-    2c80:	80 91 3e 02 	lds	r24, 0x023E	; 0x80023e <STEPPER_params+0x1f>
+    2c74:	80 93 70 02 	sts	0x0270, r24	; 0x800270 <STEPPER_params+0x27>
+    2c78:	10 92 50 02 	sts	0x0250, r1	; 0x800250 <STEPPER_params+0x7>
+    2c7c:	10 92 4f 02 	sts	0x024F, r1	; 0x80024f <STEPPER_params+0x6>
+    2c80:	80 91 68 02 	lds	r24, 0x0268	; 0x800268 <STEPPER_params+0x1f>
     2c84:	88 23       	and	r24, r24
     2c86:	09 f0       	breq	.+2      	; 0x2c8a <STEPPER_process_run_mode+0x100>
     2c88:	57 c0       	rjmp	.+174    	; 0x2d38 <STEPPER_process_run_mode+0x1ae>
-    2c8a:	80 91 27 02 	lds	r24, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    2c8e:	90 91 28 02 	lds	r25, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    2c8a:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    2c8e:	90 91 52 02 	lds	r25, 0x0252	; 0x800252 <STEPPER_params+0x9>
     2c92:	89 2b       	or	r24, r25
     2c94:	e1 f4       	brne	.+56     	; 0x2cce <STEPPER_process_run_mode+0x144>
-    2c96:	80 91 cd 01 	lds	r24, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2c96:	80 91 cf 01 	lds	r24, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2c9a:	8f 71       	andi	r24, 0x1F	; 31
-    2c9c:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <stepper_pattern.1636>
-    2ca0:	10 92 47 02 	sts	0x0247, r1	; 0x800247 <STEPPER_params+0x28>
-    2ca4:	80 91 52 02 	lds	r24, 0x0252	; 0x800252 <STEPPER_params+0x33>
+    2c9c:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <stepper_pattern.1636>
+    2ca0:	10 92 71 02 	sts	0x0271, r1	; 0x800271 <STEPPER_params+0x28>
+    2ca4:	80 91 7c 02 	lds	r24, 0x027C	; 0x80027c <STEPPER_params+0x33>
     2ca8:	88 23       	and	r24, r24
     2caa:	09 f4       	brne	.+2      	; 0x2cae <STEPPER_process_run_mode+0x124>
     2cac:	5a c0       	rjmp	.+180    	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
-    2cae:	60 91 40 02 	lds	r22, 0x0240	; 0x800240 <STEPPER_params+0x21>
+    2cae:	60 91 6a 02 	lds	r22, 0x026A	; 0x80026a <STEPPER_params+0x21>
     2cb2:	81 e0       	ldi	r24, 0x01	; 1
     2cb4:	bc d0       	rcall	.+376    	; 0x2e2e <STEPPER_stop>
-    2cb6:	e0 91 53 02 	lds	r30, 0x0253	; 0x800253 <STEPPER_params+0x34>
-    2cba:	f0 91 54 02 	lds	r31, 0x0254	; 0x800254 <STEPPER_params+0x35>
+    2cb6:	e0 91 7d 02 	lds	r30, 0x027D	; 0x80027d <STEPPER_params+0x34>
+    2cba:	f0 91 7e 02 	lds	r31, 0x027E	; 0x80027e <STEPPER_params+0x35>
     2cbe:	30 97       	sbiw	r30, 0x00	; 0
     2cc0:	09 f4       	brne	.+2      	; 0x2cc4 <STEPPER_process_run_mode+0x13a>
     2cc2:	4f c0       	rjmp	.+158    	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
     2cc4:	81 e0       	ldi	r24, 0x01	; 1
     2cc6:	81 83       	std	Z+1, r24	; 0x01
-    2cc8:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x33>
+    2cc8:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <STEPPER_params+0x33>
     2ccc:	4a c0       	rjmp	.+148    	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
-    2cce:	80 91 20 02 	lds	r24, 0x0220	; 0x800220 <STEPPER_params+0x1>
+    2cce:	80 91 4a 02 	lds	r24, 0x024A	; 0x80024a <STEPPER_params+0x1>
     2cd2:	81 30       	cpi	r24, 0x01	; 1
     2cd4:	41 f4       	brne	.+16     	; 0x2ce6 <STEPPER_process_run_mode+0x15c>
-    2cd6:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <STEPPER_params+0x14>
-    2cda:	90 91 34 02 	lds	r25, 0x0234	; 0x800234 <STEPPER_params+0x15>
+    2cd6:	80 91 5d 02 	lds	r24, 0x025D	; 0x80025d <STEPPER_params+0x14>
+    2cda:	90 91 5e 02 	lds	r25, 0x025E	; 0x80025e <STEPPER_params+0x15>
     2cde:	01 97       	sbiw	r24, 0x01	; 1
     2ce0:	11 f4       	brne	.+4      	; 0x2ce6 <STEPPER_process_run_mode+0x15c>
     2ce2:	01 e0       	ldi	r16, 0x01	; 1
     2ce4:	02 c0       	rjmp	.+4      	; 0x2cea <STEPPER_process_run_mode+0x160>
     2ce6:	00 23       	and	r16, r16
     2ce8:	e1 f1       	breq	.+120    	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
-    2cea:	e0 91 45 02 	lds	r30, 0x0245	; 0x800245 <STEPPER_params+0x26>
+    2cea:	e0 91 6f 02 	lds	r30, 0x026F	; 0x80026f <STEPPER_params+0x26>
     2cee:	f0 e0       	ldi	r31, 0x00	; 0
     2cf0:	e9 5e       	subi	r30, 0xE9	; 233
     2cf2:	fe 4f       	sbci	r31, 0xFE	; 254
-    2cf4:	90 91 cd 01 	lds	r25, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2cf4:	90 91 cf 01 	lds	r25, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2cf8:	9f 71       	andi	r25, 0x1F	; 31
     2cfa:	80 81       	ld	r24, Z
     2cfc:	89 2b       	or	r24, r25
-    2cfe:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <stepper_pattern.1636>
-    2d02:	80 91 43 02 	lds	r24, 0x0243	; 0x800243 <STEPPER_params+0x24>
+    2cfe:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <stepper_pattern.1636>
+    2d02:	80 91 6d 02 	lds	r24, 0x026D	; 0x80026d <STEPPER_params+0x24>
     2d06:	88 23       	and	r24, r24
     2d08:	21 f4       	brne	.+8      	; 0x2d12 <STEPPER_process_run_mode+0x188>
-    2d0a:	80 91 45 02 	lds	r24, 0x0245	; 0x800245 <STEPPER_params+0x26>
+    2d0a:	80 91 6f 02 	lds	r24, 0x026F	; 0x80026f <STEPPER_params+0x26>
     2d0e:	8f 5f       	subi	r24, 0xFF	; 255
     2d10:	03 c0       	rjmp	.+6      	; 0x2d18 <STEPPER_process_run_mode+0x18e>
-    2d12:	80 91 45 02 	lds	r24, 0x0245	; 0x800245 <STEPPER_params+0x26>
+    2d12:	80 91 6f 02 	lds	r24, 0x026F	; 0x80026f <STEPPER_params+0x26>
     2d16:	81 50       	subi	r24, 0x01	; 1
-    2d18:	80 93 45 02 	sts	0x0245, r24	; 0x800245 <STEPPER_params+0x26>
-    2d1c:	80 91 45 02 	lds	r24, 0x0245	; 0x800245 <STEPPER_params+0x26>
+    2d18:	80 93 6f 02 	sts	0x026F, r24	; 0x80026f <STEPPER_params+0x26>
+    2d1c:	80 91 6f 02 	lds	r24, 0x026F	; 0x80026f <STEPPER_params+0x26>
     2d20:	83 70       	andi	r24, 0x03	; 3
-    2d22:	80 93 45 02 	sts	0x0245, r24	; 0x800245 <STEPPER_params+0x26>
+    2d22:	80 93 6f 02 	sts	0x026F, r24	; 0x80026f <STEPPER_params+0x26>
     2d26:	81 e0       	ldi	r24, 0x01	; 1
-    2d28:	80 93 47 02 	sts	0x0247, r24	; 0x800247 <STEPPER_params+0x28>
-    2d2c:	80 91 20 02 	lds	r24, 0x0220	; 0x800220 <STEPPER_params+0x1>
+    2d28:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <STEPPER_params+0x28>
+    2d2c:	80 91 4a 02 	lds	r24, 0x024A	; 0x80024a <STEPPER_params+0x1>
     2d30:	81 30       	cpi	r24, 0x01	; 1
     2d32:	b9 f4       	brne	.+46     	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
     2d34:	28 d0       	rcall	.+80     	; 0x2d86 <STEPPER_process_step_mode>
     2d36:	15 c0       	rjmp	.+42     	; 0x2d62 <STEPPER_process_run_mode+0x1d8>
-    2d38:	90 91 cd 01 	lds	r25, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2d38:	90 91 cf 01 	lds	r25, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2d3c:	9f 71       	andi	r25, 0x1F	; 31
-    2d3e:	90 93 cd 01 	sts	0x01CD, r25	; 0x8001cd <stepper_pattern.1636>
-    2d42:	e0 91 45 02 	lds	r30, 0x0245	; 0x800245 <STEPPER_params+0x26>
+    2d3e:	90 93 cf 01 	sts	0x01CF, r25	; 0x8001cf <stepper_pattern.1636>
+    2d42:	e0 91 6f 02 	lds	r30, 0x026F	; 0x80026f <STEPPER_params+0x26>
     2d46:	f0 e0       	ldi	r31, 0x00	; 0
     2d48:	e9 5e       	subi	r30, 0xE9	; 233
     2d4a:	fe 4f       	sbci	r31, 0xFE	; 254
     2d4c:	80 81       	ld	r24, Z
     2d4e:	89 2b       	or	r24, r25
-    2d50:	80 93 cd 01 	sts	0x01CD, r24	; 0x8001cd <stepper_pattern.1636>
+    2d50:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <stepper_pattern.1636>
     2d54:	82 e0       	ldi	r24, 0x02	; 2
-    2d56:	80 93 47 02 	sts	0x0247, r24	; 0x800247 <STEPPER_params+0x28>
-    2d5a:	10 92 28 02 	sts	0x0228, r1	; 0x800228 <STEPPER_params+0x9>
-    2d5e:	10 92 27 02 	sts	0x0227, r1	; 0x800227 <STEPPER_params+0x8>
-    2d62:	80 91 48 02 	lds	r24, 0x0248	; 0x800248 <STEPPER_params+0x29>
+    2d56:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <STEPPER_params+0x28>
+    2d5a:	10 92 52 02 	sts	0x0252, r1	; 0x800252 <STEPPER_params+0x9>
+    2d5e:	10 92 51 02 	sts	0x0251, r1	; 0x800251 <STEPPER_params+0x8>
+    2d62:	80 91 72 02 	lds	r24, 0x0272	; 0x800272 <STEPPER_params+0x29>
     2d66:	88 23       	and	r24, r24
     2d68:	29 f4       	brne	.+10     	; 0x2d74 <STEPPER_process_run_mode+0x1ea>
-    2d6a:	8d ec       	ldi	r24, 0xCD	; 205
+    2d6a:	8f ec       	ldi	r24, 0xCF	; 207
     2d6c:	91 e0       	ldi	r25, 0x01	; 1
     2d6e:	61 2f       	mov	r22, r17
     2d70:	40 2f       	mov	r20, r16
     2d72:	ee d0       	rcall	.+476    	; 0x2f50 <STEPPER_process_pwm>
     2d74:	88 b1       	in	r24, 0x08	; 8
     2d76:	83 70       	andi	r24, 0x03	; 3
-    2d78:	90 91 cd 01 	lds	r25, 0x01CD	; 0x8001cd <stepper_pattern.1636>
+    2d78:	90 91 cf 01 	lds	r25, 0x01CF	; 0x8001cf <stepper_pattern.1636>
     2d7c:	89 2b       	or	r24, r25
     2d7e:	88 b9       	out	0x08, r24	; 8
     2d80:	1f 91       	pop	r17
@@ -4834,22 +4834,22 @@ Disassembly of section .text:
     2d8c:	09 f0       	breq	.+2      	; 0x2d90 <STEPPER_process_step_mode+0xa>
     2d8e:	4e c0       	rjmp	.+156    	; 0x2e2c <STEPPER_process_step_mode+0xa6>
     2d90:	27 c0       	rjmp	.+78     	; 0x2de0 <STEPPER_process_step_mode+0x5a>
-    2d92:	80 91 31 02 	lds	r24, 0x0231	; 0x800231 <STEPPER_params+0x12>
-    2d96:	90 91 32 02 	lds	r25, 0x0232	; 0x800232 <STEPPER_params+0x13>
+    2d92:	80 91 5b 02 	lds	r24, 0x025B	; 0x80025b <STEPPER_params+0x12>
+    2d96:	90 91 5c 02 	lds	r25, 0x025C	; 0x80025c <STEPPER_params+0x13>
     2d9a:	89 2b       	or	r24, r25
     2d9c:	49 f0       	breq	.+18     	; 0x2db0 <STEPPER_process_step_mode+0x2a>
-    2d9e:	80 91 31 02 	lds	r24, 0x0231	; 0x800231 <STEPPER_params+0x12>
-    2da2:	90 91 32 02 	lds	r25, 0x0232	; 0x800232 <STEPPER_params+0x13>
+    2d9e:	80 91 5b 02 	lds	r24, 0x025B	; 0x80025b <STEPPER_params+0x12>
+    2da2:	90 91 5c 02 	lds	r25, 0x025C	; 0x80025c <STEPPER_params+0x13>
     2da6:	01 97       	sbiw	r24, 0x01	; 1
-    2da8:	90 93 32 02 	sts	0x0232, r25	; 0x800232 <STEPPER_params+0x13>
-    2dac:	80 93 31 02 	sts	0x0231, r24	; 0x800231 <STEPPER_params+0x12>
-    2db0:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x32>
+    2da8:	90 93 5c 02 	sts	0x025C, r25	; 0x80025c <STEPPER_params+0x13>
+    2dac:	80 93 5b 02 	sts	0x025B, r24	; 0x80025b <STEPPER_params+0x12>
+    2db0:	80 91 7b 02 	lds	r24, 0x027B	; 0x80027b <STEPPER_params+0x32>
     2db4:	88 23       	and	r24, r24
     2db6:	d1 f5       	brne	.+116    	; 0x2e2c <STEPPER_process_step_mode+0xa6>
-    2db8:	20 91 31 02 	lds	r18, 0x0231	; 0x800231 <STEPPER_params+0x12>
-    2dbc:	30 91 32 02 	lds	r19, 0x0232	; 0x800232 <STEPPER_params+0x13>
-    2dc0:	80 91 35 02 	lds	r24, 0x0235	; 0x800235 <STEPPER_params+0x16>
-    2dc4:	90 91 36 02 	lds	r25, 0x0236	; 0x800236 <STEPPER_params+0x17>
+    2db8:	20 91 5b 02 	lds	r18, 0x025B	; 0x80025b <STEPPER_params+0x12>
+    2dbc:	30 91 5c 02 	lds	r19, 0x025C	; 0x80025c <STEPPER_params+0x13>
+    2dc0:	80 91 5f 02 	lds	r24, 0x025F	; 0x80025f <STEPPER_params+0x16>
+    2dc4:	90 91 60 02 	lds	r25, 0x0260	; 0x800260 <STEPPER_params+0x17>
     2dc8:	28 17       	cp	r18, r24
     2dca:	39 07       	cpc	r19, r25
     2dcc:	79 f5       	brne	.+94     	; 0x2e2c <STEPPER_process_step_mode+0xa6>
@@ -4858,24 +4858,24 @@ Disassembly of section .text:
     2dd2:	70 e0       	ldi	r23, 0x00	; 0
     2dd4:	0e 94 aa 07 	call	0xf54	; 0xf54 <STEPPER_set_speed>
     2dd8:	81 e0       	ldi	r24, 0x01	; 1
-    2dda:	80 93 51 02 	sts	0x0251, r24	; 0x800251 <STEPPER_params+0x32>
+    2dda:	80 93 7b 02 	sts	0x027B, r24	; 0x80027b <STEPPER_params+0x32>
     2dde:	08 95       	ret
-    2de0:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <STEPPER_params+0x14>
-    2de4:	90 91 34 02 	lds	r25, 0x0234	; 0x800234 <STEPPER_params+0x15>
+    2de0:	80 91 5d 02 	lds	r24, 0x025D	; 0x80025d <STEPPER_params+0x14>
+    2de4:	90 91 5e 02 	lds	r25, 0x025E	; 0x80025e <STEPPER_params+0x15>
     2de8:	89 2b       	or	r24, r25
     2dea:	49 f0       	breq	.+18     	; 0x2dfe <STEPPER_process_step_mode+0x78>
-    2dec:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <STEPPER_params+0x14>
-    2df0:	90 91 34 02 	lds	r25, 0x0234	; 0x800234 <STEPPER_params+0x15>
+    2dec:	80 91 5d 02 	lds	r24, 0x025D	; 0x80025d <STEPPER_params+0x14>
+    2df0:	90 91 5e 02 	lds	r25, 0x025E	; 0x80025e <STEPPER_params+0x15>
     2df4:	01 97       	sbiw	r24, 0x01	; 1
-    2df6:	90 93 34 02 	sts	0x0234, r25	; 0x800234 <STEPPER_params+0x15>
-    2dfa:	80 93 33 02 	sts	0x0233, r24	; 0x800233 <STEPPER_params+0x14>
-    2dfe:	80 91 52 02 	lds	r24, 0x0252	; 0x800252 <STEPPER_params+0x33>
+    2df6:	90 93 5e 02 	sts	0x025E, r25	; 0x80025e <STEPPER_params+0x15>
+    2dfa:	80 93 5d 02 	sts	0x025D, r24	; 0x80025d <STEPPER_params+0x14>
+    2dfe:	80 91 7c 02 	lds	r24, 0x027C	; 0x80027c <STEPPER_params+0x33>
     2e02:	88 23       	and	r24, r24
     2e04:	99 f4       	brne	.+38     	; 0x2e2c <STEPPER_process_step_mode+0xa6>
-    2e06:	20 91 33 02 	lds	r18, 0x0233	; 0x800233 <STEPPER_params+0x14>
-    2e0a:	30 91 34 02 	lds	r19, 0x0234	; 0x800234 <STEPPER_params+0x15>
-    2e0e:	80 91 37 02 	lds	r24, 0x0237	; 0x800237 <STEPPER_params+0x18>
-    2e12:	90 91 38 02 	lds	r25, 0x0238	; 0x800238 <STEPPER_params+0x19>
+    2e06:	20 91 5d 02 	lds	r18, 0x025D	; 0x80025d <STEPPER_params+0x14>
+    2e0a:	30 91 5e 02 	lds	r19, 0x025E	; 0x80025e <STEPPER_params+0x15>
+    2e0e:	80 91 61 02 	lds	r24, 0x0261	; 0x800261 <STEPPER_params+0x18>
+    2e12:	90 91 62 02 	lds	r25, 0x0262	; 0x800262 <STEPPER_params+0x19>
     2e16:	28 17       	cp	r18, r24
     2e18:	39 07       	cpc	r19, r25
     2e1a:	41 f4       	brne	.+16     	; 0x2e2c <STEPPER_process_step_mode+0xa6>
@@ -4884,7 +4884,7 @@ Disassembly of section .text:
     2e20:	70 e0       	ldi	r23, 0x00	; 0
     2e22:	0e 94 aa 07 	call	0xf54	; 0xf54 <STEPPER_set_speed>
     2e26:	81 e0       	ldi	r24, 0x01	; 1
-    2e28:	80 93 52 02 	sts	0x0252, r24	; 0x800252 <STEPPER_params+0x33>
+    2e28:	80 93 7c 02 	sts	0x027C, r24	; 0x80027c <STEPPER_params+0x33>
     2e2c:	08 95       	ret
 
 00002e2e <STEPPER_stop>:
@@ -4902,7 +4902,7 @@ Disassembly of section .text:
     2e46:	70 e0       	ldi	r23, 0x00	; 0
     2e48:	50 db       	rcall	.-2400   	; 0x24ea <STEPPER_set_steps>
     2e4a:	81 e0       	ldi	r24, 0x01	; 1
-    2e4c:	80 93 55 02 	sts	0x0255, r24	; 0x800255 <STEPPER_params+0x36>
+    2e4c:	80 93 7f 02 	sts	0x027F, r24	; 0x80027f <STEPPER_params+0x36>
     2e50:	11 30       	cpi	r17, 0x01	; 1
     2e52:	51 f0       	breq	.+20     	; 0x2e68 <STEPPER_stop+0x3a>
     2e54:	11 30       	cpi	r17, 0x01	; 1
@@ -4910,11 +4910,11 @@ Disassembly of section .text:
     2e58:	12 30       	cpi	r17, 0x02	; 2
     2e5a:	41 f4       	brne	.+16     	; 0x2e6c <STEPPER_stop+0x3e>
     2e5c:	03 c0       	rjmp	.+6      	; 0x2e64 <STEPPER_stop+0x36>
-    2e5e:	00 93 3d 02 	sts	0x023D, r16	; 0x80023d <STEPPER_params+0x1e>
+    2e5e:	00 93 67 02 	sts	0x0267, r16	; 0x800267 <STEPPER_params+0x1e>
     2e62:	04 c0       	rjmp	.+8      	; 0x2e6c <STEPPER_stop+0x3e>
-    2e64:	00 93 3d 02 	sts	0x023D, r16	; 0x80023d <STEPPER_params+0x1e>
-    2e68:	00 93 3e 02 	sts	0x023E, r16	; 0x80023e <STEPPER_params+0x1f>
-    2e6c:	10 92 55 02 	sts	0x0255, r1	; 0x800255 <STEPPER_params+0x36>
+    2e64:	00 93 67 02 	sts	0x0267, r16	; 0x800267 <STEPPER_params+0x1e>
+    2e68:	00 93 68 02 	sts	0x0268, r16	; 0x800268 <STEPPER_params+0x1f>
+    2e6c:	10 92 7f 02 	sts	0x027F, r1	; 0x80027f <STEPPER_params+0x36>
     2e70:	1f 91       	pop	r17
     2e72:	0f 91       	pop	r16
     2e74:	08 95       	ret
@@ -4925,12 +4925,12 @@ Disassembly of section .text:
     2e7a:	1f 93       	push	r17
     2e7c:	cf 93       	push	r28
     2e7e:	df 93       	push	r29
-    2e80:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    2e80:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     2e84:	88 23       	and	r24, r24
     2e86:	09 f4       	brne	.+2      	; 0x2e8a <TMRSRVC_process+0x14>
     2e88:	58 c0       	rjmp	.+176    	; 0x2f3a <TMRSRVC_process+0xc4>
-    2e8a:	00 91 77 02 	lds	r16, 0x0277	; 0x800277 <tmrNodes+0x1>
-    2e8e:	10 91 78 02 	lds	r17, 0x0278	; 0x800278 <tmrNodes+0x2>
+    2e8a:	00 91 a1 02 	lds	r16, 0x02A1	; 0x8002a1 <tmrNodes+0x1>
+    2e8e:	10 91 a2 02 	lds	r17, 0x02A2	; 0x8002a2 <tmrNodes+0x2>
     2e92:	f8 01       	movw	r30, r16
     2e94:	c0 81       	ld	r28, Z
     2e96:	d1 81       	ldd	r29, Z+1	; 0x01
@@ -4957,14 +4957,14 @@ Disassembly of section .text:
     2ec0:	ef 81       	ldd	r30, Y+7	; 0x07
     2ec2:	f8 85       	ldd	r31, Y+8	; 0x08
     2ec4:	09 95       	icall
-    2ec6:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    2ec6:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     2eca:	82 30       	cpi	r24, 0x02	; 2
     2ecc:	a8 f0       	brcs	.+42     	; 0x2ef8 <TMRSRVC_process+0x82>
     2ece:	f8 01       	movw	r30, r16
     2ed0:	82 81       	ldd	r24, Z+2	; 0x02
     2ed2:	93 81       	ldd	r25, Z+3	; 0x03
-    2ed4:	90 93 78 02 	sts	0x0278, r25	; 0x800278 <tmrNodes+0x2>
-    2ed8:	80 93 77 02 	sts	0x0277, r24	; 0x800277 <tmrNodes+0x1>
+    2ed4:	90 93 a2 02 	sts	0x02A2, r25	; 0x8002a2 <tmrNodes+0x2>
+    2ed8:	80 93 a1 02 	sts	0x02A1, r24	; 0x8002a1 <tmrNodes+0x1>
     2edc:	13 82       	std	Z+3, r1	; 0x03
     2ede:	12 82       	std	Z+2, r1	; 0x02
     2ee0:	e0 91 00 00 	lds	r30, 0x0000	; 0x800000 <__TEXT_REGION_LENGTH__+0x7e0000>
@@ -4977,13 +4977,13 @@ Disassembly of section .text:
     2ef2:	ff 24       	eor	r15, r15
     2ef4:	f3 94       	inc	r15
     2ef6:	05 c0       	rjmp	.+10     	; 0x2f02 <TMRSRVC_process+0x8c>
-    2ef8:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <tmrNodes+0x2>
-    2efc:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <tmrNodes+0x1>
+    2ef8:	10 92 a2 02 	sts	0x02A2, r1	; 0x8002a2 <tmrNodes+0x2>
+    2efc:	10 92 a1 02 	sts	0x02A1, r1	; 0x8002a1 <tmrNodes+0x1>
     2f00:	ff 24       	eor	r15, r15
-    2f02:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    2f02:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     2f06:	81 50       	subi	r24, 0x01	; 1
-    2f08:	80 93 76 02 	sts	0x0276, r24	; 0x800276 <tmrNodes>
-    2f0c:	80 91 76 02 	lds	r24, 0x0276	; 0x800276 <tmrNodes>
+    2f08:	80 93 a0 02 	sts	0x02A0, r24	; 0x8002a0 <tmrNodes>
+    2f0c:	80 91 a0 02 	lds	r24, 0x02A0	; 0x8002a0 <tmrNodes>
     2f10:	88 23       	and	r24, r24
     2f12:	09 f4       	brne	.+2      	; 0x2f16 <TMRSRVC_process+0xa0>
     2f14:	1a d0       	rcall	.+52     	; 0x2f4a <TMRSRVC_stop>
@@ -5013,18 +5013,18 @@ Disassembly of section .text:
     2f48:	08 95       	ret
 
 00002f4a <TMRSRVC_stop>:
-    2f4a:	10 92 cc 01 	sts	0x01CC, r1	; 0x8001cc <timer_run_status>
+    2f4a:	10 92 ce 01 	sts	0x01CE, r1	; 0x8001ce <timer_run_status>
     2f4e:	08 95       	ret
 
 00002f50 <STEPPER_process_pwm>:
     2f50:	fc 01       	movw	r30, r24
-    2f52:	80 91 46 02 	lds	r24, 0x0246	; 0x800246 <STEPPER_params+0x27>
+    2f52:	80 91 70 02 	lds	r24, 0x0270	; 0x800270 <STEPPER_params+0x27>
     2f56:	82 30       	cpi	r24, 0x02	; 2
     2f58:	69 f4       	brne	.+26     	; 0x2f74 <STEPPER_process_pwm+0x24>
-    2f5a:	80 91 d1 01 	lds	r24, 0x01D1	; 0x8001d1 <prev_state_left.1637>
+    2f5a:	80 91 d3 01 	lds	r24, 0x01D3	; 0x8001d3 <prev_state_left.1637>
     2f5e:	91 e0       	ldi	r25, 0x01	; 1
     2f60:	89 27       	eor	r24, r25
-    2f62:	80 93 d1 01 	sts	0x01D1, r24	; 0x8001d1 <prev_state_left.1637>
+    2f62:	80 93 d3 01 	sts	0x01D3, r24	; 0x8001d3 <prev_state_left.1637>
     2f66:	88 23       	and	r24, r24
     2f68:	09 f0       	breq	.+2      	; 0x2f6c <STEPPER_process_pwm+0x1c>
     2f6a:	3e c0       	rjmp	.+124    	; 0x2fe8 <STEPPER_process_pwm+0x98>
@@ -5032,14 +5032,14 @@ Disassembly of section .text:
     2f6e:	83 7e       	andi	r24, 0xE3	; 227
     2f70:	80 83       	st	Z, r24
     2f72:	3a c0       	rjmp	.+116    	; 0x2fe8 <STEPPER_process_pwm+0x98>
-    2f74:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2f78:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2f74:	80 91 4f 02 	lds	r24, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2f78:	90 91 50 02 	lds	r25, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2f7c:	c3 97       	sbiw	r24, 0x33	; 51
     2f7e:	a4 f5       	brge	.+104    	; 0x2fe8 <STEPPER_process_pwm+0x98>
     2f80:	66 23       	and	r22, r22
     2f82:	d1 f0       	breq	.+52     	; 0x2fb8 <STEPPER_process_pwm+0x68>
-    2f84:	20 91 25 02 	lds	r18, 0x0225	; 0x800225 <STEPPER_params+0x6>
-    2f88:	30 91 26 02 	lds	r19, 0x0226	; 0x800226 <STEPPER_params+0x7>
+    2f84:	20 91 4f 02 	lds	r18, 0x024F	; 0x80024f <STEPPER_params+0x6>
+    2f88:	30 91 50 02 	lds	r19, 0x0250	; 0x800250 <STEPPER_params+0x7>
     2f8c:	80 e6       	ldi	r24, 0x60	; 96
     2f8e:	90 e0       	ldi	r25, 0x00	; 0
     2f90:	bc 01       	movw	r22, r24
@@ -5054,34 +5054,34 @@ Disassembly of section .text:
     2fa2:	89 2f       	mov	r24, r25
     2fa4:	88 1f       	adc	r24, r24
     2fa6:	99 0b       	sbc	r25, r25
-    2fa8:	90 93 3a 02 	sts	0x023A, r25	; 0x80023a <STEPPER_params+0x1b>
-    2fac:	80 93 39 02 	sts	0x0239, r24	; 0x800239 <STEPPER_params+0x1a>
+    2fa8:	90 93 64 02 	sts	0x0264, r25	; 0x800264 <STEPPER_params+0x1b>
+    2fac:	80 93 63 02 	sts	0x0263, r24	; 0x800263 <STEPPER_params+0x1a>
     2fb0:	81 e0       	ldi	r24, 0x01	; 1
-    2fb2:	80 93 cf 01 	sts	0x01CF, r24	; 0x8001cf <processing_left_pwm.1639>
+    2fb2:	80 93 d1 01 	sts	0x01D1, r24	; 0x8001d1 <processing_left_pwm.1639>
     2fb6:	18 c0       	rjmp	.+48     	; 0x2fe8 <STEPPER_process_pwm+0x98>
-    2fb8:	80 91 cf 01 	lds	r24, 0x01CF	; 0x8001cf <processing_left_pwm.1639>
+    2fb8:	80 91 d1 01 	lds	r24, 0x01D1	; 0x8001d1 <processing_left_pwm.1639>
     2fbc:	88 23       	and	r24, r24
     2fbe:	a1 f0       	breq	.+40     	; 0x2fe8 <STEPPER_process_pwm+0x98>
-    2fc0:	80 91 39 02 	lds	r24, 0x0239	; 0x800239 <STEPPER_params+0x1a>
-    2fc4:	90 91 3a 02 	lds	r25, 0x023A	; 0x80023a <STEPPER_params+0x1b>
+    2fc0:	80 91 63 02 	lds	r24, 0x0263	; 0x800263 <STEPPER_params+0x1a>
+    2fc4:	90 91 64 02 	lds	r25, 0x0264	; 0x800264 <STEPPER_params+0x1b>
     2fc8:	01 97       	sbiw	r24, 0x01	; 1
-    2fca:	90 93 3a 02 	sts	0x023A, r25	; 0x80023a <STEPPER_params+0x1b>
-    2fce:	80 93 39 02 	sts	0x0239, r24	; 0x800239 <STEPPER_params+0x1a>
-    2fd2:	80 91 39 02 	lds	r24, 0x0239	; 0x800239 <STEPPER_params+0x1a>
-    2fd6:	90 91 3a 02 	lds	r25, 0x023A	; 0x80023a <STEPPER_params+0x1b>
+    2fca:	90 93 64 02 	sts	0x0264, r25	; 0x800264 <STEPPER_params+0x1b>
+    2fce:	80 93 63 02 	sts	0x0263, r24	; 0x800263 <STEPPER_params+0x1a>
+    2fd2:	80 91 63 02 	lds	r24, 0x0263	; 0x800263 <STEPPER_params+0x1a>
+    2fd6:	90 91 64 02 	lds	r25, 0x0264	; 0x800264 <STEPPER_params+0x1b>
     2fda:	89 2b       	or	r24, r25
     2fdc:	29 f4       	brne	.+10     	; 0x2fe8 <STEPPER_process_pwm+0x98>
     2fde:	80 81       	ld	r24, Z
     2fe0:	83 7e       	andi	r24, 0xE3	; 227
     2fe2:	80 83       	st	Z, r24
-    2fe4:	10 92 cf 01 	sts	0x01CF, r1	; 0x8001cf <processing_left_pwm.1639>
-    2fe8:	80 91 47 02 	lds	r24, 0x0247	; 0x800247 <STEPPER_params+0x28>
+    2fe4:	10 92 d1 01 	sts	0x01D1, r1	; 0x8001d1 <processing_left_pwm.1639>
+    2fe8:	80 91 71 02 	lds	r24, 0x0271	; 0x800271 <STEPPER_params+0x28>
     2fec:	82 30       	cpi	r24, 0x02	; 2
     2fee:	69 f4       	brne	.+26     	; 0x300a <STEPPER_process_pwm+0xba>
-    2ff0:	80 91 d0 01 	lds	r24, 0x01D0	; 0x8001d0 <prev_state_right.1638>
+    2ff0:	80 91 d2 01 	lds	r24, 0x01D2	; 0x8001d2 <prev_state_right.1638>
     2ff4:	91 e0       	ldi	r25, 0x01	; 1
     2ff6:	89 27       	eor	r24, r25
-    2ff8:	80 93 d0 01 	sts	0x01D0, r24	; 0x8001d0 <prev_state_right.1638>
+    2ff8:	80 93 d2 01 	sts	0x01D2, r24	; 0x8001d2 <prev_state_right.1638>
     2ffc:	88 23       	and	r24, r24
     2ffe:	09 f0       	breq	.+2      	; 0x3002 <STEPPER_process_pwm+0xb2>
     3000:	3e c0       	rjmp	.+124    	; 0x307e <STEPPER_process_pwm+0x12e>
@@ -5089,14 +5089,14 @@ Disassembly of section .text:
     3004:	8f 71       	andi	r24, 0x1F	; 31
     3006:	80 83       	st	Z, r24
     3008:	08 95       	ret
-    300a:	80 91 27 02 	lds	r24, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    300e:	90 91 28 02 	lds	r25, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    300a:	80 91 51 02 	lds	r24, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    300e:	90 91 52 02 	lds	r25, 0x0252	; 0x800252 <STEPPER_params+0x9>
     3012:	c3 97       	sbiw	r24, 0x33	; 51
     3014:	a4 f5       	brge	.+104    	; 0x307e <STEPPER_process_pwm+0x12e>
     3016:	44 23       	and	r20, r20
     3018:	d1 f0       	breq	.+52     	; 0x304e <STEPPER_process_pwm+0xfe>
-    301a:	20 91 27 02 	lds	r18, 0x0227	; 0x800227 <STEPPER_params+0x8>
-    301e:	30 91 28 02 	lds	r19, 0x0228	; 0x800228 <STEPPER_params+0x9>
+    301a:	20 91 51 02 	lds	r18, 0x0251	; 0x800251 <STEPPER_params+0x8>
+    301e:	30 91 52 02 	lds	r19, 0x0252	; 0x800252 <STEPPER_params+0x9>
     3022:	80 e6       	ldi	r24, 0x60	; 96
     3024:	90 e0       	ldi	r25, 0x00	; 0
     3026:	ac 01       	movw	r20, r24
@@ -5111,27 +5111,27 @@ Disassembly of section .text:
     3038:	89 2f       	mov	r24, r25
     303a:	88 1f       	adc	r24, r24
     303c:	99 0b       	sbc	r25, r25
-    303e:	90 93 3c 02 	sts	0x023C, r25	; 0x80023c <STEPPER_params+0x1d>
-    3042:	80 93 3b 02 	sts	0x023B, r24	; 0x80023b <STEPPER_params+0x1c>
+    303e:	90 93 66 02 	sts	0x0266, r25	; 0x800266 <STEPPER_params+0x1d>
+    3042:	80 93 65 02 	sts	0x0265, r24	; 0x800265 <STEPPER_params+0x1c>
     3046:	81 e0       	ldi	r24, 0x01	; 1
-    3048:	80 93 ce 01 	sts	0x01CE, r24	; 0x8001ce <processing_right_pwm.1640>
+    3048:	80 93 d0 01 	sts	0x01D0, r24	; 0x8001d0 <processing_right_pwm.1640>
     304c:	08 95       	ret
-    304e:	80 91 ce 01 	lds	r24, 0x01CE	; 0x8001ce <processing_right_pwm.1640>
+    304e:	80 91 d0 01 	lds	r24, 0x01D0	; 0x8001d0 <processing_right_pwm.1640>
     3052:	88 23       	and	r24, r24
     3054:	a1 f0       	breq	.+40     	; 0x307e <STEPPER_process_pwm+0x12e>
-    3056:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <STEPPER_params+0x1c>
-    305a:	90 91 3c 02 	lds	r25, 0x023C	; 0x80023c <STEPPER_params+0x1d>
+    3056:	80 91 65 02 	lds	r24, 0x0265	; 0x800265 <STEPPER_params+0x1c>
+    305a:	90 91 66 02 	lds	r25, 0x0266	; 0x800266 <STEPPER_params+0x1d>
     305e:	01 97       	sbiw	r24, 0x01	; 1
-    3060:	90 93 3c 02 	sts	0x023C, r25	; 0x80023c <STEPPER_params+0x1d>
-    3064:	80 93 3b 02 	sts	0x023B, r24	; 0x80023b <STEPPER_params+0x1c>
-    3068:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <STEPPER_params+0x1c>
-    306c:	90 91 3c 02 	lds	r25, 0x023C	; 0x80023c <STEPPER_params+0x1d>
+    3060:	90 93 66 02 	sts	0x0266, r25	; 0x800266 <STEPPER_params+0x1d>
+    3064:	80 93 65 02 	sts	0x0265, r24	; 0x800265 <STEPPER_params+0x1c>
+    3068:	80 91 65 02 	lds	r24, 0x0265	; 0x800265 <STEPPER_params+0x1c>
+    306c:	90 91 66 02 	lds	r25, 0x0266	; 0x800266 <STEPPER_params+0x1d>
     3070:	89 2b       	or	r24, r25
     3072:	29 f4       	brne	.+10     	; 0x307e <STEPPER_process_pwm+0x12e>
     3074:	80 81       	ld	r24, Z
     3076:	8f 71       	andi	r24, 0x1F	; 31
     3078:	80 83       	st	Z, r24
-    307a:	10 92 ce 01 	sts	0x01CE, r1	; 0x8001ce <processing_right_pwm.1640>
+    307a:	10 92 d0 01 	sts	0x01D0, r1	; 0x8001d0 <processing_right_pwm.1640>
     307e:	08 95       	ret
 
 00003080 <CRUISE>:
@@ -5407,10 +5407,10 @@ Disassembly of section .text:
     32a8:	cf 93       	push	r28
     32aa:	df 93       	push	r29
     32ac:	0e 94 31 03 	call	0x662	; 0x662 <ADC_sample>
-    32b0:	c0 91 e6 01 	lds	r28, 0x01E6	; 0x8001e6 <i.3624>
-    32b4:	d0 91 e7 01 	lds	r29, 0x01E7	; 0x8001e7 <i.3624+0x1>
+    32b0:	c0 91 10 02 	lds	r28, 0x0210	; 0x800210 <i.3624>
+    32b4:	d0 91 11 02 	lds	r29, 0x0211	; 0x800211 <i.3624+0x1>
     32b8:	8e 01       	movw	r16, r28
-    32ba:	04 52       	subi	r16, 0x24	; 36
+    32ba:	02 52       	subi	r16, 0x22	; 34
     32bc:	1e 4f       	sbci	r17, 0xFE	; 254
     32be:	bc 01       	movw	r22, r24
     32c0:	80 e0       	ldi	r24, 0x00	; 0
@@ -5449,16 +5449,16 @@ Disassembly of section .text:
     3302:	0f d5       	rcall	.+2590   	; 0x3d22 <__fixunssfsi>
     3304:	f8 01       	movw	r30, r16
     3306:	60 83       	st	Z, r22
-    3308:	c9 30       	cpi	r28, 0x09	; 9
+    3308:	c1 33       	cpi	r28, 0x31	; 49
     330a:	d1 05       	cpc	r29, r1
     330c:	29 f4       	brne	.+10     	; 0x3318 <getTemp+0x74>
-    330e:	10 92 e7 01 	sts	0x01E7, r1	; 0x8001e7 <i.3624+0x1>
-    3312:	10 92 e6 01 	sts	0x01E6, r1	; 0x8001e6 <i.3624>
+    330e:	10 92 11 02 	sts	0x0211, r1	; 0x800211 <i.3624+0x1>
+    3312:	10 92 10 02 	sts	0x0210, r1	; 0x800210 <i.3624>
     3316:	05 c0       	rjmp	.+10     	; 0x3322 <getTemp+0x7e>
     3318:	21 96       	adiw	r28, 0x01	; 1
-    331a:	d0 93 e7 01 	sts	0x01E7, r29	; 0x8001e7 <i.3624+0x1>
-    331e:	c0 93 e6 01 	sts	0x01E6, r28	; 0x8001e6 <i.3624>
-    3322:	ec ed       	ldi	r30, 0xDC	; 220
+    331a:	d0 93 11 02 	sts	0x0211, r29	; 0x800211 <i.3624+0x1>
+    331e:	c0 93 10 02 	sts	0x0210, r28	; 0x800210 <i.3624>
+    3322:	ee ed       	ldi	r30, 0xDE	; 222
     3324:	f1 e0       	ldi	r31, 0x01	; 1
     3326:	60 e0       	ldi	r22, 0x00	; 0
     3328:	70 e0       	ldi	r23, 0x00	; 0
@@ -5471,8 +5471,8 @@ Disassembly of section .text:
     3336:	91 1d       	adc	r25, r1
     3338:	6f 5f       	subi	r22, 0xFF	; 255
     333a:	7f 4f       	sbci	r23, 0xFF	; 255
-    333c:	21 e0       	ldi	r18, 0x01	; 1
-    333e:	e6 3e       	cpi	r30, 0xE6	; 230
+    333c:	22 e0       	ldi	r18, 0x02	; 2
+    333e:	e0 31       	cpi	r30, 0x10	; 16
     3340:	f2 07       	cpc	r31, r18
     3342:	a9 f7       	brne	.-22     	; 0x332e <getTemp+0x8a>
     3344:	b9 d7       	rcall	.+3954   	; 0x42b8 <__divmodhi4>
@@ -5537,18 +5537,18 @@ Disassembly of section .text:
     33bc:	de b7       	in	r29, 0x3e	; 62
     33be:	18 2f       	mov	r17, r24
     33c0:	9a 01       	movw	r18, r20
-    33c2:	80 91 db 01 	lds	r24, 0x01DB	; 0x8001db <timer_started.3648>
+    33c2:	80 91 dd 01 	lds	r24, 0x01DD	; 0x8001dd <timer_started.3648>
     33c6:	81 11       	cpse	r24, r1
     33c8:	0a c0       	rjmp	.+20     	; 0x33de <updateDisplay+0x2c>
     33ca:	41 e0       	ldi	r20, 0x01	; 1
     33cc:	61 e0       	ldi	r22, 0x01	; 1
-    33ce:	82 ed       	ldi	r24, 0xD2	; 210
+    33ce:	84 ed       	ldi	r24, 0xD4	; 212
     33d0:	91 e0       	ldi	r25, 0x01	; 1
     33d2:	0e 94 47 0a 	call	0x148e	; 0x148e <TMRSRVC_new>
     33d6:	81 e0       	ldi	r24, 0x01	; 1
-    33d8:	80 93 db 01 	sts	0x01DB, r24	; 0x8001db <timer_started.3648>
+    33d8:	80 93 dd 01 	sts	0x01DD, r24	; 0x8001dd <timer_started.3648>
     33dc:	23 c0       	rjmp	.+70     	; 0x3424 <updateDisplay+0x72>
-    33de:	80 91 d8 01 	lds	r24, 0x01D8	; 0x8001d8 <sense_timer.3649+0x6>
+    33de:	80 91 da 01 	lds	r24, 0x01DA	; 0x8001da <sense_timer.3649+0x6>
     33e2:	88 23       	and	r24, r24
     33e4:	f9 f0       	breq	.+62     	; 0x3424 <updateDisplay+0x72>
     33e6:	69 83       	std	Y+1, r22	; 0x01
@@ -5566,12 +5566,12 @@ Disassembly of section .text:
     3404:	1f 92       	push	r1
     3406:	69 81       	ldd	r22, Y+1	; 0x01
     3408:	6f 93       	push	r22
-    340a:	83 e4       	ldi	r24, 0x43	; 67
+    340a:	84 e4       	ldi	r24, 0x44	; 68
     340c:	91 e0       	ldi	r25, 0x01	; 1
     340e:	9f 93       	push	r25
     3410:	8f 93       	push	r24
     3412:	0e 94 48 24 	call	0x4890	; 0x4890 <printf>
-    3416:	10 92 d8 01 	sts	0x01D8, r1	; 0x8001d8 <sense_timer.3649+0x6>
+    3416:	10 92 da 01 	sts	0x01DA, r1	; 0x8001da <sense_timer.3649+0x6>
     341a:	0f b6       	in	r0, 0x3f	; 63
     341c:	f8 94       	cli
     341e:	de bf       	out	0x3e, r29	; 62
@@ -5585,7 +5585,7 @@ Disassembly of section .text:
 
 0000342e <CBOT_main>:
     342e:	0e 94 c0 03 	call	0x780	; 0x780 <LCD_open>
-    3432:	80 e5       	ldi	r24, 0x50	; 80
+    3432:	82 e5       	ldi	r24, 0x52	; 82
     3434:	91 e0       	ldi	r25, 0x01	; 1
     3436:	9f 93       	push	r25
     3438:	8f 93       	push	r24
@@ -7680,8 +7680,8 @@ Disassembly of section .text:
     43f2:	10 f4       	brcc	.+4      	; 0x43f8 <malloc+0xe>
     43f4:	82 e0       	ldi	r24, 0x02	; 2
     43f6:	90 e0       	ldi	r25, 0x00	; 0
-    43f8:	e0 91 7b 02 	lds	r30, 0x027B	; 0x80027b <__flp>
-    43fc:	f0 91 7c 02 	lds	r31, 0x027C	; 0x80027c <__flp+0x1>
+    43f8:	e0 91 a5 02 	lds	r30, 0x02A5	; 0x8002a5 <__flp>
+    43fc:	f0 91 a6 02 	lds	r31, 0x02A6	; 0x8002a6 <__flp+0x1>
     4400:	20 e0       	ldi	r18, 0x00	; 0
     4402:	30 e0       	ldi	r19, 0x00	; 0
     4404:	c0 e0       	ldi	r28, 0x00	; 0
@@ -7703,8 +7703,8 @@ Disassembly of section .text:
     4424:	9b 83       	std	Y+3, r25	; 0x03
     4426:	8a 83       	std	Y+2, r24	; 0x02
     4428:	2b c0       	rjmp	.+86     	; 0x4480 <malloc+0x96>
-    442a:	90 93 7c 02 	sts	0x027C, r25	; 0x80027c <__flp+0x1>
-    442e:	80 93 7b 02 	sts	0x027B, r24	; 0x80027b <__flp>
+    442a:	90 93 a6 02 	sts	0x02A6, r25	; 0x8002a6 <__flp+0x1>
+    442e:	80 93 a5 02 	sts	0x02A5, r24	; 0x8002a5 <__flp>
     4432:	26 c0       	rjmp	.+76     	; 0x4480 <malloc+0x96>
     4434:	21 15       	cp	r18, r1
     4436:	31 05       	cpc	r19, r1
@@ -7739,8 +7739,8 @@ Disassembly of section .text:
     4470:	93 83       	std	Z+3, r25	; 0x03
     4472:	82 83       	std	Z+2, r24	; 0x02
     4474:	04 c0       	rjmp	.+8      	; 0x447e <malloc+0x94>
-    4476:	90 93 7c 02 	sts	0x027C, r25	; 0x80027c <__flp+0x1>
-    447a:	80 93 7b 02 	sts	0x027B, r24	; 0x80027b <__flp>
+    4476:	90 93 a6 02 	sts	0x02A6, r25	; 0x8002a6 <__flp+0x1>
+    447a:	80 93 a5 02 	sts	0x02A5, r24	; 0x8002a5 <__flp>
     447e:	fd 01       	movw	r30, r26
     4480:	32 96       	adiw	r30, 0x02	; 2
     4482:	44 c0       	rjmp	.+136    	; 0x450c <malloc+0x122>
@@ -7754,14 +7754,14 @@ Disassembly of section .text:
     4492:	2d 93       	st	X+, r18
     4494:	3c 93       	st	X, r19
     4496:	3a c0       	rjmp	.+116    	; 0x450c <malloc+0x122>
-    4498:	20 91 79 02 	lds	r18, 0x0279	; 0x800279 <__brkval>
-    449c:	30 91 7a 02 	lds	r19, 0x027A	; 0x80027a <__brkval+0x1>
+    4498:	20 91 a3 02 	lds	r18, 0x02A3	; 0x8002a3 <__brkval>
+    449c:	30 91 a4 02 	lds	r19, 0x02A4	; 0x8002a4 <__brkval+0x1>
     44a0:	23 2b       	or	r18, r19
     44a2:	41 f4       	brne	.+16     	; 0x44b4 <malloc+0xca>
     44a4:	20 91 1d 01 	lds	r18, 0x011D	; 0x80011d <__malloc_heap_start>
     44a8:	30 91 1e 01 	lds	r19, 0x011E	; 0x80011e <__malloc_heap_start+0x1>
-    44ac:	30 93 7a 02 	sts	0x027A, r19	; 0x80027a <__brkval+0x1>
-    44b0:	20 93 79 02 	sts	0x0279, r18	; 0x800279 <__brkval>
+    44ac:	30 93 a4 02 	sts	0x02A4, r19	; 0x8002a4 <__brkval+0x1>
+    44b0:	20 93 a3 02 	sts	0x02A3, r18	; 0x8002a3 <__brkval>
     44b4:	20 91 1b 01 	lds	r18, 0x011B	; 0x80011b <__malloc_heap_end>
     44b8:	30 91 1c 01 	lds	r19, 0x011C	; 0x80011c <__malloc_heap_end+0x1>
     44bc:	21 15       	cp	r18, r1
@@ -7773,8 +7773,8 @@ Disassembly of section .text:
     44ca:	50 91 20 01 	lds	r21, 0x0120	; 0x800120 <__malloc_margin+0x1>
     44ce:	24 1b       	sub	r18, r20
     44d0:	35 0b       	sbc	r19, r21
-    44d2:	e0 91 79 02 	lds	r30, 0x0279	; 0x800279 <__brkval>
-    44d6:	f0 91 7a 02 	lds	r31, 0x027A	; 0x80027a <__brkval+0x1>
+    44d2:	e0 91 a3 02 	lds	r30, 0x02A3	; 0x8002a3 <__brkval>
+    44d6:	f0 91 a4 02 	lds	r31, 0x02A4	; 0x8002a4 <__brkval+0x1>
     44da:	e2 17       	cp	r30, r18
     44dc:	f3 07       	cpc	r31, r19
     44de:	a0 f4       	brcc	.+40     	; 0x4508 <malloc+0x11e>
@@ -7791,8 +7791,8 @@ Disassembly of section .text:
     44f4:	48 f0       	brcs	.+18     	; 0x4508 <malloc+0x11e>
     44f6:	4e 0f       	add	r20, r30
     44f8:	5f 1f       	adc	r21, r31
-    44fa:	50 93 7a 02 	sts	0x027A, r21	; 0x80027a <__brkval+0x1>
-    44fe:	40 93 79 02 	sts	0x0279, r20	; 0x800279 <__brkval>
+    44fa:	50 93 a4 02 	sts	0x02A4, r21	; 0x8002a4 <__brkval+0x1>
+    44fe:	40 93 a3 02 	sts	0x02A3, r20	; 0x8002a3 <__brkval>
     4502:	81 93       	st	Z+, r24
     4504:	91 93       	st	Z+, r25
     4506:	02 c0       	rjmp	.+4      	; 0x450c <malloc+0x122>
@@ -7815,8 +7815,8 @@ Disassembly of section .text:
     4524:	32 97       	sbiw	r30, 0x02	; 2
     4526:	13 82       	std	Z+3, r1	; 0x03
     4528:	12 82       	std	Z+2, r1	; 0x02
-    452a:	00 91 7b 02 	lds	r16, 0x027B	; 0x80027b <__flp>
-    452e:	10 91 7c 02 	lds	r17, 0x027C	; 0x80027c <__flp+0x1>
+    452a:	00 91 a5 02 	lds	r16, 0x02A5	; 0x8002a5 <__flp>
+    452e:	10 91 a6 02 	lds	r17, 0x02A6	; 0x8002a6 <__flp+0x1>
     4532:	01 15       	cp	r16, r1
     4534:	11 05       	cpc	r17, r1
     4536:	81 f4       	brne	.+32     	; 0x4558 <free+0x44>
@@ -7824,13 +7824,13 @@ Disassembly of section .text:
     453a:	31 81       	ldd	r19, Z+1	; 0x01
     453c:	82 0f       	add	r24, r18
     453e:	93 1f       	adc	r25, r19
-    4540:	20 91 79 02 	lds	r18, 0x0279	; 0x800279 <__brkval>
-    4544:	30 91 7a 02 	lds	r19, 0x027A	; 0x80027a <__brkval+0x1>
+    4540:	20 91 a3 02 	lds	r18, 0x02A3	; 0x8002a3 <__brkval>
+    4544:	30 91 a4 02 	lds	r19, 0x02A4	; 0x8002a4 <__brkval+0x1>
     4548:	28 17       	cp	r18, r24
     454a:	39 07       	cpc	r19, r25
     454c:	79 f5       	brne	.+94     	; 0x45ac <free+0x98>
-    454e:	f0 93 7a 02 	sts	0x027A, r31	; 0x80027a <__brkval+0x1>
-    4552:	e0 93 79 02 	sts	0x0279, r30	; 0x800279 <__brkval>
+    454e:	f0 93 a4 02 	sts	0x02A4, r31	; 0x8002a4 <__brkval+0x1>
+    4552:	e0 93 a3 02 	sts	0x02A3, r30	; 0x8002a3 <__brkval>
     4556:	71 c0       	rjmp	.+226    	; 0x463a <free+0x126>
     4558:	d8 01       	movw	r26, r16
     455a:	40 e0       	ldi	r20, 0x00	; 0
@@ -7874,8 +7874,8 @@ Disassembly of section .text:
     45a6:	82 83       	std	Z+2, r24	; 0x02
     45a8:	45 2b       	or	r20, r21
     45aa:	29 f4       	brne	.+10     	; 0x45b6 <free+0xa2>
-    45ac:	f0 93 7c 02 	sts	0x027C, r31	; 0x80027c <__flp+0x1>
-    45b0:	e0 93 7b 02 	sts	0x027B, r30	; 0x80027b <__flp>
+    45ac:	f0 93 a6 02 	sts	0x02A6, r31	; 0x8002a6 <__flp+0x1>
+    45b0:	e0 93 a5 02 	sts	0x02A5, r30	; 0x8002a5 <__flp>
     45b4:	42 c0       	rjmp	.+132    	; 0x463a <free+0x126>
     45b6:	13 96       	adiw	r26, 0x03	; 3
     45b8:	fc 93       	st	X, r31
@@ -7923,20 +7923,20 @@ Disassembly of section .text:
     460c:	3f 4f       	sbci	r19, 0xFF	; 255
     460e:	82 0f       	add	r24, r18
     4610:	93 1f       	adc	r25, r19
-    4612:	20 91 79 02 	lds	r18, 0x0279	; 0x800279 <__brkval>
-    4616:	30 91 7a 02 	lds	r19, 0x027A	; 0x80027a <__brkval+0x1>
+    4612:	20 91 a3 02 	lds	r18, 0x02A3	; 0x8002a3 <__brkval>
+    4616:	30 91 a4 02 	lds	r19, 0x02A4	; 0x8002a4 <__brkval+0x1>
     461a:	28 17       	cp	r18, r24
     461c:	39 07       	cpc	r19, r25
     461e:	69 f4       	brne	.+26     	; 0x463a <free+0x126>
     4620:	30 97       	sbiw	r30, 0x00	; 0
     4622:	29 f4       	brne	.+10     	; 0x462e <free+0x11a>
-    4624:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <__flp+0x1>
-    4628:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <__flp>
+    4624:	10 92 a6 02 	sts	0x02A6, r1	; 0x8002a6 <__flp+0x1>
+    4628:	10 92 a5 02 	sts	0x02A5, r1	; 0x8002a5 <__flp>
     462c:	02 c0       	rjmp	.+4      	; 0x4632 <free+0x11e>
     462e:	13 82       	std	Z+3, r1	; 0x03
     4630:	12 82       	std	Z+2, r1	; 0x02
-    4632:	10 93 7a 02 	sts	0x027A, r17	; 0x80027a <__brkval+0x1>
-    4636:	00 93 79 02 	sts	0x0279, r16	; 0x800279 <__brkval>
+    4632:	10 93 a4 02 	sts	0x02A4, r17	; 0x8002a4 <__brkval+0x1>
+    4636:	00 93 a3 02 	sts	0x02A3, r16	; 0x8002a3 <__brkval>
     463a:	df 91       	pop	r29
     463c:	cf 91       	pop	r28
     463e:	1f 91       	pop	r17
@@ -8258,8 +8258,8 @@ Disassembly of section .text:
     48a2:	61 91       	ld	r22, Z+
     48a4:	71 91       	ld	r23, Z+
     48a6:	af 01       	movw	r20, r30
-    48a8:	80 91 7f 02 	lds	r24, 0x027F	; 0x80027f <__iob+0x2>
-    48ac:	90 91 80 02 	lds	r25, 0x0280	; 0x800280 <__iob+0x3>
+    48a8:	80 91 a9 02 	lds	r24, 0x02A9	; 0x8002a9 <__iob+0x2>
+    48ac:	90 91 aa 02 	lds	r25, 0x02AA	; 0x8002aa <__iob+0x3>
     48b0:	0e 94 5e 1a 	call	0x34bc	; 0x34bc <vfprintf>
     48b4:	e2 e0       	ldi	r30, 0x02	; 2
     48b6:	6b cd       	rjmp	.-1322   	; 0x438e <__epilogue_restores__+0x20>
@@ -8269,8 +8269,8 @@ Disassembly of section .text:
     48ba:	1f 93       	push	r17
     48bc:	cf 93       	push	r28
     48be:	df 93       	push	r29
-    48c0:	e0 91 7f 02 	lds	r30, 0x027F	; 0x80027f <__iob+0x2>
-    48c4:	f0 91 80 02 	lds	r31, 0x0280	; 0x800280 <__iob+0x3>
+    48c0:	e0 91 a9 02 	lds	r30, 0x02A9	; 0x8002a9 <__iob+0x2>
+    48c4:	f0 91 aa 02 	lds	r31, 0x02AA	; 0x8002aa <__iob+0x3>
     48c8:	23 81       	ldd	r18, Z+3	; 0x03
     48ca:	21 ff       	sbrs	r18, 1
     48cc:	1b c0       	rjmp	.+54     	; 0x4904 <puts+0x4c>
@@ -8280,8 +8280,8 @@ Disassembly of section .text:
     48d4:	f8 01       	movw	r30, r16
     48d6:	81 91       	ld	r24, Z+
     48d8:	8f 01       	movw	r16, r30
-    48da:	60 91 7f 02 	lds	r22, 0x027F	; 0x80027f <__iob+0x2>
-    48de:	70 91 80 02 	lds	r23, 0x0280	; 0x800280 <__iob+0x3>
+    48da:	60 91 a9 02 	lds	r22, 0x02A9	; 0x8002a9 <__iob+0x2>
+    48de:	70 91 aa 02 	lds	r23, 0x02AA	; 0x8002aa <__iob+0x3>
     48e2:	db 01       	movw	r26, r22
     48e4:	18 96       	adiw	r26, 0x08	; 8
     48e6:	ed 91       	ld	r30, X+

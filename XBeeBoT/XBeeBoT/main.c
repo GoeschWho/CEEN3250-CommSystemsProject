@@ -150,7 +150,7 @@ byte getTemp( void ) {
 	float tempF;		// Temperature in Fahrenheit
 	byte temp;			// Byte value to be stored
 	
-	#define history 10
+	#define history 50
 	static byte temps[history];		// Array to store last 10 readings
 	static int i = 0;	// Start index of array at 0;
 	int j;				// Index for summing temperatures
@@ -242,18 +242,14 @@ void updateDisplay( byte myTemp, byte rxTemp, TIMER16 interval_ms ) {
 			// Header
 			LCD_printf( "CEEN 3250 - XBeeBoT\n\n" );
 			// Display myTemp
-			LCD_printf( "My Temp: %d\n", myTemp );
+			LCD_printf( "My Temp: %dF\n", myTemp );
 	
 			// Display rxTemp
-			LCD_printf( "Rx Temp: %d\n", rxTemp );
+			LCD_printf( "Rx Temp: %dF\n", rxTemp );
 				
 			// Snooze the alarm so it can trigger again.
 			TIMER_SNOOZE(sense_timer);
 		}
 	}
-	
-	
-	
-
 	
 } // end updateDisplay()
