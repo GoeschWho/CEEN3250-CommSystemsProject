@@ -5483,48 +5483,48 @@ Disassembly of section .text:
     334e:	0f 91       	pop	r16
     3350:	08 95       	ret
 
-00003352 <receiveTemp>:
+00003352 <transmitTemp>:
     3352:	cf 93       	push	r28
-    3354:	df 93       	push	r29
-    3356:	1f 92       	push	r1
-    3358:	cd b7       	in	r28, 0x3d	; 61
-    335a:	de b7       	in	r29, 0x3e	; 62
-    335c:	89 83       	std	Y+1, r24	; 0x01
-    335e:	80 e4       	ldi	r24, 0x40	; 64
-    3360:	0e 94 94 04 	call	0x928	; 0x928 <LED_clr_pattern>
-    3364:	81 e0       	ldi	r24, 0x01	; 1
-    3366:	0e 94 e4 0b 	call	0x17c8	; 0x17c8 <UART_has_data>
-    336a:	88 23       	and	r24, r24
-    336c:	51 f0       	breq	.+20     	; 0x3382 <receiveTemp+0x30>
-    336e:	80 e4       	ldi	r24, 0x40	; 64
-    3370:	0e 94 a7 04 	call	0x94e	; 0x94e <LED_set_pattern>
-    3374:	be 01       	movw	r22, r28
-    3376:	6f 5f       	subi	r22, 0xFF	; 255
-    3378:	7f 4f       	sbci	r23, 0xFF	; 255
-    337a:	81 e0       	ldi	r24, 0x01	; 1
-    337c:	0e 94 2f 0c 	call	0x185e	; 0x185e <UART_receive>
-    3380:	f1 cf       	rjmp	.-30     	; 0x3364 <receiveTemp+0x12>
-    3382:	89 81       	ldd	r24, Y+1	; 0x01
-    3384:	0f 90       	pop	r0
-    3386:	df 91       	pop	r29
-    3388:	cf 91       	pop	r28
-    338a:	08 95       	ret
+    3354:	a7 df       	rcall	.-178    	; 0x32a4 <getTemp>
+    3356:	c8 2f       	mov	r28, r24
+    3358:	68 2f       	mov	r22, r24
+    335a:	81 e0       	ldi	r24, 0x01	; 1
+    335c:	0e 94 26 0d 	call	0x1a4c	; 0x1a4c <UART_transmit>
+    3360:	81 11       	cpse	r24, r1
+    3362:	04 c0       	rjmp	.+8      	; 0x336c <transmitTemp+0x1a>
+    3364:	80 e2       	ldi	r24, 0x20	; 32
+    3366:	0e 94 a7 04 	call	0x94e	; 0x94e <LED_set_pattern>
+    336a:	03 c0       	rjmp	.+6      	; 0x3372 <transmitTemp+0x20>
+    336c:	80 e2       	ldi	r24, 0x20	; 32
+    336e:	0e 94 94 04 	call	0x928	; 0x928 <LED_clr_pattern>
+    3372:	8c 2f       	mov	r24, r28
+    3374:	cf 91       	pop	r28
+    3376:	08 95       	ret
 
-0000338c <transmitTemp>:
-    338c:	cf 93       	push	r28
-    338e:	8a df       	rcall	.-236    	; 0x32a4 <getTemp>
-    3390:	c8 2f       	mov	r28, r24
-    3392:	68 2f       	mov	r22, r24
-    3394:	81 e0       	ldi	r24, 0x01	; 1
-    3396:	0e 94 26 0d 	call	0x1a4c	; 0x1a4c <UART_transmit>
-    339a:	81 11       	cpse	r24, r1
-    339c:	04 c0       	rjmp	.+8      	; 0x33a6 <transmitTemp+0x1a>
-    339e:	80 e2       	ldi	r24, 0x20	; 32
-    33a0:	0e 94 a7 04 	call	0x94e	; 0x94e <LED_set_pattern>
-    33a4:	03 c0       	rjmp	.+6      	; 0x33ac <transmitTemp+0x20>
-    33a6:	80 e2       	ldi	r24, 0x20	; 32
-    33a8:	0e 94 94 04 	call	0x928	; 0x928 <LED_clr_pattern>
-    33ac:	8c 2f       	mov	r24, r28
+00003378 <receiveTemp>:
+    3378:	cf 93       	push	r28
+    337a:	df 93       	push	r29
+    337c:	1f 92       	push	r1
+    337e:	cd b7       	in	r28, 0x3d	; 61
+    3380:	de b7       	in	r29, 0x3e	; 62
+    3382:	89 83       	std	Y+1, r24	; 0x01
+    3384:	80 e4       	ldi	r24, 0x40	; 64
+    3386:	0e 94 94 04 	call	0x928	; 0x928 <LED_clr_pattern>
+    338a:	81 e0       	ldi	r24, 0x01	; 1
+    338c:	0e 94 e4 0b 	call	0x17c8	; 0x17c8 <UART_has_data>
+    3390:	88 23       	and	r24, r24
+    3392:	51 f0       	breq	.+20     	; 0x33a8 <receiveTemp+0x30>
+    3394:	80 e4       	ldi	r24, 0x40	; 64
+    3396:	0e 94 a7 04 	call	0x94e	; 0x94e <LED_set_pattern>
+    339a:	be 01       	movw	r22, r28
+    339c:	6f 5f       	subi	r22, 0xFF	; 255
+    339e:	7f 4f       	sbci	r23, 0xFF	; 255
+    33a0:	81 e0       	ldi	r24, 0x01	; 1
+    33a2:	0e 94 2f 0c 	call	0x185e	; 0x185e <UART_receive>
+    33a6:	f1 cf       	rjmp	.-30     	; 0x338a <receiveTemp+0x12>
+    33a8:	89 81       	ldd	r24, Y+1	; 0x01
+    33aa:	0f 90       	pop	r0
+    33ac:	df 91       	pop	r29
     33ae:	cf 91       	pop	r28
     33b0:	08 95       	ret
 
@@ -5632,10 +5632,10 @@ Disassembly of section .text:
     34a0:	81 11       	cpse	r24, r1
     34a2:	01 c0       	rjmp	.+2      	; 0x34a6 <CBOT_main+0x78>
     34a4:	d0 e0       	ldi	r29, 0x00	; 0
-    34a6:	72 df       	rcall	.-284    	; 0x338c <transmitTemp>
+    34a6:	55 df       	rcall	.-342    	; 0x3352 <transmitTemp>
     34a8:	18 2f       	mov	r17, r24
     34aa:	8c 2f       	mov	r24, r28
-    34ac:	52 df       	rcall	.-348    	; 0x3352 <receiveTemp>
+    34ac:	65 df       	rcall	.-310    	; 0x3378 <receiveTemp>
     34ae:	c8 2f       	mov	r28, r24
     34b0:	44 ef       	ldi	r20, 0xF4	; 244
     34b2:	51 e0       	ldi	r21, 0x01	; 1

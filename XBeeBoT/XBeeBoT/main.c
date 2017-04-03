@@ -180,25 +180,6 @@ byte getTemp( void ) {
 
 // -------------------------------------------------------------- //
 
-byte receiveTemp( byte currentTemp ) {
-	
-	byte temperature = currentTemp;
-	
-	// First check IF there is data to read...
-	LED_clr( LED_Green );
-	while ( UART1_has_data() ) {
-		// Visual for success
-		LED_set( LED_Green );
-		UART1_receive( &temperature );		
-	}
-	
-	// Returns previously received temperature if none received.
-	return temperature;
-	
-} // end receiveTemp()
-
-// -------------------------------------------------------------- //
-
 byte transmitTemp( void ) {
 	
 	UART_COMM_RESULT error;
@@ -219,6 +200,24 @@ byte transmitTemp( void ) {
 	
 	return temperature;
 } // end transmitTemp()
+
+// -------------------------------------------------------------- //
+byte receiveTemp( byte currentTemp ) {
+	
+	byte temperature = currentTemp;
+	
+	// First check IF there is data to read...
+	LED_clr( LED_Green );
+	while ( UART1_has_data() ) {
+		// Visual for success
+		LED_set( LED_Green );
+		UART1_receive( &temperature );		
+	}
+	
+	// Returns previously received temperature if none received.
+	return temperature;
+	
+} // end receiveTemp()
 
 // -------------------------------------------------------------- //
 
